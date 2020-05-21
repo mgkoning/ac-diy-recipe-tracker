@@ -1,0 +1,27 @@
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Animal Crossing DIY Recipe Tracker</title>
+  <script type="text/javascript" src="recipe-tracker.js"></script>
+</head>
+
+<body>
+  <div id="ac-diy-recipe-tracker"></div>
+</body>
+
+<script type="text/javascript">
+var storedData = localStorage.getItem('obtained-recipes');
+var flags = storedData ? JSON.parse(storedData) : null;
+
+var app = Elm.Main.init({
+  node: document.getElementById('ac-diy-recipe-tracker'),
+  flags: flags
+});
+
+app.ports.setStorage.subscribe(function(state) {
+  localStorage.setItem('obtained-recipes', JSON.stringify(state));
+});
+</script>
+
+</html>
