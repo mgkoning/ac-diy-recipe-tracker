@@ -3,7 +3,7 @@ port module Main exposing (main)
 import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onCheck)
+import Html.Events exposing (onCheck, onInput)
 import Html.Keyed
 import List
 import Set as S exposing (Set)
@@ -21,36 +21,25 @@ main =
 
 type alias Model = { 
     availableRecipes: List Recipe,
-    obtained: Set String
+    obtained: Set String,
+    filter: String
   }
 
 type alias Recipe = {
     id: String,
     source: List Source,
-    name: String
+    name: String,
+    sourceStrings: List String
   }
 
-type Source = Villager Personality
-  | AnyVillager
-  | NookMilesAlways
-  | NookMilesRotating
-  | Seasonal String
-  | RecipeBundle String
-  | RecipeIdea String
-  | Celeste
+type Source = Villager Personality | Other String
 
 showSource : Source -> String
 showSource s = case s of
   Villager p -> "From " ++ showPersonality p ++ " villager"
-  AnyVillager -> "From any villager"
-  NookMilesAlways -> "Nook miles (always available from Nook Stop)"
-  NookMilesRotating -> "Nook miles (available from Nook Stop on rotation)"
-  Seasonal season -> "Seasonal: " ++ season
-  RecipeBundle name -> "From recipe bundle in Nook's Cranny: " ++ name
-  RecipeIdea basedOn -> "Recipe idea: " ++ basedOn
-  Celeste -> "From Celeste"
+  Other description -> description
 
-type Personality = Cranky | Jock | Lazy | Normal | Peppy | Sisterly | Smug | Snooty
+type Personality = Cranky | Jock | Lazy | Normal | Peppy | Sisterly | Smug | Snooty | Any
 showPersonality : Personality -> String
 showPersonality p = case p of 
     Cranky -> "Cranky"
@@ -61,24 +50,46 @@ showPersonality p = case p of
     Sisterly -> "Sisterly"
     Smug -> "Smug"
     Snooty -> "Snooty"
+    Any -> "any"
 
-type Msg = Obtain Recipe | Unobtain Recipe
+type Msg = Obtain Recipe | Unobtain Recipe | Filter String
 
 init : E.Value -> (Model, Cmd Msg)
 init flags = 
     let obtainedStorage = case D.decodeValue decoder flags of
                             Ok s -> S.fromList s
                             Err _ -> S.empty
-    in ({ availableRecipes = availableRecipes, obtained = obtainedStorage }, Cmd.none)
+    in (
+      { availableRecipes = List.map addSourceString availableRecipes
+      , obtained = obtainedStorage
+      , filter = ""
+      },
+      Cmd.none
+    )
 
 view : Model -> Html Msg
 view model =
   let (have, need) = List.partition ((\r -> S.member r.id model.obtained)) model.availableRecipes
-      section title recipes checked = [h1 [] [text title], recipesView checked recipes]
-  in div [] (section "To obtain" need False ++ section "Obtained" have True)
+      keywords = String.split " " (String.toLower model.filter)
+      section title recipes checked = [h1 [] [text title], recipesView checked recipes keywords]
+  in div [] (
+    label [] [
+      text "Search:",
+      input [onInput (\val -> Filter val)] [text model.filter]
+    ] ::
+    (section "To obtain" need False ++ section "Obtained" have True)
+  )
 
-recipesView : Bool -> List Recipe -> Html Msg
-recipesView obtained recipes = Html.Keyed.node "div" [] (List.map (recipeDiv obtained) recipes)
+recipesView : Bool -> List Recipe -> List String -> Html Msg
+recipesView obtained recipes filter =
+  Html.Keyed.node "div" [] (List.map (recipeDiv obtained) (List.filter (matches filter) recipes))
+
+matches : List String -> Recipe -> Bool
+matches keywords recipe =
+  let fields = List.map String.toLower (recipe.name :: recipe.sourceStrings)
+  in case keywords of
+       [] -> True
+       _  -> List.any (\k -> List.any (String.contains k) fields) keywords
 
 recipeDiv : Bool -> Recipe -> (String, Html Msg)
 recipeDiv obtained recipe =
@@ -88,7 +99,7 @@ recipeDiv obtained recipe =
       p [] [text recipe.name],
       p [] (case recipe.source of 
         [] -> [text "Other"]
-        _  -> List.map (\s -> text (showSource s)) recipe.source
+        _  -> List.map text recipe.sourceStrings
       ),
       p [] [
         label [] [
@@ -103,6 +114,7 @@ update: Msg -> Model -> (Model, Cmd Msg)
 update msg model = case msg of
   Obtain recipe -> ({ model | obtained = S.insert recipe.id model.obtained }, Cmd.none)
   Unobtain recipe -> ({ model | obtained = S.remove recipe.id model.obtained }, Cmd.none)
+  Filter text -> ({ model | filter = text }, Cmd.none)
 
 port setStorage : E.Value -> Cmd msg
 
@@ -120,6 +132,13 @@ encode model = E.set (\o -> E.string o) model.obtained
 
 decoder : D.Decoder (List String)
 decoder = D.list D.string
+
+addSourceString baseRecipe = { 
+  id = baseRecipe.id,
+  name = baseRecipe.name,
+  source = baseRecipe.source,
+  sourceStrings = List.map showSource baseRecipe.source
+  }
 
 availableRecipes = [
     { id = "acorn-pochette", source = [], name = "Acorn Pochette" },
