@@ -77,7 +77,7 @@ function A9(fun, a, b, c, d, e, f, g, h, i) {
   return fun.a === 9 ? fun.f(a, b, c, d, e, f, g, h, i) : fun(a)(b)(c)(d)(e)(f)(g)(h)(i);
 }
 
-console.warn('Compiled in DEV mode. Follow the advice at https://elm-lang.org/0.19.1/optimize for better performance and smaller assets.');
+
 
 
 // EQUALITY
@@ -113,7 +113,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 		return true;
 	}
 
-	/**/
+	/**_UNUSED/
 	if (x.$ === 'Set_elm_builtin')
 	{
 		x = $elm$core$Set$toList(x);
@@ -126,7 +126,7 @@ function _Utils_eqHelp(x, y, depth, stack)
 	}
 	//*/
 
-	/**_UNUSED/
+	/**/
 	if (x.$ < 0)
 	{
 		x = $elm$core$Dict$toList(x);
@@ -161,7 +161,7 @@ function _Utils_cmp(x, y, ord)
 		return x === y ? /*EQ*/ 0 : x < y ? /*LT*/ -1 : /*GT*/ 1;
 	}
 
-	/**/
+	/**_UNUSED/
 	if (x instanceof String)
 	{
 		var a = x.valueOf();
@@ -170,10 +170,10 @@ function _Utils_cmp(x, y, ord)
 	}
 	//*/
 
-	/**_UNUSED/
+	/**/
 	if (typeof x.$ === 'undefined')
 	//*/
-	/**/
+	/**_UNUSED/
 	if (x.$[0] === '#')
 	//*/
 	{
@@ -203,17 +203,17 @@ var _Utils_compare = F2(function(x, y)
 
 // COMMON VALUES
 
-var _Utils_Tuple0_UNUSED = 0;
-var _Utils_Tuple0 = { $: '#0' };
+var _Utils_Tuple0 = 0;
+var _Utils_Tuple0_UNUSED = { $: '#0' };
 
-function _Utils_Tuple2_UNUSED(a, b) { return { a: a, b: b }; }
-function _Utils_Tuple2(a, b) { return { $: '#2', a: a, b: b }; }
+function _Utils_Tuple2(a, b) { return { a: a, b: b }; }
+function _Utils_Tuple2_UNUSED(a, b) { return { $: '#2', a: a, b: b }; }
 
-function _Utils_Tuple3_UNUSED(a, b, c) { return { a: a, b: b, c: c }; }
-function _Utils_Tuple3(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
+function _Utils_Tuple3(a, b, c) { return { a: a, b: b, c: c }; }
+function _Utils_Tuple3_UNUSED(a, b, c) { return { $: '#3', a: a, b: b, c: c }; }
 
-function _Utils_chr_UNUSED(c) { return c; }
-function _Utils_chr(c) { return new String(c); }
+function _Utils_chr(c) { return c; }
+function _Utils_chr_UNUSED(c) { return new String(c); }
 
 
 // RECORDS
@@ -264,11 +264,11 @@ function _Utils_ap(xs, ys)
 
 
 
-var _List_Nil_UNUSED = { $: 0 };
-var _List_Nil = { $: '[]' };
+var _List_Nil = { $: 0 };
+var _List_Nil_UNUSED = { $: '[]' };
 
-function _List_Cons_UNUSED(hd, tl) { return { $: 1, a: hd, b: tl }; }
-function _List_Cons(hd, tl) { return { $: '::', a: hd, b: tl }; }
+function _List_Cons(hd, tl) { return { $: 1, a: hd, b: tl }; }
+function _List_Cons_UNUSED(hd, tl) { return { $: '::', a: hd, b: tl }; }
 
 
 var _List_cons = F2(_List_Cons);
@@ -499,12 +499,12 @@ var _JsArray_appendN = F3(function(n, dest, source)
 
 // LOG
 
-var _Debug_log_UNUSED = F2(function(tag, value)
+var _Debug_log = F2(function(tag, value)
 {
 	return value;
 });
 
-var _Debug_log = F2(function(tag, value)
+var _Debug_log_UNUSED = F2(function(tag, value)
 {
 	console.log(tag + ': ' + _Debug_toString(value));
 	return value;
@@ -530,12 +530,12 @@ function _Debug_todoCase(moduleName, region, value)
 
 // TO STRING
 
-function _Debug_toString_UNUSED(value)
+function _Debug_toString(value)
 {
 	return '<internals>';
 }
 
-function _Debug_toString(value)
+function _Debug_toString_UNUSED(value)
 {
 	return _Debug_toAnsiString(false, value);
 }
@@ -720,13 +720,13 @@ function _Debug_toHexDigit(n)
 // CRASH
 
 
-function _Debug_crash_UNUSED(identifier)
+function _Debug_crash(identifier)
 {
 	throw new Error('https://github.com/elm/core/blob/1.0.0/hints/' + identifier + '.md');
 }
 
 
-function _Debug_crash(identifier, fact1, fact2, fact3, fact4)
+function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 {
 	switch(identifier)
 	{
@@ -784,11 +784,11 @@ function _Debug_crash(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.start.line === region.end.line)
+	if (region.N.D === region.S.D)
 	{
-		return 'on line ' + region.start.line;
+		return 'on line ' + region.N.D;
 	}
-	return 'on lines ' + region.start.line + ' through ' + region.end.line;
+	return 'on lines ' + region.N.D + ' through ' + region.S.D;
 }
 
 
@@ -1212,7 +1212,7 @@ function _Char_toLocaleLower(char)
 
 
 
-/**/
+/**_UNUSED/
 function _Json_errorToString(error)
 {
 	return $elm$json$Json$Decode$errorToString(error);
@@ -1616,11 +1616,11 @@ var _Json_encode = F2(function(indentLevel, value)
 	return JSON.stringify(_Json_unwrap(value), null, indentLevel) + '';
 });
 
-function _Json_wrap(value) { return { $: 0, a: value }; }
-function _Json_unwrap(value) { return value.a; }
+function _Json_wrap_UNUSED(value) { return { $: 0, a: value }; }
+function _Json_unwrap_UNUSED(value) { return value.a; }
 
-function _Json_wrap_UNUSED(value) { return value; }
-function _Json_unwrap_UNUSED(value) { return value; }
+function _Json_wrap(value) { return value; }
+function _Json_unwrap(value) { return value; }
 
 function _Json_emptyArray() { return []; }
 function _Json_emptyObject() { return {}; }
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.ay,
+		impl.aF,
+		impl.aD,
 		function() { return function() {} }
 	);
 });
@@ -1872,7 +1872,7 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 function _Platform_initialize(flagDecoder, args, init, update, subscriptions, stepperBuilder)
 {
 	var result = A2(_Json_run, flagDecoder, _Json_wrap(args ? args['flags'] : undefined));
-	$elm$core$Result$isOk(result) || _Debug_crash(2 /**/, _Json_errorToString(result.a) /**/);
+	$elm$core$Result$isOk(result) || _Debug_crash(2 /**_UNUSED/, _Json_errorToString(result.a) /**/);
 	var managers = {};
 	var initPair = init(result.a);
 	var model = initPair.a;
@@ -2316,7 +2316,7 @@ function _Platform_setupIncomingPort(name, sendToApp)
 //
 
 
-function _Platform_export_UNUSED(exports)
+function _Platform_export(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsProd(scope['Elm'], exports)
@@ -2337,7 +2337,7 @@ function _Platform_mergeExportsProd(obj, exports)
 }
 
 
-function _Platform_export(exports)
+function _Platform_export_UNUSED(exports)
 {
 	scope['Elm']
 		? _Platform_mergeExportsDebug('Elm', scope['Elm'], exports)
@@ -2377,10 +2377,10 @@ var _VirtualDom_init = F4(function(virtualNode, flagDecoder, debugMetadata, args
 {
 	// NOTE: this function needs _Platform_export available to work
 
-	/**_UNUSED/
+	/**/
 	var node = args['node'];
 	//*/
-	/**/
+	/**_UNUSED/
 	var node = args && args['node'] ? args['node'] : _Debug_crash(0);
 	//*/
 
@@ -2635,24 +2635,24 @@ function _VirtualDom_noInnerHtmlOrFormAction(key)
 	return key == 'innerHTML' || key == 'formAction' ? 'data-' + key : key;
 }
 
-function _VirtualDom_noJavaScriptUri_UNUSED(value)
+function _VirtualDom_noJavaScriptUri(value)
 {
 	return /^javascript:/i.test(value.replace(/\s/g,'')) ? '' : value;
 }
 
-function _VirtualDom_noJavaScriptUri(value)
+function _VirtualDom_noJavaScriptUri_UNUSED(value)
 {
 	return /^javascript:/i.test(value.replace(/\s/g,''))
 		? 'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'
 		: value;
 }
 
-function _VirtualDom_noJavaScriptOrHtmlUri_UNUSED(value)
+function _VirtualDom_noJavaScriptOrHtmlUri(value)
 {
 	return /^\s*(javascript:|data:text\/html)/i.test(value) ? '' : value;
 }
 
-function _VirtualDom_noJavaScriptOrHtmlUri(value)
+function _VirtualDom_noJavaScriptOrHtmlUri_UNUSED(value)
 {
 	return /^\s*(javascript:|data:text\/html)/i.test(value)
 		? 'javascript:alert("This is an XSS vector. Please use ports or web components instead.")'
@@ -2704,9 +2704,9 @@ var _VirtualDom_mapEventTuple = F2(function(func, tuple)
 var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
-		message: func(record.message),
-		stopPropagation: record.stopPropagation,
-		preventDefault: record.preventDefault
+		r: func(record.r),
+		O: record.O,
+		L: record.L
 	}
 });
 
@@ -2974,11 +2974,11 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 		// 3 = Custom
 
 		var value = result.a;
-		var message = !tag ? value : tag < 3 ? value.a : value.message;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.stopPropagation;
+		var message = !tag ? value : tag < 3 ? value.a : value.r;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.O;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.preventDefault) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.L) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3928,15 +3928,15 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.ay,
+		impl.aF,
+		impl.aD,
 		function(sendToApp, initialModel) {
-			var view = impl.view;
-			/**_UNUSED/
+			var view = impl.aG;
+			/**/
 			var domNode = args['node'];
 			//*/
-			/**/
+			/**_UNUSED/
 			var domNode = args && args['node'] ? args['node'] : _Debug_crash(0);
 			//*/
 			var currNode = _VirtualDom_virtualize(domNode);
@@ -3964,12 +3964,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.init,
-		impl.update,
-		impl.subscriptions,
+		impl.ay,
+		impl.aF,
+		impl.aD,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.setup && impl.setup(sendToApp)
-			var view = impl.view;
+			var divertHrefToApp = impl.M && impl.M(sendToApp)
+			var view = impl.aG;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3977,12 +3977,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.body);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.ar);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.title) && (_VirtualDom_doc.title = title = doc.title);
+				(title !== doc.aE) && (_VirtualDom_doc.title = title = doc.aE);
 			});
 		}
 	);
@@ -4038,12 +4038,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.onUrlChange;
-	var onUrlRequest = impl.onUrlRequest;
+	var onUrlChange = impl.az;
+	var onUrlRequest = impl.aA;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		setup: function(sendToApp)
+		M: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4059,9 +4059,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.protocol === next.protocol
-							&& curr.host === next.host
-							&& curr.port_.a === next.port_.a
+							&& curr.ae === next.ae
+							&& curr.W === next.W
+							&& curr.ab.a === next.ab.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4069,13 +4069,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		init: function(flags)
+		ay: function(flags)
 		{
-			return A3(impl.init, flags, _Browser_getUrl(), key);
+			return A3(impl.ay, flags, _Browser_getUrl(), key);
 		},
-		view: impl.view,
-		update: impl.update,
-		subscriptions: impl.subscriptions
+		aG: impl.aG,
+		aF: impl.aF,
+		aD: impl.aD
 	});
 }
 
@@ -4141,17 +4141,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { hidden: 'hidden', change: 'visibilitychange' }
+		? { aw: 'hidden', as: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { hidden: 'mozHidden', change: 'mozvisibilitychange' }
+		? { aw: 'mozHidden', as: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { hidden: 'msHidden', change: 'msvisibilitychange' }
+		? { aw: 'msHidden', as: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { hidden: 'webkitHidden', change: 'webkitvisibilitychange' }
-		: { hidden: 'hidden', change: 'visibilitychange' };
+		? { aw: 'webkitHidden', as: 'webkitvisibilitychange' }
+		: { aw: 'hidden', as: 'visibilitychange' };
 }
 
 
@@ -4232,12 +4232,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		scene: _Browser_getScene(),
-		viewport: {
-			x: _Browser_window.pageXOffset,
-			y: _Browser_window.pageYOffset,
-			width: _Browser_doc.documentElement.clientWidth,
-			height: _Browser_doc.documentElement.clientHeight
+		ai: _Browser_getScene(),
+		al: {
+			an: _Browser_window.pageXOffset,
+			ao: _Browser_window.pageYOffset,
+			am: _Browser_doc.documentElement.clientWidth,
+			V: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4247,8 +4247,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		width: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		height: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		am: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		V: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4271,15 +4271,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			scene: {
-				width: node.scrollWidth,
-				height: node.scrollHeight
+			ai: {
+				am: node.scrollWidth,
+				V: node.scrollHeight
 			},
-			viewport: {
-				x: node.scrollLeft,
-				y: node.scrollTop,
-				width: node.clientWidth,
-				height: node.clientHeight
+			al: {
+				an: node.scrollLeft,
+				ao: node.scrollTop,
+				am: node.clientWidth,
+				V: node.clientHeight
 			}
 		};
 	});
@@ -4309,18 +4309,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			scene: _Browser_getScene(),
-			viewport: {
-				x: x,
-				y: y,
-				width: _Browser_doc.documentElement.clientWidth,
-				height: _Browser_doc.documentElement.clientHeight
+			ai: _Browser_getScene(),
+			al: {
+				an: x,
+				ao: y,
+				am: _Browser_doc.documentElement.clientWidth,
+				V: _Browser_doc.documentElement.clientHeight
 			},
-			element: {
-				x: x + rect.left,
-				y: y + rect.top,
-				width: rect.width,
-				height: rect.height
+			au: {
+				an: x + rect.left,
+				ao: y + rect.top,
+				am: rect.width,
+				V: rect.height
 			}
 		};
 	});
@@ -4355,15 +4355,19 @@ function _Browser_load(url)
 		}
 	}));
 }
-var $elm$core$Basics$EQ = {$: 'EQ'};
-var $elm$core$Basics$GT = {$: 'GT'};
-var $elm$core$Basics$LT = {$: 'LT'};
+var $elm$core$Basics$always = F2(
+	function (a, _v0) {
+		return a;
+	});
+var $elm$core$Basics$EQ = 1;
+var $elm$core$Basics$GT = 2;
+var $elm$core$Basics$LT = 0;
 var $elm$core$List$cons = _List_cons;
 var $elm$core$Dict$foldr = F3(
 	function (func, acc, t) {
 		foldr:
 		while (true) {
-			if (t.$ === 'RBEmpty_elm_builtin') {
+			if (t.$ === -2) {
 				return acc;
 			} else {
 				var key = t.b;
@@ -4408,7 +4412,7 @@ var $elm$core$Dict$keys = function (dict) {
 		dict);
 };
 var $elm$core$Set$toList = function (_v0) {
-	var dict = _v0.a;
+	var dict = _v0;
 	return $elm$core$Dict$keys(dict);
 };
 var $elm$core$Elm$JsArray$foldr = _JsArray_foldr;
@@ -4418,7 +4422,7 @@ var $elm$core$Array$foldr = F3(
 		var tail = _v0.d;
 		var helper = F2(
 			function (node, acc) {
-				if (node.$ === 'SubTree') {
+				if (!node.$) {
 					var subTree = node.a;
 					return A3($elm$core$Elm$JsArray$foldr, helper, acc, subTree);
 				} else {
@@ -4436,32 +4440,32 @@ var $elm$core$Array$toList = function (array) {
 	return A3($elm$core$Array$foldr, $elm$core$List$cons, _List_Nil, array);
 };
 var $elm$core$Result$Err = function (a) {
-	return {$: 'Err', a: a};
+	return {$: 1, a: a};
 };
 var $elm$json$Json$Decode$Failure = F2(
 	function (a, b) {
-		return {$: 'Failure', a: a, b: b};
+		return {$: 3, a: a, b: b};
 	});
 var $elm$json$Json$Decode$Field = F2(
 	function (a, b) {
-		return {$: 'Field', a: a, b: b};
+		return {$: 0, a: a, b: b};
 	});
 var $elm$json$Json$Decode$Index = F2(
 	function (a, b) {
-		return {$: 'Index', a: a, b: b};
+		return {$: 1, a: a, b: b};
 	});
 var $elm$core$Result$Ok = function (a) {
-	return {$: 'Ok', a: a};
+	return {$: 0, a: a};
 };
 var $elm$json$Json$Decode$OneOf = function (a) {
-	return {$: 'OneOf', a: a};
+	return {$: 2, a: a};
 };
-var $elm$core$Basics$False = {$: 'False'};
+var $elm$core$Basics$False = 1;
 var $elm$core$Basics$add = _Basics_add;
 var $elm$core$Maybe$Just = function (a) {
-	return {$: 'Just', a: a};
+	return {$: 0, a: a};
 };
-var $elm$core$Maybe$Nothing = {$: 'Nothing'};
+var $elm$core$Maybe$Nothing = {$: 1};
 var $elm$core$String$all = _String_all;
 var $elm$core$Basics$and = _Basics_and;
 var $elm$core$Basics$append = _Utils_append;
@@ -4586,12 +4590,12 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 		errorToStringHelp:
 		while (true) {
 			switch (error.$) {
-				case 'Field':
+				case 0:
 					var f = error.a;
 					var err = error.b;
 					var isSimple = function () {
 						var _v1 = $elm$core$String$uncons(f);
-						if (_v1.$ === 'Nothing') {
+						if (_v1.$ === 1) {
 							return false;
 						} else {
 							var _v2 = _v1.a;
@@ -4606,7 +4610,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 'Index':
+				case 1:
 					var i = error.a;
 					var err = error.b;
 					var indexName = '[' + ($elm$core$String$fromInt(i) + ']');
@@ -4615,7 +4619,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 					error = $temp$error;
 					context = $temp$context;
 					continue errorToStringHelp;
-				case 'OneOf':
+				case 2:
 					var errors = error.a;
 					if (!errors.b) {
 						return 'Ran into a Json.Decode.oneOf with no possibilities' + function () {
@@ -4679,7 +4683,7 @@ var $elm$json$Json$Decode$errorToStringHelp = F2(
 var $elm$core$Array$branchFactor = 32;
 var $elm$core$Array$Array_elm_builtin = F4(
 	function (a, b, c, d) {
-		return {$: 'Array_elm_builtin', a: a, b: b, c: c, d: d};
+		return {$: 0, a: a, b: b, c: c, d: d};
 	});
 var $elm$core$Elm$JsArray$empty = _JsArray_empty;
 var $elm$core$Basics$ceiling = _Basics_ceiling;
@@ -4694,7 +4698,7 @@ var $elm$core$Array$shiftStep = $elm$core$Basics$ceiling(
 var $elm$core$Array$empty = A4($elm$core$Array$Array_elm_builtin, 0, $elm$core$Array$shiftStep, $elm$core$Elm$JsArray$empty, $elm$core$Elm$JsArray$empty);
 var $elm$core$Elm$JsArray$initialize = _JsArray_initialize;
 var $elm$core$Array$Leaf = function (a) {
-	return {$: 'Leaf', a: a};
+	return {$: 1, a: a};
 };
 var $elm$core$Basics$apL = F2(
 	function (f, x) {
@@ -4714,7 +4718,7 @@ var $elm$core$Basics$max = F2(
 	});
 var $elm$core$Basics$mul = _Basics_mul;
 var $elm$core$Array$SubTree = function (a) {
-	return {$: 'SubTree', a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$Elm$JsArray$initializeFromList = _JsArray_initializeFromList;
 var $elm$core$Array$compressNodes = F2(
@@ -4761,25 +4765,25 @@ var $elm$core$Array$treeFromBuilder = F2(
 	});
 var $elm$core$Array$builderToArray = F2(
 	function (reverseNodeList, builder) {
-		if (!builder.nodeListSize) {
+		if (!builder.d) {
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.tail),
+				$elm$core$Elm$JsArray$length(builder.f),
 				$elm$core$Array$shiftStep,
 				$elm$core$Elm$JsArray$empty,
-				builder.tail);
+				builder.f);
 		} else {
-			var treeLen = builder.nodeListSize * $elm$core$Array$branchFactor;
+			var treeLen = builder.d * $elm$core$Array$branchFactor;
 			var depth = $elm$core$Basics$floor(
 				A2($elm$core$Basics$logBase, $elm$core$Array$branchFactor, treeLen - 1));
-			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.nodeList) : builder.nodeList;
-			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.nodeListSize);
+			var correctNodeList = reverseNodeList ? $elm$core$List$reverse(builder.g) : builder.g;
+			var tree = A2($elm$core$Array$treeFromBuilder, correctNodeList, builder.d);
 			return A4(
 				$elm$core$Array$Array_elm_builtin,
-				$elm$core$Elm$JsArray$length(builder.tail) + treeLen,
+				$elm$core$Elm$JsArray$length(builder.f) + treeLen,
 				A2($elm$core$Basics$max, 5, depth * $elm$core$Array$shiftStep),
 				tree,
-				builder.tail);
+				builder.f);
 		}
 	});
 var $elm$core$Basics$idiv = _Basics_idiv;
@@ -4792,7 +4796,7 @@ var $elm$core$Array$initializeHelp = F5(
 				return A2(
 					$elm$core$Array$builderToArray,
 					false,
-					{nodeList: nodeList, nodeListSize: (len / $elm$core$Array$branchFactor) | 0, tail: tail});
+					{g: nodeList, d: (len / $elm$core$Array$branchFactor) | 0, f: tail});
 			} else {
 				var leaf = $elm$core$Array$Leaf(
 					A3($elm$core$Elm$JsArray$initialize, $elm$core$Array$branchFactor, fromIndex, fn));
@@ -4822,9 +4826,9 @@ var $elm$core$Array$initialize = F2(
 			return A5($elm$core$Array$initializeHelp, fn, initialFromIndex, len, _List_Nil, tail);
 		}
 	});
-var $elm$core$Basics$True = {$: 'True'};
+var $elm$core$Basics$True = 0;
 var $elm$core$Result$isOk = function (result) {
-	if (result.$ === 'Ok') {
+	if (!result.$) {
 		return true;
 	} else {
 		return false;
@@ -4835,33 +4839,31 @@ var $elm$json$Json$Decode$map2 = _Json_map2;
 var $elm$json$Json$Decode$succeed = _Json_succeed;
 var $elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 	switch (handler.$) {
-		case 'Normal':
+		case 0:
 			return 0;
-		case 'MayStopPropagation':
+		case 1:
 			return 1;
-		case 'MayPreventDefault':
+		case 2:
 			return 2;
 		default:
 			return 3;
 	}
 };
 var $elm$browser$Browser$External = function (a) {
-	return {$: 'External', a: a};
+	return {$: 1, a: a};
 };
 var $elm$browser$Browser$Internal = function (a) {
-	return {$: 'Internal', a: a};
+	return {$: 0, a: a};
 };
 var $elm$core$Basics$identity = function (x) {
 	return x;
 };
-var $elm$browser$Browser$Dom$NotFound = function (a) {
-	return {$: 'NotFound', a: a};
-};
-var $elm$url$Url$Http = {$: 'Http'};
-var $elm$url$Url$Https = {$: 'Https'};
+var $elm$browser$Browser$Dom$NotFound = $elm$core$Basics$identity;
+var $elm$url$Url$Http = 0;
+var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {fragment: fragment, host: host, path: path, port_: port_, protocol: protocol, query: query};
+		return {U: fragment, W: host, _: path, ab: port_, ae: protocol, af: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -4897,7 +4899,7 @@ var $elm$url$Url$chompBeforePath = F5(
 					var i = _v0.a;
 					var _v1 = $elm$core$String$toInt(
 						A2($elm$core$String$dropLeft, i + 1, str));
-					if (_v1.$ === 'Nothing') {
+					if (_v1.$ === 1) {
 						return $elm$core$Maybe$Nothing;
 					} else {
 						var port_ = _v1;
@@ -4980,26 +4982,24 @@ var $elm$core$String$startsWith = _String_startsWith;
 var $elm$url$Url$fromString = function (str) {
 	return A2($elm$core$String$startsWith, 'http://', str) ? A2(
 		$elm$url$Url$chompAfterProtocol,
-		$elm$url$Url$Http,
+		0,
 		A2($elm$core$String$dropLeft, 7, str)) : (A2($elm$core$String$startsWith, 'https://', str) ? A2(
 		$elm$url$Url$chompAfterProtocol,
-		$elm$url$Url$Https,
+		1,
 		A2($elm$core$String$dropLeft, 8, str)) : $elm$core$Maybe$Nothing);
 };
 var $elm$core$Basics$never = function (_v0) {
 	never:
 	while (true) {
-		var nvr = _v0.a;
+		var nvr = _v0;
 		var $temp$_v0 = nvr;
 		_v0 = $temp$_v0;
 		continue never;
 	}
 };
-var $elm$core$Task$Perform = function (a) {
-	return {$: 'Perform', a: a};
-};
+var $elm$core$Task$Perform = $elm$core$Basics$identity;
 var $elm$core$Task$succeed = _Scheduler_succeed;
-var $elm$core$Task$init = $elm$core$Task$succeed(_Utils_Tuple0);
+var $elm$core$Task$init = $elm$core$Task$succeed(0);
 var $elm$core$List$foldrHelper = F4(
 	function (fn, acc, ctr, ls) {
 		if (!ls.b) {
@@ -5105,7 +5105,7 @@ var $elm$core$Task$sequence = function (tasks) {
 var $elm$core$Platform$sendToApp = _Platform_sendToApp;
 var $elm$core$Task$spawnCmd = F2(
 	function (router, _v0) {
-		var task = _v0.a;
+		var task = _v0;
 		return _Scheduler_spawn(
 			A2(
 				$elm$core$Task$andThen,
@@ -5117,7 +5117,7 @@ var $elm$core$Task$onEffects = F3(
 		return A2(
 			$elm$core$Task$map,
 			function (_v0) {
-				return _Utils_Tuple0;
+				return 0;
 			},
 			$elm$core$Task$sequence(
 				A2(
@@ -5127,2529 +5127,2527 @@ var $elm$core$Task$onEffects = F3(
 	});
 var $elm$core$Task$onSelfMsg = F3(
 	function (_v0, _v1, _v2) {
-		return $elm$core$Task$succeed(_Utils_Tuple0);
+		return $elm$core$Task$succeed(0);
 	});
 var $elm$core$Task$cmdMap = F2(
 	function (tagger, _v0) {
-		var task = _v0.a;
-		return $elm$core$Task$Perform(
-			A2($elm$core$Task$map, tagger, task));
+		var task = _v0;
+		return A2($elm$core$Task$map, tagger, task);
 	});
 _Platform_effectManagers['Task'] = _Platform_createManager($elm$core$Task$init, $elm$core$Task$onEffects, $elm$core$Task$onSelfMsg, $elm$core$Task$cmdMap);
 var $elm$core$Task$command = _Platform_leaf('Task');
 var $elm$core$Task$perform = F2(
 	function (toMessage, task) {
 		return $elm$core$Task$command(
-			$elm$core$Task$Perform(
-				A2($elm$core$Task$map, toMessage, task)));
+			A2($elm$core$Task$map, toMessage, task));
 	});
 var $elm$browser$Browser$element = _Browser_element;
-var $author$project$Main$Cranky = {$: 'Cranky'};
-var $author$project$Main$Jock = {$: 'Jock'};
-var $author$project$Main$Lazy = {$: 'Lazy'};
-var $author$project$Main$Normal = {$: 'Normal'};
-var $author$project$Main$Peppy = {$: 'Peppy'};
-var $author$project$Main$Sisterly = {$: 'Sisterly'};
-var $author$project$Main$Smug = {$: 'Smug'};
-var $author$project$Main$Snooty = {$: 'Snooty'};
+var $author$project$Main$Cranky = 0;
+var $author$project$Main$Jock = 1;
+var $author$project$Main$Lazy = 2;
+var $author$project$Main$Normal = 3;
+var $author$project$Main$Peppy = 4;
+var $author$project$Main$Sisterly = 5;
+var $author$project$Main$Smug = 6;
+var $author$project$Main$Snooty = 7;
 var $author$project$Main$Villager = function (a) {
-	return {$: 'Villager', a: a};
+	return {$: 0, a: a};
 };
 var $author$project$Main$availableRecipes = _List_fromArray(
 	[
-		{id: 'acorn-pochette', name: 'Acorn Pochette', source: _List_Nil},
+		{a: 'acorn-pochette', c: 'Acorn Pochette', b: _List_Nil},
 		{
-		id: 'acoustic-guitar',
-		name: 'Acoustic Guitar',
-		source: _List_fromArray(
+		a: 'acoustic-guitar',
+		c: 'Acoustic Guitar',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'angled-signpost',
-		name: 'Angled Signpost',
-		source: _List_fromArray(
+		a: 'angled-signpost',
+		c: 'Angled Signpost',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'apple-chair',
-		name: 'Apple Chair',
-		source: _List_fromArray(
+		a: 'apple-chair',
+		c: 'Apple Chair',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'apple-dress',
-		name: 'Apple Dress',
-		source: _List_fromArray(
+		a: 'apple-dress',
+		c: 'Apple Dress',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'apple-hat',
-		name: 'Apple Hat',
-		source: _List_fromArray(
+		a: 'apple-hat',
+		c: 'Apple Hat',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'apple-rug',
-		name: 'Apple Rug',
-		source: _List_fromArray(
+		a: 'apple-rug',
+		c: 'Apple Rug',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'apple-umbrella',
-		name: 'Apple Umbrella',
-		source: _List_fromArray(
+		a: 'apple-umbrella',
+		c: 'Apple Umbrella',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'apple-wall',
-		name: 'Apple Wall',
-		source: _List_fromArray(
+		a: 'apple-wall',
+		c: 'Apple Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
-		{id: 'aquarius-urn', name: 'Aquarius Urn', source: _List_Nil},
-		{id: 'aries-rocking-chair', name: 'Aries Rocking Chair', source: _List_Nil},
+		{a: 'aquarius-urn', c: 'Aquarius Urn', b: _List_Nil},
+		{a: 'aries-rocking-chair', c: 'Aries Rocking Chair', b: _List_Nil},
 		{
-		id: 'armor-shoes',
-		name: 'Armor Shoes',
-		source: _List_fromArray(
+		a: 'armor-shoes',
+		c: 'Armor Shoes',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'aroma-pot',
-		name: 'Aroma Pot',
-		source: _List_fromArray(
+		a: 'aroma-pot',
+		c: 'Aroma Pot',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'asteroid', name: 'Asteroid', source: _List_Nil},
-		{id: 'astronaut-suit', name: 'Astronaut Suit', source: _List_Nil},
-		{id: 'autumn-wall', name: 'Autumn Wall', source: _List_Nil},
-		{id: 'axe', name: 'Axe', source: _List_Nil},
+		{a: 'asteroid', c: 'Asteroid', b: _List_Nil},
+		{a: 'astronaut-suit', c: 'Astronaut Suit', b: _List_Nil},
+		{a: 'autumn-wall', c: 'Autumn Wall', b: _List_Nil},
+		{a: 'axe', c: 'Axe', b: _List_Nil},
 		{
-		id: 'backyard-lawn',
-		name: 'Backyard Lawn',
-		source: _List_fromArray(
+		a: 'backyard-lawn',
+		c: 'Backyard Lawn',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'bamboo-basket',
-		name: 'Bamboo Basket',
-		source: _List_fromArray(
+		a: 'bamboo-basket',
+		c: 'Bamboo Basket',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'bamboo-bench',
-		name: 'Bamboo Bench',
-		source: _List_fromArray(
+		a: 'bamboo-bench',
+		c: 'Bamboo Bench',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'bamboo-candleholder',
-		name: 'Bamboo Candleholder',
-		source: _List_fromArray(
+		a: 'bamboo-candleholder',
+		c: 'Bamboo Candleholder',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'bamboo-doll', name: 'Bamboo Doll', source: _List_Nil},
+		{a: 'bamboo-doll', c: 'Bamboo Doll', b: _List_Nil},
 		{
-		id: 'bamboo-drum',
-		name: 'Bamboo Drum',
-		source: _List_fromArray(
+		a: 'bamboo-drum',
+		c: 'Bamboo Drum',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'bamboo-floor-lamp',
-		name: 'Bamboo Floor Lamp',
-		source: _List_fromArray(
+		a: 'bamboo-floor-lamp',
+		c: 'Bamboo Floor Lamp',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'bamboo-flooring',
-		name: 'Bamboo Flooring',
-		source: _List_fromArray(
+		a: 'bamboo-flooring',
+		c: 'Bamboo Flooring',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'bamboo-grove-wall', name: 'Bamboo-grove Wall', source: _List_Nil},
 		{
-		id: 'bamboo-hat',
-		name: 'Bamboo Hat',
-		source: _List_fromArray(
+		a: 'bamboo-hat',
+		c: 'Bamboo Hat',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'bamboo-lattice-fence', name: 'Bamboo Lattice Fence', source: _List_Nil},
+		{a: 'bamboo-lattice-fence', c: 'Bamboo Lattice Fence', b: _List_Nil},
 		{
-		id: 'bamboo-lunch-box',
-		name: 'Bamboo Lunch Box',
-		source: _List_fromArray(
+		a: 'bamboo-lunch-box',
+		c: 'Bamboo Lunch Box',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'bamboo-noodle-slide', name: 'Bamboo Noodle Slide', source: _List_Nil},
+		{a: 'bamboo-noodle-slide', c: 'Bamboo Noodle Slide', b: _List_Nil},
 		{
-		id: 'bamboo-partition',
-		name: 'Bamboo Partition',
-		source: _List_fromArray(
+		a: 'bamboo-partition',
+		c: 'Bamboo Partition',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'bamboo-shelf',
-		name: 'Bamboo Shelf',
-		source: _List_fromArray(
+		a: 'bamboo-shelf',
+		c: 'Bamboo Shelf',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'bamboo-shoot-lamp', name: 'Bamboo-shoot Lamp', source: _List_Nil},
 		{
-		id: 'bamboo-speaker',
-		name: 'Bamboo Speaker',
-		source: _List_fromArray(
+		a: 'bamboo-speaker',
+		c: 'Bamboo Speaker',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'bamboo-sphere',
-		name: 'Bamboo Sphere',
-		source: _List_fromArray(
+		a: 'bamboo-sphere',
+		c: 'Bamboo Sphere',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'bamboo-stool',
-		name: 'Bamboo Stool',
-		source: _List_fromArray(
+		a: 'bamboo-stool',
+		c: 'Bamboo Stool',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'bamboo-stopblock',
-		name: 'Bamboo Stopblock',
-		source: _List_fromArray(
+		a: 'bamboo-stopblock',
+		c: 'Bamboo Stopblock',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'bamboo-wall-decoration',
-		name: 'Bamboo Wall Decoration',
-		source: _List_fromArray(
+		a: 'bamboo-wall',
+		c: 'Bamboo Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'bamboo-wall',
-		name: 'Bamboo Wall',
-		source: _List_fromArray(
+		a: 'bamboo-wall-decoration',
+		c: 'Bamboo Wall Decoration',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'bamboo-wand', name: 'Bamboo Wand', source: _List_Nil},
-		{id: 'barbed-wire-fence', name: 'Barbed-wire Fence', source: _List_Nil},
+		{a: 'bamboo-wand', c: 'Bamboo Wand', b: _List_Nil},
+		{a: 'bamboo-grove-wall', c: 'Bamboo-grove Wall', b: _List_Nil},
+		{a: 'bamboo-shoot-lamp', c: 'Bamboo-shoot Lamp', b: _List_Nil},
+		{a: 'barbed-wire-fence', c: 'Barbed-wire Fence', b: _List_Nil},
 		{
-		id: 'barbell',
-		name: 'Barbell',
-		source: _List_fromArray(
+		a: 'barbell',
+		c: 'Barbell',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'barrel',
-		name: 'Barrel',
-		source: _List_fromArray(
+		a: 'barrel',
+		c: 'Barrel',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'basement-flooring',
-		name: 'Basement Flooring',
-		source: _List_fromArray(
+		a: 'basement-flooring',
+		c: 'Basement Flooring',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'basket-pack', name: 'Basket Pack', source: _List_Nil},
+		{a: 'basket-pack', c: 'Basket Pack', b: _List_Nil},
 		{
-		id: 'beekeepers-hive',
-		name: 'Beekeeper\'s Hive',
-		source: _List_fromArray(
+		a: 'beekeepers-hive',
+		c: 'Beekeeper\'s Hive',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'big-festive-tree', name: 'Big Festive Tree', source: _List_Nil},
+		{a: 'big-festive-tree', c: 'Big Festive Tree', b: _List_Nil},
 		{
-		id: 'birdbath',
-		name: 'Birdbath',
-		source: _List_fromArray(
+		a: 'birdbath',
+		c: 'Birdbath',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'birdcage',
-		name: 'Birdcage',
-		source: _List_fromArray(
+		a: 'birdcage',
+		c: 'Birdcage',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'birdhouse',
-		name: 'Birdhouse',
-		source: _List_fromArray(
+		a: 'birdhouse',
+		c: 'Birdhouse',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
-		{id: 'blossom-viewing-lantern', name: 'Blossom-viewing Lantern', source: _List_Nil},
-		{id: 'blue-rose-crown', name: 'Blue Rose Crown', source: _List_Nil},
-		{id: 'blue-rose-wreath', name: 'Blue Rose Wreath', source: _List_Nil},
+		{a: 'blossom-viewing-lantern', c: 'Blossom-viewing Lantern', b: _List_Nil},
+		{a: 'blue-rose-crown', c: 'Blue Rose Crown', b: _List_Nil},
+		{a: 'blue-rose-wreath', c: 'Blue Rose Wreath', b: _List_Nil},
 		{
-		id: 'bone-doorplate',
-		name: 'Bone Doorplate',
-		source: _List_fromArray(
+		a: 'bone-doorplate',
+		c: 'Bone Doorplate',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'bonfire',
-		name: 'Bonfire',
-		source: _List_fromArray(
+		a: 'bonfire',
+		c: 'Bonfire',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'bonsai-shelf',
-		name: 'Bonsai Shelf',
-		source: _List_fromArray(
+		a: 'bonsai-shelf',
+		c: 'Bonsai Shelf',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'boomerang',
-		name: 'Boomerang',
-		source: _List_fromArray(
+		a: 'boomerang',
+		c: 'Boomerang',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
-		{id: 'brick-fence', name: 'Brick Fence', source: _List_Nil},
-		{id: 'brick-oven', name: 'Brick Oven', source: _List_Nil},
-		{id: 'brick-well', name: 'Brick Well', source: _List_Nil},
+		{a: 'brick-fence', c: 'Brick Fence', b: _List_Nil},
+		{a: 'brick-oven', c: 'Brick Oven', b: _List_Nil},
+		{a: 'brick-well', c: 'Brick Well', b: _List_Nil},
 		{
-		id: 'brown-herringbone-wall',
-		name: 'Brown Herringbone Wall',
-		source: _List_fromArray(
+		a: 'brown-herringbone-wall',
+		c: 'Brown Herringbone Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
-		{id: 'bunny-day-arch', name: 'Bunny Day Arch', source: _List_Nil},
-		{id: 'bunny-day-bag', name: 'Bunny Day Bag', source: _List_Nil},
-		{id: 'bunny-day-bed', name: 'Bunny Day Bed', source: _List_Nil},
-		{id: 'bunny-day-crown', name: 'Bunny Day Crown', source: _List_Nil},
-		{id: 'bunny-day-fence', name: 'Bunny Day Fence', source: _List_Nil},
-		{id: 'bunny-day-festive-balloons', name: 'Bunny Day Festive Balloons', source: _List_Nil},
-		{id: 'bunny-day-flooring', name: 'Bunny Day Flooring', source: _List_Nil},
-		{id: 'bunny-day-glowy-garland', name: 'Bunny Day Glowy Garland', source: _List_Nil},
-		{id: 'bunny-day-lamp', name: 'Bunny Day Lamp', source: _List_Nil},
-		{id: 'bunny-day-merry-balloons', name: 'Bunny Day Merry Balloons', source: _List_Nil},
-		{id: 'bunny-day-rug', name: 'Bunny Day Rug', source: _List_Nil},
-		{id: 'bunny-day-stool', name: 'Bunny Day Stool', source: _List_Nil},
-		{id: 'bunny-day-table', name: 'Bunny Day Table', source: _List_Nil},
-		{id: 'bunny-day-vanity', name: 'Bunny Day Vanity', source: _List_Nil},
-		{id: 'bunny-day-wall-clock', name: 'Bunny Day Wall Clock', source: _List_Nil},
-		{id: 'bunny-day-wall', name: 'Bunny Day Wall', source: _List_Nil},
-		{id: 'bunny-day-wand', name: 'Bunny Day Wand', source: _List_Nil},
-		{id: 'bunny-day-wardrobe', name: 'Bunny Day Wardrobe', source: _List_Nil},
-		{id: 'bunny-day-wreath', name: 'Bunny Day Wreath', source: _List_Nil},
+		{a: 'bunny-day-arch', c: 'Bunny Day Arch', b: _List_Nil},
+		{a: 'bunny-day-bag', c: 'Bunny Day Bag', b: _List_Nil},
+		{a: 'bunny-day-bed', c: 'Bunny Day Bed', b: _List_Nil},
+		{a: 'bunny-day-crown', c: 'Bunny Day Crown', b: _List_Nil},
+		{a: 'bunny-day-fence', c: 'Bunny Day Fence', b: _List_Nil},
+		{a: 'bunny-day-festive-balloons', c: 'Bunny Day Festive Balloons', b: _List_Nil},
+		{a: 'bunny-day-flooring', c: 'Bunny Day Flooring', b: _List_Nil},
+		{a: 'bunny-day-glowy-garland', c: 'Bunny Day Glowy Garland', b: _List_Nil},
+		{a: 'bunny-day-lamp', c: 'Bunny Day Lamp', b: _List_Nil},
+		{a: 'bunny-day-merry-balloons', c: 'Bunny Day Merry Balloons', b: _List_Nil},
+		{a: 'bunny-day-rug', c: 'Bunny Day Rug', b: _List_Nil},
+		{a: 'bunny-day-stool', c: 'Bunny Day Stool', b: _List_Nil},
+		{a: 'bunny-day-table', c: 'Bunny Day Table', b: _List_Nil},
+		{a: 'bunny-day-vanity', c: 'Bunny Day Vanity', b: _List_Nil},
+		{a: 'bunny-day-wall', c: 'Bunny Day Wall', b: _List_Nil},
+		{a: 'bunny-day-wall-clock', c: 'Bunny Day Wall Clock', b: _List_Nil},
+		{a: 'bunny-day-wand', c: 'Bunny Day Wand', b: _List_Nil},
+		{a: 'bunny-day-wardrobe', c: 'Bunny Day Wardrobe', b: _List_Nil},
+		{a: 'bunny-day-wreath', c: 'Bunny Day Wreath', b: _List_Nil},
 		{
-		id: 'butter-churn',
-		name: 'Butter Churn',
-		source: _List_fromArray(
+		a: 'butter-churn',
+		c: 'Butter Churn',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'cabin-wall',
-		name: 'Cabin Wall',
-		source: _List_fromArray(
+		a: 'cabin-wall',
+		c: 'Cabin Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
-		{id: 'campfire', name: 'Campfire', source: _List_Nil},
-		{id: 'cancer-table', name: 'Cancer Table', source: _List_Nil},
-		{id: 'capricorn-ornament', name: 'Capricorn Ornament', source: _List_Nil},
+		{a: 'campfire', c: 'Campfire', b: _List_Nil},
+		{a: 'cancer-table', c: 'Cancer Table', b: _List_Nil},
+		{a: 'capricorn-ornament', c: 'Capricorn Ornament', b: _List_Nil},
 		{
-		id: 'cardboard-bed',
-		name: 'Cardboard Bed',
-		source: _List_fromArray(
+		a: 'cardboard-bed',
+		c: 'Cardboard Bed',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'cardboard-chair',
-		name: 'Cardboard Chair',
-		source: _List_fromArray(
+		a: 'cardboard-chair',
+		c: 'Cardboard Chair',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'cardboard-sofa',
-		name: 'Cardboard Sofa',
-		source: _List_fromArray(
+		a: 'cardboard-sofa',
+		c: 'Cardboard Sofa',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'cardboard-table',
-		name: 'Cardboard Table',
-		source: _List_fromArray(
+		a: 'cardboard-table',
+		c: 'Cardboard Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
-		{id: 'cherry-blossom-bonsai', name: 'Cherry-blossom Bonsai', source: _List_Nil},
-		{id: 'cherry-blossom-branches', name: 'Cherry-blossom Branches', source: _List_Nil},
-		{id: 'cherry-blossom-clock', name: 'Cherry-blossom Clock', source: _List_Nil},
-		{id: 'cherry-blossom-flooring', name: 'Cherry-blossom Flooring', source: _List_Nil},
-		{id: 'cherry-blossom-petal-pile', name: 'Cherry-blossom-petal Pile', source: _List_Nil},
-		{id: 'cherry-blossom-pochette', name: 'Cherry-blossom Pochette', source: _List_Nil},
-		{id: 'cherry-blossom-pond-stone', name: 'Cherry-blossom Pond Stone', source: _List_Nil},
-		{id: 'cherry-blossom-trees-wall', name: 'Cherry-blossom-trees Wall', source: _List_Nil},
-		{id: 'cherry-blossom-umbrella', name: 'Cherry-blossom Umbrella', source: _List_Nil},
-		{id: 'cherry-blossom-wand', name: 'Cherry-blossom Wand', source: _List_Nil},
 		{
-		id: 'cherry-dress',
-		name: 'Cherry Dress',
-		source: _List_fromArray(
+		a: 'cherry-dress',
+		c: 'Cherry Dress',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'cherry-hat',
-		name: 'Cherry Hat',
-		source: _List_fromArray(
+		a: 'cherry-hat',
+		c: 'Cherry Hat',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'cherry-lamp',
-		name: 'Cherry Lamp',
-		source: _List_fromArray(
+		a: 'cherry-lamp',
+		c: 'Cherry Lamp',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'cherry-rug',
-		name: 'Cherry Rug',
-		source: _List_fromArray(
+		a: 'cherry-rug',
+		c: 'Cherry Rug',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'cherry-speakers',
-		name: 'Cherry Speakers',
-		source: _List_fromArray(
+		a: 'cherry-speakers',
+		c: 'Cherry Speakers',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'cherry-umbrella',
-		name: 'Cherry Umbrella',
-		source: _List_fromArray(
+		a: 'cherry-umbrella',
+		c: 'Cherry Umbrella',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'cherry-wall',
-		name: 'Cherry Wall',
-		source: _List_fromArray(
+		a: 'cherry-wall',
+		c: 'Cherry Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
-		{id: 'chic-cosmos-wreath', name: 'Chic Cosmos Wreath', source: _List_Nil},
-		{id: 'chic-mum-crown', name: 'Chic Mum Crown', source: _List_Nil},
-		{id: 'chic-rose-crown', name: 'Chic Rose Crown', source: _List_Nil},
-		{id: 'chic-tulip-crown', name: 'Chic Tulip Crown', source: _List_Nil},
-		{id: 'chic-windflower-wreath', name: 'Chic Windflower Wreath', source: _List_Nil},
+		{a: 'cherry-blossom-bonsai', c: 'Cherry-blossom Bonsai', b: _List_Nil},
+		{a: 'cherry-blossom-branches', c: 'Cherry-blossom Branches', b: _List_Nil},
+		{a: 'cherry-blossom-clock', c: 'Cherry-blossom Clock', b: _List_Nil},
+		{a: 'cherry-blossom-flooring', c: 'Cherry-blossom Flooring', b: _List_Nil},
+		{a: 'cherry-blossom-pochette', c: 'Cherry-blossom Pochette', b: _List_Nil},
+		{a: 'cherry-blossom-pond-stone', c: 'Cherry-blossom Pond Stone', b: _List_Nil},
+		{a: 'cherry-blossom-umbrella', c: 'Cherry-blossom Umbrella', b: _List_Nil},
+		{a: 'cherry-blossom-wand', c: 'Cherry-blossom Wand', b: _List_Nil},
+		{a: 'cherry-blossom-petal-pile', c: 'Cherry-blossom-petal Pile', b: _List_Nil},
+		{a: 'cherry-blossom-trees-wall', c: 'Cherry-blossom-trees Wall', b: _List_Nil},
+		{a: 'chic-cosmos-wreath', c: 'Chic Cosmos Wreath', b: _List_Nil},
+		{a: 'chic-mum-crown', c: 'Chic Mum Crown', b: _List_Nil},
+		{a: 'chic-rose-crown', c: 'Chic Rose Crown', b: _List_Nil},
+		{a: 'chic-tulip-crown', c: 'Chic Tulip Crown', b: _List_Nil},
+		{a: 'chic-windflower-wreath', c: 'Chic Windflower Wreath', b: _List_Nil},
 		{
-		id: 'chocolate-herringbone-wall',
-		name: 'Chocolate Herringbone Wall',
-		source: _List_fromArray(
+		a: 'chocolate-herringbone-wall',
+		c: 'Chocolate Herringbone Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'clackercart',
-		name: 'Clackercart',
-		source: _List_fromArray(
+		a: 'clackercart',
+		c: 'Clackercart',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'classic-library-wall',
-		name: 'Classic-library Wall',
-		source: _List_fromArray(
+		a: 'classic-pitcher',
+		c: 'Classic Pitcher',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'classic-pitcher',
-		name: 'Classic Pitcher',
-		source: _List_fromArray(
+		a: 'classic-library-wall',
+		c: 'Classic-library Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'clothesline',
-		name: 'Clothesline',
-		source: _List_fromArray(
+		a: 'clothesline',
+		c: 'Clothesline',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'coconut-juice',
-		name: 'Coconut Juice',
-		source: _List_fromArray(
+		a: 'coconut-juice',
+		c: 'Coconut Juice',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'coconut-wall-planter',
-		name: 'Coconut Wall Planter',
-		source: _List_fromArray(
+		a: 'coconut-wall-planter',
+		c: 'Coconut Wall Planter',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'colored-leaves-flooring', name: 'Colored-leaves Flooring', source: _List_Nil},
-		{id: 'cool-hyacinth-crown', name: 'Cool Hyacinth Crown', source: _List_Nil},
-		{id: 'cool-hyacinth-wreath', name: 'Cool Hyacinth Wreath', source: _List_Nil},
-		{id: 'cool-pansy-crown', name: 'Cool Pansy Crown', source: _List_Nil},
-		{id: 'cool-pansy-wreath', name: 'Cool Pansy Wreath', source: _List_Nil},
-		{id: 'cool-windflower-crown', name: 'Cool Windflower Crown', source: _List_Nil},
-		{id: 'cool-windflower-wreath', name: 'Cool Windflower Wreath', source: _List_Nil},
-		{id: 'corral-fence', name: 'Corral Fence', source: _List_Nil},
-		{id: 'cosmos-crown', name: 'Cosmos Crown', source: _List_Nil},
+		{a: 'colored-leaves-flooring', c: 'Colored-leaves Flooring', b: _List_Nil},
+		{a: 'cool-hyacinth-crown', c: 'Cool Hyacinth Crown', b: _List_Nil},
+		{a: 'cool-hyacinth-wreath', c: 'Cool Hyacinth Wreath', b: _List_Nil},
+		{a: 'cool-pansy-crown', c: 'Cool Pansy Crown', b: _List_Nil},
+		{a: 'cool-pansy-wreath', c: 'Cool Pansy Wreath', b: _List_Nil},
+		{a: 'cool-windflower-crown', c: 'Cool Windflower Crown', b: _List_Nil},
+		{a: 'cool-windflower-wreath', c: 'Cool Windflower Wreath', b: _List_Nil},
+		{a: 'corral-fence', c: 'Corral Fence', b: _List_Nil},
+		{a: 'cosmos-crown', c: 'Cosmos Crown', b: _List_Nil},
 		{
-		id: 'cosmos-shower',
-		name: 'Cosmos Shower',
-		source: _List_fromArray(
+		a: 'cosmos-shower',
+		c: 'Cosmos Shower',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'cosmos-wand', name: 'Cosmos Wand', source: _List_Nil},
-		{id: 'cosmos-wreath', name: 'Cosmos Wreath', source: _List_Nil},
-		{id: 'country-fence', name: 'Country Fence', source: _List_Nil},
-		{id: 'crescent-moon-chair', name: 'Crescent-moon Chair', source: _List_Nil},
+		{a: 'cosmos-wand', c: 'Cosmos Wand', b: _List_Nil},
+		{a: 'cosmos-wreath', c: 'Cosmos Wreath', b: _List_Nil},
+		{a: 'country-fence', c: 'Country Fence', b: _List_Nil},
+		{a: 'crescent-moon-chair', c: 'Crescent-moon Chair', b: _List_Nil},
 		{
-		id: 'crest-doorplate',
-		name: 'Crest Doorplate',
-		source: _List_fromArray(
+		a: 'crest-doorplate',
+		c: 'Crest Doorplate',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'crewed-spaceship', name: 'Crewed Spaceship', source: _List_Nil},
-		{id: 'cute-lily-crown', name: 'Cute Lily Crown', source: _List_Nil},
-		{id: 'cute-rose-crown', name: 'Cute Rose Crown', source: _List_Nil},
+		{a: 'crewed-spaceship', c: 'Crewed Spaceship', b: _List_Nil},
+		{a: 'cute-lily-crown', c: 'Cute Lily Crown', b: _List_Nil},
+		{a: 'cute-rose-crown', c: 'Cute Rose Crown', b: _List_Nil},
 		{
-		id: 'cutting-board',
-		name: 'Cutting Board',
-		source: _List_fromArray(
+		a: 'cutting-board',
+		c: 'Cutting Board',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'dark-bamboo-rug',
-		name: 'Dark Bamboo Rug',
-		source: _List_fromArray(
+		a: 'dark-bamboo-rug',
+		c: 'Dark Bamboo Rug',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'dark-cosmos-crown', name: 'Dark Cosmos Crown', source: _List_Nil},
-		{id: 'dark-lily-crown', name: 'Dark Lily Crown', source: _List_Nil},
-		{id: 'dark-lily-wreath', name: 'Dark Lily Wreath', source: _List_Nil},
-		{id: 'dark-rose-wreath', name: 'Dark Rose Wreath', source: _List_Nil},
-		{id: 'dark-tulip-crown', name: 'Dark Tulip Crown', source: _List_Nil},
-		{id: 'dark-tulip-wreath', name: 'Dark Tulip Wreath', source: _List_Nil},
+		{a: 'dark-cosmos-crown', c: 'Dark Cosmos Crown', b: _List_Nil},
+		{a: 'dark-lily-crown', c: 'Dark Lily Crown', b: _List_Nil},
+		{a: 'dark-lily-wreath', c: 'Dark Lily Wreath', b: _List_Nil},
+		{a: 'dark-rose-wreath', c: 'Dark Rose Wreath', b: _List_Nil},
+		{a: 'dark-tulip-crown', c: 'Dark Tulip Crown', b: _List_Nil},
+		{a: 'dark-tulip-wreath', c: 'Dark Tulip Wreath', b: _List_Nil},
 		{
-		id: 'dark-wooden-mosaic-wall',
-		name: 'Dark Wooden-mosaic Wall',
-		source: _List_fromArray(
+		a: 'dark-wooden-mosaic-wall',
+		c: 'Dark Wooden-mosaic Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'decoy-duck',
-		name: 'Decoy Duck',
-		source: _List_fromArray(
+		a: 'decoy-duck',
+		c: 'Decoy Duck',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'deer-decoration',
-		name: 'Deer Decoration',
-		source: _List_fromArray(
+		a: 'deer-decoration',
+		c: 'Deer Decoration',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'deer-scare',
-		name: 'Deer Scare',
-		source: _List_fromArray(
+		a: 'deer-scare',
+		c: 'Deer Scare',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'destinations-signpost', name: 'Destinations Signpost', source: _List_Nil},
+		{a: 'destinations-signpost', c: 'Destinations Signpost', b: _List_Nil},
 		{
-		id: 'diy-workbench',
-		name: 'Diy Workbench',
-		source: _List_fromArray(
+		a: 'diy-workbench',
+		c: 'Diy Workbench',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'document-stack',
-		name: 'Document Stack',
-		source: _List_fromArray(
+		a: 'document-stack',
+		c: 'Document Stack',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'doghouse',
-		name: 'Doghouse',
-		source: _List_fromArray(
+		a: 'doghouse',
+		c: 'Doghouse',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'drinking-fountain', name: 'Drinking Fountain', source: _List_Nil},
-		{id: 'earth-egg-outfit', name: 'Earth-egg Outfit', source: _List_Nil},
-		{id: 'earth-egg-shell', name: 'Earth-egg Shell', source: _List_Nil},
-		{id: 'earth-egg-shoes', name: 'Earth-egg Shoes', source: _List_Nil},
-		{id: 'egg-party-dress', name: 'Egg Party Dress', source: _List_Nil},
-		{id: 'egg-party-hat', name: 'Egg Party Hat', source: _List_Nil},
-		{id: 'fancy-lily-wreath', name: 'Fancy Lily Wreath', source: _List_Nil},
-		{id: 'fancy-mum-wreath', name: 'Fancy Mum Wreath', source: _List_Nil},
-		{id: 'fancy-rose-wreath', name: 'Fancy Rose Wreath', source: _List_Nil},
-		{id: 'festive-top-set', name: 'Festive Top Set', source: _List_Nil},
-		{id: 'festive-tree', name: 'Festive Tree', source: _List_Nil},
+		{a: 'drinking-fountain', c: 'Drinking Fountain', b: _List_Nil},
+		{a: 'earth-egg-outfit', c: 'Earth-egg Outfit', b: _List_Nil},
+		{a: 'earth-egg-shell', c: 'Earth-egg Shell', b: _List_Nil},
+		{a: 'earth-egg-shoes', c: 'Earth-egg Shoes', b: _List_Nil},
+		{a: 'egg-party-dress', c: 'Egg Party Dress', b: _List_Nil},
+		{a: 'egg-party-hat', c: 'Egg Party Hat', b: _List_Nil},
+		{a: 'fancy-lily-wreath', c: 'Fancy Lily Wreath', b: _List_Nil},
+		{a: 'fancy-mum-wreath', c: 'Fancy Mum Wreath', b: _List_Nil},
+		{a: 'fancy-rose-wreath', c: 'Fancy Rose Wreath', b: _List_Nil},
+		{a: 'festive-top-set', c: 'Festive Top Set', b: _List_Nil},
+		{a: 'festive-tree', c: 'Festive Tree', b: _List_Nil},
 		{
-		id: 'firewood',
-		name: 'Firewood',
-		source: _List_fromArray(
+		a: 'firewood',
+		c: 'Firewood',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'fish-bait', name: 'Fish Bait', source: _List_Nil},
-		{id: 'fishing-rod', name: 'Fishing Rod', source: _List_Nil},
+		{a: 'fish-bait', c: 'Fish Bait', b: _List_Nil},
+		{a: 'fishing-rod', c: 'Fishing Rod', b: _List_Nil},
 		{
-		id: 'flat-garden-rock',
-		name: 'Flat Garden Rock',
-		source: _List_fromArray(
+		a: 'flat-garden-rock',
+		c: 'Flat Garden Rock',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'flimsy-axe', name: 'Flimsy Axe', source: _List_Nil},
-		{id: 'flimsy-fishing-rod', name: 'Flimsy Fishing Rod', source: _List_Nil},
-		{id: 'flimsy-net', name: 'Flimsy Net', source: _List_Nil},
-		{id: 'flimsy-shovel', name: 'Flimsy Shovel', source: _List_Nil},
-		{id: 'flimsy-watering-can', name: 'Flimsy Watering Can', source: _List_Nil},
+		{a: 'flimsy-axe', c: 'Flimsy Axe', b: _List_Nil},
+		{a: 'flimsy-fishing-rod', c: 'Flimsy Fishing Rod', b: _List_Nil},
+		{a: 'flimsy-net', c: 'Flimsy Net', b: _List_Nil},
+		{a: 'flimsy-shovel', c: 'Flimsy Shovel', b: _List_Nil},
+		{a: 'flimsy-watering-can', c: 'Flimsy Watering Can', b: _List_Nil},
 		{
-		id: 'floral-swag',
-		name: 'Floral Swag',
-		source: _List_fromArray(
+		a: 'floral-swag',
+		c: 'Floral Swag',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'flower-stand',
-		name: 'Flower Stand',
-		source: _List_fromArray(
+		a: 'flower-stand',
+		c: 'Flower Stand',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
-		{id: 'flying-saucer', name: 'Flying Saucer', source: _List_Nil},
-		{id: 'forest-flooring', name: 'Forest Flooring', source: _List_Nil},
-		{id: 'forest-wall', name: 'Forest Wall', source: _List_Nil},
+		{a: 'flying-saucer', c: 'Flying Saucer', b: _List_Nil},
+		{a: 'forest-flooring', c: 'Forest Flooring', b: _List_Nil},
+		{a: 'forest-wall', c: 'Forest Wall', b: _List_Nil},
 		{
-		id: 'fossil-doorplate',
-		name: 'Fossil Doorplate',
-		source: _List_fromArray(
+		a: 'fossil-doorplate',
+		c: 'Fossil Doorplate',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'fountain', name: 'Fountain', source: _List_Nil},
-		{id: 'frozen-arch', name: 'Frozen Arch', source: _List_Nil},
-		{id: 'frozen-bed', name: 'Frozen Bed', source: _List_Nil},
-		{id: 'frozen-chair', name: 'Frozen Chair', source: _List_Nil},
-		{id: 'frozen-counter', name: 'Frozen Counter', source: _List_Nil},
-		{id: 'frozen-partition', name: 'Frozen Partition', source: _List_Nil},
-		{id: 'frozen-pillar', name: 'Frozen Pillar', source: _List_Nil},
-		{id: 'frozen-sculpture', name: 'Frozen Sculpture', source: _List_Nil},
-		{id: 'frozen-table', name: 'Frozen Table', source: _List_Nil},
-		{id: 'frozen-treat-set', name: 'Frozen-treat Set', source: _List_Nil},
-		{id: 'frozen-tree', name: 'Frozen Tree', source: _List_Nil},
+		{a: 'fountain', c: 'Fountain', b: _List_Nil},
+		{a: 'frozen-arch', c: 'Frozen Arch', b: _List_Nil},
+		{a: 'frozen-bed', c: 'Frozen Bed', b: _List_Nil},
+		{a: 'frozen-chair', c: 'Frozen Chair', b: _List_Nil},
+		{a: 'frozen-counter', c: 'Frozen Counter', b: _List_Nil},
+		{a: 'frozen-partition', c: 'Frozen Partition', b: _List_Nil},
+		{a: 'frozen-pillar', c: 'Frozen Pillar', b: _List_Nil},
+		{a: 'frozen-sculpture', c: 'Frozen Sculpture', b: _List_Nil},
+		{a: 'frozen-table', c: 'Frozen Table', b: _List_Nil},
+		{a: 'frozen-tree', c: 'Frozen Tree', b: _List_Nil},
+		{a: 'frozen-treat-set', c: 'Frozen-treat Set', b: _List_Nil},
 		{
-		id: 'fruit-basket',
-		name: 'Fruit Basket',
-		source: _List_fromArray(
+		a: 'fruit-basket',
+		c: 'Fruit Basket',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'fruit-wreath',
-		name: 'Fruit Wreath',
-		source: _List_fromArray(
+		a: 'fruit-wreath',
+		c: 'Fruit Wreath',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'frying-pan', name: 'Frying Pan', source: _List_Nil},
-		{id: 'galaxy-flooring', name: 'Galaxy Flooring', source: _List_Nil},
-		{id: 'garbage-heap-flooring', name: 'Garbage-heap Flooring', source: _List_Nil},
-		{id: 'garbage-heap-wall', name: 'Garbage-heap Wall', source: _List_Nil},
+		{a: 'frying-pan', c: 'Frying Pan', b: _List_Nil},
+		{a: 'galaxy-flooring', c: 'Galaxy Flooring', b: _List_Nil},
+		{a: 'garbage-heap-flooring', c: 'Garbage-heap Flooring', b: _List_Nil},
+		{a: 'garbage-heap-wall', c: 'Garbage-heap Wall', b: _List_Nil},
 		{
-		id: 'garden-bench',
-		name: 'Garden Bench',
-		source: _List_fromArray(
+		a: 'garden-bench',
+		c: 'Garden Bench',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'garden-rock',
-		name: 'Garden Rock',
-		source: _List_fromArray(
+		a: 'garden-rock',
+		c: 'Garden Rock',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'garden-wagon',
-		name: 'Garden Wagon',
-		source: _List_fromArray(
+		a: 'garden-wagon',
+		c: 'Garden Wagon',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
-		{id: 'gemini-closet', name: 'Gemini Closet', source: _List_Nil},
+		{a: 'gemini-closet', c: 'Gemini Closet', b: _List_Nil},
 		{
-		id: 'giant-teddy-bear',
-		name: 'Giant Teddy Bear',
-		source: _List_fromArray(
+		a: 'giant-teddy-bear',
+		c: 'Giant Teddy Bear',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'gold-armor-shoes',
-		name: 'Gold-armor Shoes',
-		source: _List_fromArray(
+		a: 'gold-armor',
+		c: 'Gold Armor',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'gold-armor',
-		name: 'Gold Armor',
-		source: _List_fromArray(
+		a: 'gold-bars',
+		c: 'Gold Bars',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'gold-bars',
-		name: 'Gold Bars',
-		source: _List_fromArray(
+		a: 'gold-helmet',
+		c: 'Gold Helmet',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(6)
 			])
 	},
+		{a: 'gold-rose-crown', c: 'Gold Rose Crown', b: _List_Nil},
+		{a: 'gold-rose-wreath', c: 'Gold Rose Wreath', b: _List_Nil},
+		{a: 'gold-screen-wall', c: 'Gold Screen Wall', b: _List_Nil},
 		{
-		id: 'gold-helmet',
-		name: 'Gold Helmet',
-		source: _List_fromArray(
+		a: 'gold-armor-shoes',
+		c: 'Gold-armor Shoes',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'gold-rose-crown', name: 'Gold Rose Crown', source: _List_Nil},
-		{id: 'gold-rose-wreath', name: 'Gold Rose Wreath', source: _List_Nil},
-		{id: 'gold-screen-wall', name: 'Gold Screen Wall', source: _List_Nil},
 		{
-		id: 'golden-arowana-model',
-		name: 'Golden Arowana Model',
-		source: _List_fromArray(
+		a: 'golden-arowana-model',
+		c: 'Golden Arowana Model',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
-		{id: 'golden-axe', name: 'Golden Axe', source: _List_Nil},
+		{a: 'golden-axe', c: 'Golden Axe', b: _List_Nil},
 		{
-		id: 'golden-candlestick',
-		name: 'Golden Candlestick',
-		source: _List_fromArray(
+		a: 'golden-candlestick',
+		c: 'Golden Candlestick',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'golden-casket',
-		name: 'Golden Casket',
-		source: _List_fromArray(
+		a: 'golden-casket',
+		c: 'Golden Casket',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'golden-dishes',
-		name: 'Golden Dishes',
-		source: _List_fromArray(
+		a: 'golden-dishes',
+		c: 'Golden Dishes',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'golden-dung-beetle',
-		name: 'Golden Dung Beetle',
-		source: _List_fromArray(
+		a: 'golden-dung-beetle',
+		c: 'Golden Dung Beetle',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'golden-flooring',
-		name: 'Golden Flooring',
-		source: _List_fromArray(
+		a: 'golden-flooring',
+		c: 'Golden Flooring',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'golden-gears',
-		name: 'Golden Gears',
-		source: _List_fromArray(
+		a: 'golden-gears',
+		c: 'Golden Gears',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'golden-net', name: 'Golden Net', source: _List_Nil},
-		{id: 'golden-rod', name: 'Golden Rod', source: _List_Nil},
+		{a: 'golden-net', c: 'Golden Net', b: _List_Nil},
+		{a: 'golden-rod', c: 'Golden Rod', b: _List_Nil},
 		{
-		id: 'golden-seat',
-		name: 'Golden Seat',
-		source: _List_fromArray(
+		a: 'golden-seat',
+		c: 'Golden Seat',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'golden-shovel', name: 'Golden Shovel', source: _List_Nil},
-		{id: 'golden-slingshot', name: 'Golden Slingshot', source: _List_Nil},
+		{a: 'golden-shovel', c: 'Golden Shovel', b: _List_Nil},
+		{a: 'golden-slingshot', c: 'Golden Slingshot', b: _List_Nil},
 		{
-		id: 'golden-toilet',
-		name: 'Golden Toilet',
-		source: _List_fromArray(
+		a: 'golden-toilet',
+		c: 'Golden Toilet',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'golden-wall',
-		name: 'Golden Wall',
-		source: _List_fromArray(
+		a: 'golden-wall',
+		c: 'Golden Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'golden-wand', name: 'Golden Wand', source: _List_Nil},
-		{id: 'golden-watering-can', name: 'Golden Watering Can', source: _List_Nil},
+		{a: 'golden-wand', c: 'Golden Wand', b: _List_Nil},
+		{a: 'golden-watering-can', c: 'Golden Watering Can', b: _List_Nil},
 		{
-		id: 'gong',
-		name: 'Gong',
-		source: _List_fromArray(
+		a: 'gong',
+		c: 'Gong',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'grass-skirt',
-		name: 'Grass Skirt',
-		source: _List_fromArray(
+		a: 'grass-skirt',
+		c: 'Grass Skirt',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'grass-standee',
-		name: 'Grass Standee',
-		source: _List_fromArray(
+		a: 'grass-standee',
+		c: 'Grass Standee',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'green-grass-skirt',
-		name: 'Green Grass Skirt',
-		source: _List_fromArray(
+		a: 'green-grass-skirt',
+		c: 'Green Grass Skirt',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
-		{id: 'green-leaf-pile', name: 'Green-leaf Pile', source: _List_Nil},
+		{a: 'green-leaf-pile', c: 'Green-leaf Pile', b: _List_Nil},
 		{
-		id: 'hanging-terrarium',
-		name: 'Hanging Terrarium',
-		source: _List_fromArray(
+		a: 'hanging-terrarium',
+		c: 'Hanging Terrarium',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
-		{id: 'hay-bed', name: 'Hay Bed', source: _List_Nil},
-		{id: 'hearth', name: 'Hearth', source: _List_Nil},
+		{a: 'hay-bed', c: 'Hay Bed', b: _List_Nil},
+		{a: 'hearth', c: 'Hearth', b: _List_Nil},
+		{a: 'hedge', c: 'Hedge', b: _List_Nil},
 		{
-		id: 'hedge-standee',
-		name: 'Hedge Standee',
-		source: _List_fromArray(
+		a: 'hedge-standee',
+		c: 'Hedge Standee',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
-		{id: 'hedge', name: 'Hedge', source: _List_Nil},
-		{id: 'holiday-candle', name: 'Holiday Candle', source: _List_Nil},
+		{a: 'holiday-candle', c: 'Holiday Candle', b: _List_Nil},
 		{
-		id: 'honeycomb-flooring',
-		name: 'Honeycomb Flooring',
-		source: _List_fromArray(
+		a: 'honeycomb-flooring',
+		c: 'Honeycomb Flooring',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'honeycomb-wall',
-		name: 'Honeycomb Wall',
-		source: _List_fromArray(
+		a: 'honeycomb-wall',
+		c: 'Honeycomb Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'hyacinth-crown', name: 'Hyacinth Crown', source: _List_Nil},
+		{a: 'hyacinth-crown', c: 'Hyacinth Crown', b: _List_Nil},
 		{
-		id: 'hyacinth-lamp',
-		name: 'Hyacinth Lamp',
-		source: _List_fromArray(
+		a: 'hyacinth-lamp',
+		c: 'Hyacinth Lamp',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
-		{id: 'hyacinth-wand', name: 'Hyacinth Wand', source: _List_Nil},
-		{id: 'hyacinth-wreath', name: 'Hyacinth Wreath', source: _List_Nil},
-		{id: 'ice-flooring', name: 'Ice Flooring', source: _List_Nil},
-		{id: 'ice-wall', name: 'Ice Wall', source: _List_Nil},
-		{id: 'ice-wand', name: 'Ice Wand', source: _List_Nil},
-		{id: 'iceberg-flooring', name: 'Iceberg Flooring', source: _List_Nil},
-		{id: 'iceberg-wall', name: 'Iceberg Wall', source: _List_Nil},
-		{id: 'illuminated-present', name: 'Illuminated Present', source: _List_Nil},
-		{id: 'illuminated-reindeer', name: 'Illuminated Reindeer', source: _List_Nil},
-		{id: 'illuminated-snowflakes', name: 'Illuminated Snowflakes', source: _List_Nil},
-		{id: 'illuminated-tree', name: 'Illuminated Tree', source: _List_Nil},
-		{id: 'imperial-fence', name: 'Imperial Fence', source: _List_Nil},
+		{a: 'hyacinth-wand', c: 'Hyacinth Wand', b: _List_Nil},
+		{a: 'hyacinth-wreath', c: 'Hyacinth Wreath', b: _List_Nil},
+		{a: 'ice-flooring', c: 'Ice Flooring', b: _List_Nil},
+		{a: 'ice-wall', c: 'Ice Wall', b: _List_Nil},
+		{a: 'ice-wand', c: 'Ice Wand', b: _List_Nil},
+		{a: 'iceberg-flooring', c: 'Iceberg Flooring', b: _List_Nil},
+		{a: 'iceberg-wall', c: 'Iceberg Wall', b: _List_Nil},
+		{a: 'illuminated-present', c: 'Illuminated Present', b: _List_Nil},
+		{a: 'illuminated-reindeer', c: 'Illuminated Reindeer', b: _List_Nil},
+		{a: 'illuminated-snowflakes', c: 'Illuminated Snowflakes', b: _List_Nil},
+		{a: 'illuminated-tree', c: 'Illuminated Tree', b: _List_Nil},
+		{a: 'imperial-fence', c: 'Imperial Fence', b: _List_Nil},
 		{
-		id: 'infused-water-dispenser',
-		name: 'Infused-water Dispenser',
-		source: _List_fromArray(
+		a: 'infused-water-dispenser',
+		c: 'Infused-water Dispenser',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'iron-and-stone-fence', name: 'Iron-and-stone Fence', source: _List_Nil},
 		{
-		id: 'iron-armor',
-		name: 'Iron Armor',
-		source: _List_fromArray(
+		a: 'iron-armor',
+		c: 'Iron Armor',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'iron-closet',
-		name: 'Iron Closet',
-		source: _List_fromArray(
+		a: 'iron-closet',
+		c: 'Iron Closet',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'iron-doorplate',
-		name: 'Iron Doorplate',
-		source: _List_fromArray(
+		a: 'iron-doorplate',
+		c: 'Iron Doorplate',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
-		{id: 'iron-fence', name: 'Iron Fence', source: _List_Nil},
+		{a: 'iron-fence', c: 'Iron Fence', b: _List_Nil},
 		{
-		id: 'iron-frame',
-		name: 'Iron Frame',
-		source: _List_fromArray(
+		a: 'iron-frame',
+		c: 'Iron Frame',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'iron-garden-bench',
-		name: 'Iron Garden Bench',
-		source: _List_fromArray(
+		a: 'iron-garden-bench',
+		c: 'Iron Garden Bench',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'iron-garden-chair',
-		name: 'Iron Garden Chair',
-		source: _List_fromArray(
+		a: 'iron-garden-chair',
+		c: 'Iron Garden Chair',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'iron-garden-table',
-		name: 'Iron Garden Table',
-		source: _List_fromArray(
+		a: 'iron-garden-table',
+		c: 'Iron Garden Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'iron-hanger-stand',
-		name: 'Iron Hanger Stand',
-		source: _List_fromArray(
+		a: 'iron-hanger-stand',
+		c: 'Iron Hanger Stand',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'iron-shelf',
-		name: 'Iron Shelf',
-		source: _List_fromArray(
+		a: 'iron-shelf',
+		c: 'Iron Shelf',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
-		{id: 'iron-wall-lamp', name: 'Iron Wall Lamp', source: _List_Nil},
+		{a: 'iron-wall-lamp', c: 'Iron Wall Lamp', b: _List_Nil},
 		{
-		id: 'iron-wall-rack',
-		name: 'Iron Wall Rack',
-		source: _List_fromArray(
+		a: 'iron-wall-rack',
+		c: 'Iron Wall Rack',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'iron-wand', name: 'Iron Wand', source: _List_Nil},
+		{a: 'iron-wand', c: 'Iron Wand', b: _List_Nil},
 		{
-		id: 'iron-worktable',
-		name: 'Iron Worktable',
-		source: _List_fromArray(
+		a: 'iron-worktable',
+		c: 'Iron Worktable',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
+		{a: 'iron-and-stone-fence', c: 'Iron-and-stone Fence', b: _List_Nil},
 		{
-		id: 'ironwood-bed',
-		name: 'Ironwood Bed',
-		source: _List_fromArray(
+		a: 'ironwood-bed',
+		c: 'Ironwood Bed',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'ironwood-cart',
-		name: 'Ironwood Cart',
-		source: _List_fromArray(
+		a: 'ironwood-cart',
+		c: 'Ironwood Cart',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'ironwood-chair',
-		name: 'Ironwood Chair',
-		source: _List_fromArray(
+		a: 'ironwood-chair',
+		c: 'Ironwood Chair',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'ironwood-clock',
-		name: 'Ironwood Clock',
-		source: _List_fromArray(
+		a: 'ironwood-clock',
+		c: 'Ironwood Clock',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'ironwood-cupboard',
-		name: 'Ironwood Cupboard',
-		source: _List_fromArray(
+		a: 'ironwood-cupboard',
+		c: 'Ironwood Cupboard',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'ironwood-diy-workbench',
-		name: 'Ironwood Diy Workbench',
-		source: _List_fromArray(
+		a: 'ironwood-diy-workbench',
+		c: 'Ironwood Diy Workbench',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'ironwood-dresser',
-		name: 'Ironwood Dresser',
-		source: _List_fromArray(
+		a: 'ironwood-dresser',
+		c: 'Ironwood Dresser',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'ironwood-kitchenette', name: 'Ironwood Kitchenette', source: _List_Nil},
+		{a: 'ironwood-kitchenette', c: 'Ironwood Kitchenette', b: _List_Nil},
 		{
-		id: 'ironwood-low-table',
-		name: 'Ironwood Low Table',
-		source: _List_fromArray(
+		a: 'ironwood-low-table',
+		c: 'Ironwood Low Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'ironwood-table',
-		name: 'Ironwood Table',
-		source: _List_fromArray(
+		a: 'ironwood-table',
+		c: 'Ironwood Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'jail-bars',
-		name: 'Jail Bars',
-		source: _List_fromArray(
+		a: 'jail-bars',
+		c: 'Jail Bars',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'jingle-wall', name: 'Jingle Wall', source: _List_Nil},
+		{a: 'jingle-wall', c: 'Jingle Wall', b: _List_Nil},
 		{
-		id: 'juicy-apple-tv',
-		name: 'Juicy-apple Tv',
-		source: _List_fromArray(
+		a: 'juicy-apple-tv',
+		c: 'Juicy-apple Tv',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'jungle-flooring',
-		name: 'Jungle Flooring',
-		source: _List_fromArray(
+		a: 'jungle-flooring',
+		c: 'Jungle Flooring',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'jungle-wall',
-		name: 'Jungle Wall',
-		source: _List_fromArray(
+		a: 'jungle-wall',
+		c: 'Jungle Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'kettle-bathtub',
-		name: 'Kettle Bathtub',
-		source: _List_fromArray(
+		a: 'kettle-bathtub',
+		c: 'Kettle Bathtub',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'kettlebell',
-		name: 'Kettlebell',
-		source: _List_fromArray(
+		a: 'kettlebell',
+		c: 'Kettlebell',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'key-holder',
-		name: 'Key Holder',
-		source: _List_fromArray(
+		a: 'key-holder',
+		c: 'Key Holder',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'knights-helmet',
-		name: 'Knight\'s Helmet',
-		source: _List_fromArray(
+		a: 'knights-helmet',
+		c: 'Knight\'s Helmet',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'knitted-grass-backpack',
-		name: 'Knitted-grass Backpack',
-		source: _List_fromArray(
+		a: 'knitted-grass-backpack',
+		c: 'Knitted-grass Backpack',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
-		{id: 'ladder', name: 'Ladder', source: _List_Nil},
+		{a: 'ladder', c: 'Ladder', b: _List_Nil},
 		{
-		id: 'large-cardboard-boxes',
-		name: 'Large Cardboard Boxes',
-		source: _List_fromArray(
+		a: 'large-cardboard-boxes',
+		c: 'Large Cardboard Boxes',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
-		{id: 'lattice-fence', name: 'Lattice Fence', source: _List_Nil},
-		{id: 'leaf-campfire', name: 'Leaf Campfire', source: _List_Nil},
-		{id: 'leaf-egg-outfit', name: 'Leaf-egg Outfit', source: _List_Nil},
-		{id: 'leaf-egg-shell', name: 'Leaf-egg Shell', source: _List_Nil},
-		{id: 'leaf-egg-shoes', name: 'Leaf-egg Shoes', source: _List_Nil},
+		{a: 'lattice-fence', c: 'Lattice Fence', b: _List_Nil},
 		{
-		id: 'leaf-mask',
-		name: 'Leaf Mask',
-		source: _List_fromArray(
+		a: 'leaf',
+		c: 'Leaf',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'leaf-stool', name: 'Leaf Stool', source: _List_Nil},
+		{a: 'leaf-campfire', c: 'Leaf Campfire', b: _List_Nil},
 		{
-		id: 'leaf-umbrella',
-		name: 'Leaf Umbrella',
-		source: _List_fromArray(
+		a: 'leaf-mask',
+		c: 'Leaf Mask',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(4)
 			])
 	},
+		{a: 'leaf-stool', c: 'Leaf Stool', b: _List_Nil},
 		{
-		id: 'leaf',
-		name: 'Leaf',
-		source: _List_fromArray(
+		a: 'leaf-umbrella',
+		c: 'Leaf Umbrella',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(5)
 			])
 	},
-		{id: 'leo-sculpture', name: 'Leo Sculpture', source: _List_Nil},
-		{id: 'libra-scale', name: 'Libra Scale', source: _List_Nil},
-		{id: 'light-bamboo-rug', name: 'Light Bamboo Rug', source: _List_Nil},
-		{id: 'lily-crown', name: 'Lily Crown', source: _List_Nil},
+		{a: 'leaf-egg-outfit', c: 'Leaf-egg Outfit', b: _List_Nil},
+		{a: 'leaf-egg-shell', c: 'Leaf-egg Shell', b: _List_Nil},
+		{a: 'leaf-egg-shoes', c: 'Leaf-egg Shoes', b: _List_Nil},
+		{a: 'leo-sculpture', c: 'Leo Sculpture', b: _List_Nil},
+		{a: 'libra-scale', c: 'Libra Scale', b: _List_Nil},
+		{a: 'light-bamboo-rug', c: 'Light Bamboo Rug', b: _List_Nil},
+		{a: 'lily-crown', c: 'Lily Crown', b: _List_Nil},
 		{
-		id: 'lily-record-player',
-		name: 'Lily Record Player',
-		source: _List_fromArray(
+		a: 'lily-record-player',
+		c: 'Lily Record Player',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'lily-wand', name: 'Lily Wand', source: _List_Nil},
-		{id: 'lily-wreath', name: 'Lily Wreath', source: _List_Nil},
+		{a: 'lily-wand', c: 'Lily Wand', b: _List_Nil},
+		{a: 'lily-wreath', c: 'Lily Wreath', b: _List_Nil},
 		{
-		id: 'log-bed',
-		name: 'Log Bed',
-		source: _List_fromArray(
+		a: 'log-bed',
+		c: 'Log Bed',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'log-bench',
-		name: 'Log Bench',
-		source: _List_fromArray(
+		a: 'log-bench',
+		c: 'Log Bench',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'log-decorative-shelves',
-		name: 'Log Decorative Shelves',
-		source: _List_fromArray(
+		a: 'log-sofa',
+		c: 'Log Chair',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'log-dining-table',
-		name: 'Log Dining Table',
-		source: _List_fromArray(
+		a: 'log-decorative-shelves',
+		c: 'Log Decorative Shelves',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'log-extra-long-sofa',
-		name: 'Log Extra-long Sofa',
-		source: _List_fromArray(
+		a: 'log-dining-table',
+		c: 'Log Dining Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'log-garden-lounge',
-		name: 'Log Garden Lounge',
-		source: _List_fromArray(
+		a: 'log-extra-long-sofa',
+		c: 'Log Extra-long Sofa',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'log-pack',
-		name: 'Log Pack',
-		source: _List_fromArray(
+		a: 'log-garden-lounge',
+		c: 'Log Garden Lounge',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'log-round-table',
-		name: 'Log Round Table',
-		source: _List_fromArray(
+		a: 'log-pack',
+		c: 'Log Pack',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'log-sofa',
-		name: 'Log Chair',
-		source: _List_fromArray(
+		a: 'log-round-table',
+		c: 'Log Round Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'log-stakes',
-		name: 'Log Stakes',
-		source: _List_fromArray(
+		a: 'log-stakes',
+		c: 'Log Stakes',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'log-stool',
-		name: 'Log Stool',
-		source: _List_fromArray(
+		a: 'log-stool',
+		c: 'Log Stool',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'log-wall-mounted-clock',
-		name: 'Log Wall-mounted Clock',
-		source: _List_fromArray(
+		a: 'log-wall-mounted-clock',
+		c: 'Log Wall-mounted Clock',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
-		{id: 'lovely-cosmos-crown', name: 'Lovely Cosmos Crown', source: _List_Nil},
+		{a: 'lovely-cosmos-crown', c: 'Lovely Cosmos Crown', b: _List_Nil},
 		{
-		id: 'lucky-gold-cat',
-		name: 'Lucky Gold Cat',
-		source: _List_fromArray(
+		a: 'lucky-gold-cat',
+		c: 'Lucky Gold Cat',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'lunar-lander', name: 'Lunar Lander', source: _List_Nil},
-		{id: 'lunar-rover', name: 'Lunar Rover', source: _List_Nil},
-		{id: 'lunar-surface', name: 'Lunar Surface', source: _List_Nil},
+		{a: 'lunar-lander', c: 'Lunar Lander', b: _List_Nil},
+		{a: 'lunar-rover', c: 'Lunar Rover', b: _List_Nil},
+		{a: 'lunar-surface', c: 'Lunar Surface', b: _List_Nil},
 		{
-		id: 'magazine-rack',
-		name: 'Magazine Rack',
-		source: _List_fromArray(
+		a: 'magazine-rack',
+		c: 'Magazine Rack',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'manga-library-wall',
-		name: 'Manga-library Wall',
-		source: _List_fromArray(
+		a: 'manga-library-wall',
+		c: 'Manga-library Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
-		{id: 'manhole-cover', name: 'Manhole Cover', source: _List_Nil},
-		{id: 'maple-leaf-pochette', name: 'Maple-leaf Pochette', source: _List_Nil},
-		{id: 'maple-leaf-pond-stone', name: 'Maple-leaf Pond Stone', source: _List_Nil},
-		{id: 'maple-leaf-umbrella', name: 'Maple-leaf Umbrella', source: _List_Nil},
+		{a: 'manhole-cover', c: 'Manhole Cover', b: _List_Nil},
+		{a: 'maple-leaf-pochette', c: 'Maple-leaf Pochette', b: _List_Nil},
+		{a: 'maple-leaf-pond-stone', c: 'Maple-leaf Pond Stone', b: _List_Nil},
+		{a: 'maple-leaf-umbrella', c: 'Maple-leaf Umbrella', b: _List_Nil},
 		{
-		id: 'matryoshka',
-		name: 'Matryoshka',
-		source: _List_fromArray(
+		a: 'matryoshka',
+		c: 'Matryoshka',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
-		{id: 'medicine', name: 'Medicine', source: _List_Nil},
+		{a: 'medicine', c: 'Medicine', b: _List_Nil},
 		{
-		id: 'medium-cardboard-boxes',
-		name: 'Medium Cardboard Boxes',
-		source: _List_fromArray(
+		a: 'medium-cardboard-boxes',
+		c: 'Medium Cardboard Boxes',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
-		{id: 'mini-diy-workbench', name: 'Mini DIY Workbench', source: _List_Nil},
+		{a: 'mini-diy-workbench', c: 'Mini DIY Workbench', b: _List_Nil},
 		{
-		id: 'modeling-clay',
-		name: 'Modeling Clay',
-		source: _List_fromArray(
+		a: 'modeling-clay',
+		c: 'Modeling Clay',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'modern-wood-wall',
-		name: 'Modern Wood Wall',
-		source: _List_fromArray(
+		a: 'modern-wood-wall',
+		c: 'Modern Wood Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'money-flooring',
-		name: 'Money Flooring',
-		source: _List_fromArray(
+		a: 'money-flooring',
+		c: 'Money Flooring',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'moon', name: 'Moon', source: _List_Nil},
+		{a: 'moon', c: 'Moon', b: _List_Nil},
 		{
-		id: 'mossy-garden-rock',
-		name: 'Mossy Garden Rock',
-		source: _List_fromArray(
+		a: 'mossy-garden-rock',
+		c: 'Mossy Garden Rock',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'mountain-standee',
-		name: 'Mountain Standee',
-		source: _List_fromArray(
+		a: 'mountain-standee',
+		c: 'Mountain Standee',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'mum-crown', name: 'Mum Crown', source: _List_Nil},
+		{a: 'mum-crown', c: 'Mum Crown', b: _List_Nil},
 		{
-		id: 'mum-cushion',
-		name: 'Mum Cushion',
-		source: _List_fromArray(
+		a: 'mum-cushion',
+		c: 'Mum Cushion',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
-		{id: 'mum-wreath', name: 'Mum Wreath', source: _List_Nil},
-		{id: 'mums-wand', name: 'Mums Wand', source: _List_Nil},
-		{id: 'mush-lamp', name: 'Mush Lamp', source: _List_Nil},
-		{id: 'mush-log', name: 'Mush Log', source: _List_Nil},
-		{id: 'mush-low-stool', name: 'Mush Low Stool', source: _List_Nil},
-		{id: 'mush-parasol', name: 'Mush Parasol', source: _List_Nil},
-		{id: 'mush-partition', name: 'Mush Partition', source: _List_Nil},
-		{id: 'mush-table', name: 'Mush Table', source: _List_Nil},
-		{id: 'mush-umbrella', name: 'Mush Umbrella', source: _List_Nil},
-		{id: 'mush-wall', name: 'Mush Wall', source: _List_Nil},
-		{id: 'mushroom-wand', name: 'Mushroom Wand', source: _List_Nil},
-		{id: 'mushroom-wreath', name: 'Mushroom Wreath', source: _List_Nil},
+		{a: 'mum-wreath', c: 'Mum Wreath', b: _List_Nil},
+		{a: 'mums-wand', c: 'Mums Wand', b: _List_Nil},
+		{a: 'mush-lamp', c: 'Mush Lamp', b: _List_Nil},
+		{a: 'mush-log', c: 'Mush Log', b: _List_Nil},
+		{a: 'mush-low-stool', c: 'Mush Low Stool', b: _List_Nil},
+		{a: 'mush-parasol', c: 'Mush Parasol', b: _List_Nil},
+		{a: 'mush-partition', c: 'Mush Partition', b: _List_Nil},
+		{a: 'mush-table', c: 'Mush Table', b: _List_Nil},
+		{a: 'mush-umbrella', c: 'Mush Umbrella', b: _List_Nil},
+		{a: 'mush-wall', c: 'Mush Wall', b: _List_Nil},
+		{a: 'mushroom-wand', c: 'Mushroom Wand', b: _List_Nil},
+		{a: 'mushroom-wreath', c: 'Mushroom Wreath', b: _List_Nil},
 		{
-		id: 'music-stand',
-		name: 'Music Stand',
-		source: _List_fromArray(
+		a: 'music-stand',
+		c: 'Music Stand',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'natural-garden-chair',
-		name: 'Natural Garden Chair',
-		source: _List_fromArray(
+		a: 'natural-garden-chair',
+		c: 'Natural Garden Chair',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'natural-garden-table',
-		name: 'Natural Garden Table',
-		source: _List_fromArray(
+		a: 'natural-garden-table',
+		c: 'Natural Garden Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
-		{id: 'natural-mum-wreath', name: 'Natural Mum Wreath', source: _List_Nil},
+		{a: 'natural-mum-wreath', c: 'Natural Mum Wreath', b: _List_Nil},
 		{
-		id: 'natural-square-table',
-		name: 'Natural Square Table',
-		source: _List_fromArray(
+		a: 'natural-square-table',
+		c: 'Natural Square Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
-		{id: 'net', name: 'Net', source: _List_Nil},
-		{id: 'nova-light', name: 'Nova Light', source: _List_Nil},
-		{id: 'ocarina', name: 'Ocarina', source: _List_Nil},
-		{id: 'oil-barrel-bathtub', name: 'Oil Barrel Bathtub', source: _List_Nil},
-		{id: 'old-fashioned-washtub', name: 'Old-fashioned Washtub', source: _List_Nil},
+		{a: 'net', c: 'Net', b: _List_Nil},
+		{a: 'nova-light', c: 'Nova Light', b: _List_Nil},
+		{a: 'ocarina', c: 'Ocarina', b: _List_Nil},
+		{a: 'oil-barrel-bathtub', c: 'Oil Barrel Bathtub', b: _List_Nil},
+		{a: 'old-fashioned-washtub', c: 'Old-fashioned Washtub', b: _List_Nil},
 		{
-		id: 'orange-dress',
-		name: 'Orange Dress',
-		source: _List_fromArray(
+		a: 'orange-dress',
+		c: 'Orange Dress',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'orange-end-table',
-		name: 'Orange End Table',
-		source: _List_fromArray(
+		a: 'orange-end-table',
+		c: 'Orange End Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'orange-hat',
-		name: 'Orange Hat',
-		source: _List_fromArray(
+		a: 'orange-hat',
+		c: 'Orange Hat',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'orange-rug',
-		name: 'Orange Rug',
-		source: _List_fromArray(
+		a: 'orange-rug',
+		c: 'Orange Rug',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'orange-umbrella',
-		name: 'Orange Umbrella',
-		source: _List_fromArray(
+		a: 'orange-umbrella',
+		c: 'Orange Umbrella',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'orange-wall-mounted-clock',
-		name: 'Orange Wall-mounted Clock',
-		source: _List_fromArray(
+		a: 'orange-wall',
+		c: 'Orange Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'orange-wall',
-		name: 'Orange Wall',
-		source: _List_fromArray(
+		a: 'orange-wall-mounted-clock',
+		c: 'Orange Wall-mounted Clock',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
-		{id: 'ornament-mobile', name: 'Ornament Mobile', source: _List_Nil},
-		{id: 'ornament-wreath', name: 'Ornament Wreath', source: _List_Nil},
-		{id: 'outdoor-bath', name: 'Outdoor Bath', source: _List_Nil},
-		{id: 'outdoor-picnic-set', name: 'Outdoor Picnic Set', source: _List_Nil},
+		{a: 'ornament-mobile', c: 'Ornament Mobile', b: _List_Nil},
+		{a: 'ornament-wreath', c: 'Ornament Wreath', b: _List_Nil},
+		{a: 'outdoor-bath', c: 'Outdoor Bath', b: _List_Nil},
+		{a: 'outdoor-picnic-set', c: 'Outdoor Picnic Set', b: _List_Nil},
 		{
-		id: 'palm-tree-lamp',
-		name: 'Palm-tree Lamp',
-		source: _List_fromArray(
+		a: 'palm-tree-lamp',
+		c: 'Palm-tree Lamp',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'pan-flute', name: 'Pan Flute', source: _List_Nil},
-		{id: 'pansy-crown', name: 'Pansy Crown', source: _List_Nil},
+		{a: 'pan-flute', c: 'Pan Flute', b: _List_Nil},
+		{a: 'pansy-crown', c: 'Pansy Crown', b: _List_Nil},
 		{
-		id: 'pansy-table',
-		name: 'Pansy Table',
-		source: _List_fromArray(
+		a: 'pansy-table',
+		c: 'Pansy Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
-		{id: 'pansy-wand', name: 'Pansy Wand', source: _List_Nil},
-		{id: 'pansy-wreath', name: 'Pansy Wreath', source: _List_Nil},
+		{a: 'pansy-wand', c: 'Pansy Wand', b: _List_Nil},
+		{a: 'pansy-wreath', c: 'Pansy Wreath', b: _List_Nil},
 		{
-		id: 'paw-print-doorplate',
-		name: 'Paw-print Doorplate',
-		source: _List_fromArray(
+		a: 'paw-print-doorplate',
+		c: 'Paw-print Doorplate',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'peach-chair',
-		name: 'Peach Chair',
-		source: _List_fromArray(
+		a: 'peach-chair',
+		c: 'Peach Chair',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'peach-dress',
-		name: 'Peach Dress',
-		source: _List_fromArray(
+		a: 'peach-dress',
+		c: 'Peach Dress',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'peach-hat',
-		name: 'Peach Hat',
-		source: _List_fromArray(
+		a: 'peach-hat',
+		c: 'Peach Hat',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'peach-rug',
-		name: 'Peach Rug',
-		source: _List_fromArray(
+		a: 'peach-rug',
+		c: 'Peach Rug',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'peach-surprise-box',
-		name: 'Peach Surprise Box',
-		source: _List_fromArray(
+		a: 'peach-surprise-box',
+		c: 'Peach Surprise Box',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'peach-umbrella',
-		name: 'Peach Umbrella',
-		source: _List_fromArray(
+		a: 'peach-umbrella',
+		c: 'Peach Umbrella',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'peach-wall',
-		name: 'Peach Wall',
-		source: _List_fromArray(
+		a: 'peach-wall',
+		c: 'Peach Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'pear-bed',
-		name: 'Pear Bed',
-		source: _List_fromArray(
+		a: 'pear-bed',
+		c: 'Pear Bed',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'pear-dress',
-		name: 'Pear Dress',
-		source: _List_fromArray(
+		a: 'pear-dress',
+		c: 'Pear Dress',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'pear-hat',
-		name: 'Pear Hat',
-		source: _List_fromArray(
+		a: 'pear-hat',
+		c: 'Pear Hat',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'pear-rug',
-		name: 'Pear Rug',
-		source: _List_fromArray(
+		a: 'pear-rug',
+		c: 'Pear Rug',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'pear-umbrella',
-		name: 'Pear Umbrella',
-		source: _List_fromArray(
+		a: 'pear-umbrella',
+		c: 'Pear Umbrella',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'pear-wall',
-		name: 'Pear Wall',
-		source: _List_fromArray(
+		a: 'pear-wall',
+		c: 'Pear Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'pear-wardrobe',
-		name: 'Pear Wardrobe',
-		source: _List_fromArray(
+		a: 'pear-wardrobe',
+		c: 'Pear Wardrobe',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'pile-of-leaves', name: 'Pile Of Leaves', source: _List_Nil},
+		{a: 'pile-of-leaves', c: 'Pile Of Leaves', b: _List_Nil},
 		{
-		id: 'pile-of-zen-cushions',
-		name: 'Pile Of Zen Cushions',
-		source: _List_fromArray(
+		a: 'pile-of-zen-cushions',
+		c: 'Pile Of Zen Cushions',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'pine-bonsai-tree', name: 'Pine Bonsai Tree', source: _List_Nil},
-		{id: 'pisces-lamp', name: 'Pisces Lamp', source: _List_Nil},
+		{a: 'pine-bonsai-tree', c: 'Pine Bonsai Tree', b: _List_Nil},
+		{a: 'pisces-lamp', c: 'Pisces Lamp', b: _List_Nil},
 		{
-		id: 'pitfall-seed',
-		name: 'Pitfall Seed',
-		source: _List_fromArray(
+		a: 'pitfall-seed',
+		c: 'Pitfall Seed',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'plain-sink', name: 'Plain Sink', source: _List_Nil},
+		{a: 'plain-sink', c: 'Plain Sink', b: _List_Nil},
 		{
-		id: 'plain-wooden-shop-sign',
-		name: 'Plain Wooden Shop Sign',
-		source: _List_fromArray(
+		a: 'plain-wooden-shop-sign',
+		c: 'Plain Wooden Shop Sign',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'pond-stone',
-		name: 'Pond Stone',
-		source: _List_fromArray(
+		a: 'pond-stone',
+		c: 'Pond Stone',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'pot',
-		name: 'Pot',
-		source: _List_fromArray(
+		a: 'pot',
+		c: 'Pot',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'potted-ivy', name: 'Potted Ivy', source: _List_Nil},
-		{id: 'pretty-cosmos-wreath', name: 'Pretty Cosmos Wreath', source: _List_Nil},
-		{id: 'pretty-tulip-wreath', name: 'Pretty Tulip Wreath', source: _List_Nil},
-		{id: 'purple-hyacinth-crown', name: 'Purple Hyacinth Crown', source: _List_Nil},
-		{id: 'purple-hyacinth-wreath', name: 'Purple Hyacinth Wreath', source: _List_Nil},
-		{id: 'purple-pansy-crown', name: 'Purple Pansy Crown', source: _List_Nil},
-		{id: 'purple-windflower-crown', name: 'Purple Windflower Crown', source: _List_Nil},
+		{a: 'potted-ivy', c: 'Potted Ivy', b: _List_Nil},
+		{a: 'pretty-cosmos-wreath', c: 'Pretty Cosmos Wreath', b: _List_Nil},
+		{a: 'pretty-tulip-wreath', c: 'Pretty Tulip Wreath', b: _List_Nil},
+		{a: 'purple-hyacinth-crown', c: 'Purple Hyacinth Crown', b: _List_Nil},
+		{a: 'purple-hyacinth-wreath', c: 'Purple Hyacinth Wreath', b: _List_Nil},
+		{a: 'purple-pansy-crown', c: 'Purple Pansy Crown', b: _List_Nil},
+		{a: 'purple-windflower-crown', c: 'Purple Windflower Crown', b: _List_Nil},
 		{
-		id: 'raccoon-figurine',
-		name: 'Raccoon Figurine',
-		source: _List_fromArray(
+		a: 'raccoon-figurine',
+		c: 'Raccoon Figurine',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'recycled-boots', name: 'Recycled Boots', source: _List_Nil},
-		{id: 'recycled-can-thumb-piano', name: 'Recycled-can Thumb Piano', source: _List_Nil},
-		{id: 'red-leaf-pile', name: 'Red-leaf Pile', source: _List_Nil},
-		{id: 'ringtoss', name: 'Ringtoss', source: _List_Nil},
-		{id: 'robot-hero', name: 'Robot Hero', source: _List_Nil},
-		{id: 'rocket', name: 'Rocket', source: _List_Nil},
-		{id: 'rocking-chair', name: 'Rocking Chair', source: _List_Nil},
+		{a: 'recycled-boots', c: 'Recycled Boots', b: _List_Nil},
+		{a: 'recycled-can-thumb-piano', c: 'Recycled-can Thumb Piano', b: _List_Nil},
+		{a: 'red-leaf-pile', c: 'Red-leaf Pile', b: _List_Nil},
+		{a: 'ringtoss', c: 'Ringtoss', b: _List_Nil},
+		{a: 'robot-hero', c: 'Robot Hero', b: _List_Nil},
+		{a: 'rocket', c: 'Rocket', b: _List_Nil},
+		{a: 'rocking-chair', c: 'Rocking Chair', b: _List_Nil},
 		{
-		id: 'rocking-horse',
-		name: 'Rocking Horse',
-		source: _List_fromArray(
+		a: 'rocking-horse',
+		c: 'Rocking Horse',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
-		{id: 'rope-fence', name: 'Rope Fence', source: _List_Nil},
+		{a: 'rope-fence', c: 'Rope Fence', b: _List_Nil},
 		{
-		id: 'rose-bed',
-		name: 'Rose Bed',
-		source: _List_fromArray(
+		a: 'rose-bed',
+		c: 'Rose Bed',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'rose-crown', name: 'Rose Crown', source: _List_Nil},
-		{id: 'rose-wand', name: 'Rose Wand', source: _List_Nil},
-		{id: 'rose-wreath', name: 'Rose Wreath', source: _List_Nil},
+		{a: 'rose-crown', c: 'Rose Crown', b: _List_Nil},
+		{a: 'rose-wand', c: 'Rose Wand', b: _List_Nil},
+		{a: 'rose-wreath', c: 'Rose Wreath', b: _List_Nil},
 		{
-		id: 'rustic-stone-wall',
-		name: 'Rustic-stone Wall',
-		source: _List_fromArray(
+		a: 'rustic-stone-wall',
+		c: 'Rustic-stone Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'sagittarius-arrow', name: 'Sagittarius Arrow', source: _List_Nil},
-		{id: 'sakura-wood-flooring', name: 'Sakura-wood Flooring', source: _List_Nil},
-		{id: 'sakura-wood-wall', name: 'Sakura-wood Wall', source: _List_Nil},
+		{a: 'sagittarius-arrow', c: 'Sagittarius Arrow', b: _List_Nil},
+		{a: 'sakura-wood-flooring', c: 'Sakura-wood Flooring', b: _List_Nil},
+		{a: 'sakura-wood-wall', c: 'Sakura-wood Wall', b: _List_Nil},
 		{
-		id: 'sandy-beach-flooring',
-		name: 'Sandy-beach Flooring',
-		source: _List_fromArray(
+		a: 'sandy-beach-flooring',
+		c: 'Sandy-beach Flooring',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'satellite', name: 'Satellite', source: _List_Nil},
+		{a: 'satellite', c: 'Satellite', b: _List_Nil},
 		{
-		id: 'sauna-heater',
-		name: 'Sauna Heater',
-		source: _List_fromArray(
+		a: 'sauna-heater',
+		c: 'Sauna Heater',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'scarecrow',
-		name: 'Scarecrow',
-		source: _List_fromArray(
+		a: 'scarecrow',
+		c: 'Scarecrow',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'scattered-papers',
-		name: 'Scattered Papers',
-		source: _List_fromArray(
+		a: 'scattered-papers',
+		c: 'Scattered Papers',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'sci-fi-flooring', name: 'Sci-fi Flooring', source: _List_Nil},
-		{id: 'sci-fi-wall', name: 'Sci-fi Wall', source: _List_Nil},
-		{id: 'scorpio-lamp', name: 'Scorpio Lamp', source: _List_Nil},
+		{a: 'sci-fi-flooring', c: 'Sci-fi Flooring', b: _List_Nil},
+		{a: 'sci-fi-wall', c: 'Sci-fi Wall', b: _List_Nil},
+		{a: 'scorpio-lamp', c: 'Scorpio Lamp', b: _List_Nil},
 		{
-		id: 'shell-arch',
-		name: 'Shell Arch',
-		source: _List_fromArray(
+		a: 'shell-arch',
+		c: 'Shell Arch',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'shell-bed',
-		name: 'Shell Bed',
-		source: _List_fromArray(
+		a: 'shell-bed',
+		c: 'Shell Bed',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'shell-fountain',
-		name: 'Shell Fountain',
-		source: _List_fromArray(
+		a: 'shell-fountain',
+		c: 'Shell Fountain',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'shell-lamp',
-		name: 'Shell Lamp',
-		source: _List_fromArray(
+		a: 'shell-lamp',
+		c: 'Shell Lamp',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'shell-partition',
-		name: 'Shell Partition',
-		source: _List_fromArray(
+		a: 'shell-partition',
+		c: 'Shell Partition',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'shell-rug',
-		name: 'Shell Rug',
-		source: _List_fromArray(
+		a: 'shell-rug',
+		c: 'Shell Rug',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'shell-speaker',
-		name: 'Shell Speaker',
-		source: _List_fromArray(
+		a: 'shell-speaker',
+		c: 'Shell Speaker',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'shell-stool',
-		name: 'Shell Stool',
-		source: _List_fromArray(
+		a: 'shell-stool',
+		c: 'Shell Stool',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'shell-table',
-		name: 'Shell Table',
-		source: _List_fromArray(
+		a: 'shell-table',
+		c: 'Shell Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
-		{id: 'shell-wand', name: 'Shell Wand', source: _List_Nil},
-		{id: 'shell-wreath', name: 'Shell Wreath', source: _List_Nil},
-		{id: 'shellfish-pochette', name: 'Shellfish Pochette', source: _List_Nil},
-		{id: 'shovel', name: 'Shovel', source: _List_Nil},
+		{a: 'shell-wand', c: 'Shell Wand', b: _List_Nil},
+		{a: 'shell-wreath', c: 'Shell Wreath', b: _List_Nil},
+		{a: 'shellfish-pochette', c: 'Shellfish Pochette', b: _List_Nil},
+		{a: 'shovel', c: 'Shovel', b: _List_Nil},
 		{
-		id: 'signpost',
-		name: 'Signpost',
-		source: _List_fromArray(
+		a: 'signpost',
+		c: 'Signpost',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
-		{id: 'silo', name: 'Silo', source: _List_Nil},
+		{a: 'silo', c: 'Silo', b: _List_Nil},
 		{
-		id: 'simple-diy-workbench',
-		name: 'Simple DIY Workbench',
-		source: _List_fromArray(
+		a: 'simple-diy-workbench',
+		c: 'Simple DIY Workbench',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'simple-mum-crown', name: 'Simple Mum Crown', source: _List_Nil},
-		{id: 'simple-well', name: 'Simple Well', source: _List_Nil},
-		{id: 'simple-wooden-fence', name: 'Simple Wooden Fence', source: _List_Nil},
-		{id: 'ski-slope-flooring', name: 'Ski-slope Flooring', source: _List_Nil},
-		{id: 'ski-slope-wall', name: 'Ski-slope Wall', source: _List_Nil},
-		{id: 'sky-egg-outfit', name: 'Sky-egg Outfit', source: _List_Nil},
-		{id: 'sky-egg-shell', name: 'Sky-egg Shell', source: _List_Nil},
-		{id: 'sky-egg-shoes', name: 'Sky-egg Shoes', source: _List_Nil},
+		{a: 'simple-mum-crown', c: 'Simple Mum Crown', b: _List_Nil},
+		{a: 'simple-well', c: 'Simple Well', b: _List_Nil},
+		{a: 'simple-wooden-fence', c: 'Simple Wooden Fence', b: _List_Nil},
+		{a: 'ski-slope-flooring', c: 'Ski-slope Flooring', b: _List_Nil},
+		{a: 'ski-slope-wall', c: 'Ski-slope Wall', b: _List_Nil},
+		{a: 'sky-egg-outfit', c: 'Sky-egg Outfit', b: _List_Nil},
+		{a: 'sky-egg-shell', c: 'Sky-egg Shell', b: _List_Nil},
+		{a: 'sky-egg-shoes', c: 'Sky-egg Shoes', b: _List_Nil},
 		{
-		id: 'sleigh',
-		name: 'Sleigh',
-		source: _List_fromArray(
+		a: 'sleigh',
+		c: 'Sleigh',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'slingshot', name: 'Slingshot', source: _List_Nil},
+		{a: 'slingshot', c: 'Slingshot', b: _List_Nil},
 		{
-		id: 'small-cardboard-boxes',
-		name: 'Small Cardboard Boxes',
-		source: _List_fromArray(
+		a: 'small-cardboard-boxes',
+		c: 'Small Cardboard Boxes',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
-		{id: 'snazzy-pansy-wreath', name: 'Snazzy Pansy Wreath', source: _List_Nil},
-		{id: 'snowflake-pochette', name: 'Snowflake Pochette', source: _List_Nil},
-		{id: 'snowflake-wall', name: 'Snowflake Wall', source: _List_Nil},
-		{id: 'snowflake-wreath', name: 'Snowflake Wreath', source: _List_Nil},
-		{id: 'snowperson-head', name: 'Snowperson Head', source: _List_Nil},
-		{id: 'space-shuttle', name: 'Space Shuttle', source: _List_Nil},
-		{id: 'spiky-fence', name: 'Spiky Fence', source: _List_Nil},
+		{a: 'snazzy-pansy-wreath', c: 'Snazzy Pansy Wreath', b: _List_Nil},
+		{a: 'snowflake-pochette', c: 'Snowflake Pochette', b: _List_Nil},
+		{a: 'snowflake-wall', c: 'Snowflake Wall', b: _List_Nil},
+		{a: 'snowflake-wreath', c: 'Snowflake Wreath', b: _List_Nil},
+		{a: 'snowperson-head', c: 'Snowperson Head', b: _List_Nil},
+		{a: 'space-shuttle', c: 'Space Shuttle', b: _List_Nil},
+		{a: 'spiky-fence', c: 'Spiky Fence', b: _List_Nil},
 		{
-		id: 'stack-of-books',
-		name: 'Stack Of Books',
-		source: _List_fromArray(
+		a: 'stack-of-books',
+		c: 'Stack Of Books',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'stacked-magazines',
-		name: 'Stacked Magazines',
-		source: _List_fromArray(
+		a: 'stacked-magazines',
+		c: 'Stacked Magazines',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'stacked-wood-wall',
-		name: 'Stacked-wood Wall',
-		source: _List_fromArray(
+		a: 'stacked-wood-wall',
+		c: 'Stacked-wood Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'stall', name: 'Stall', source: _List_Nil},
+		{a: 'stall', c: 'Stall', b: _List_Nil},
 		{
-		id: 'standard-umbrella-stand',
-		name: 'Standard Umbrella Stand',
-		source: _List_fromArray(
+		a: 'standard-umbrella-stand',
+		c: 'Standard Umbrella Stand',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'star-clock', name: 'Star Clock', source: _List_Nil},
-		{id: 'star-head', name: 'Star Head', source: _List_Nil},
-		{id: 'star-pochette', name: 'Star Pochette', source: _List_Nil},
-		{id: 'star-wand', name: 'Star Wand', source: _List_Nil},
-		{id: 'starry-garland', name: 'Starry Garland', source: _List_Nil},
-		{id: 'starry-sands-flooring', name: 'Starry-sands Flooring', source: _List_Nil},
-		{id: 'starry-sky-wall', name: 'Starry-sky Wall', source: _List_Nil},
-		{id: 'starry-wall', name: 'Starry Wall', source: _List_Nil},
-		{id: 'steamer-basket-set', name: 'Steamer-basket Set', source: _List_Nil},
+		{a: 'star-clock', c: 'Star Clock', b: _List_Nil},
+		{a: 'star-head', c: 'Star Head', b: _List_Nil},
+		{a: 'star-pochette', c: 'Star Pochette', b: _List_Nil},
+		{a: 'star-wand', c: 'Star Wand', b: _List_Nil},
+		{a: 'starry-garland', c: 'Starry Garland', b: _List_Nil},
+		{a: 'starry-wall', c: 'Starry Wall', b: _List_Nil},
+		{a: 'starry-sands-flooring', c: 'Starry-sands Flooring', b: _List_Nil},
+		{a: 'starry-sky-wall', c: 'Starry-sky Wall', b: _List_Nil},
+		{a: 'steamer-basket-set', c: 'Steamer-basket Set', b: _List_Nil},
 		{
-		id: 'steel-flooring',
-		name: 'Steel Flooring',
-		source: _List_fromArray(
+		a: 'steel-flooring',
+		c: 'Steel Flooring',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'steel-frame-wall',
-		name: 'Steel-frame Wall',
-		source: _List_fromArray(
+		a: 'steel-frame-wall',
+		c: 'Steel-frame Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'stone-arch', name: 'Stone Arch', source: _List_Nil},
-		{id: 'stone-axe', name: 'Stone Axe', source: _List_Nil},
-		{id: 'stone-egg-outfit', name: 'Stone-egg Outfit', source: _List_Nil},
-		{id: 'stone-egg-shell', name: 'Stone-egg Shell', source: _List_Nil},
-		{id: 'stone-egg-shoes', name: 'Stone-egg Shoes', source: _List_Nil},
-		{id: 'stone-fence', name: 'Stone Fence', source: _List_Nil},
+		{a: 'stone-arch', c: 'Stone Arch', b: _List_Nil},
+		{a: 'stone-axe', c: 'Stone Axe', b: _List_Nil},
+		{a: 'stone-fence', c: 'Stone Fence', b: _List_Nil},
 		{
-		id: 'stone-lion-dog',
-		name: 'Stone Lion-dog',
-		source: _List_fromArray(
+		a: 'stone-lion-dog',
+		c: 'Stone Lion-dog',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'stone-stool', name: 'Stone Stool', source: _List_Nil},
+		{a: 'stone-stool', c: 'Stone Stool', b: _List_Nil},
 		{
-		id: 'stone-table',
-		name: 'Stone Table',
-		source: _List_fromArray(
+		a: 'stone-table',
+		c: 'Stone Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
-		{id: 'stone-tablet', name: 'Stone Tablet', source: _List_Nil},
+		{a: 'stone-tablet', c: 'Stone Tablet', b: _List_Nil},
 		{
-		id: 'stone-wall',
-		name: 'Stone Wall',
-		source: _List_fromArray(
+		a: 'stone-wall',
+		c: 'Stone Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'straw-fence', name: 'Straw Fence', source: _List_Nil},
+		{a: 'stone-egg-outfit', c: 'Stone-egg Outfit', b: _List_Nil},
+		{a: 'stone-egg-shell', c: 'Stone-egg Shell', b: _List_Nil},
+		{a: 'stone-egg-shoes', c: 'Stone-egg Shoes', b: _List_Nil},
+		{a: 'straw-fence', c: 'Straw Fence', b: _List_Nil},
 		{
-		id: 'straw-umbrella-hat',
-		name: 'Straw Umbrella Hat',
-		source: _List_fromArray(
+		a: 'straw-umbrella-hat',
+		c: 'Straw Umbrella Hat',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'street-piano',
-		name: 'Street Piano',
-		source: _List_fromArray(
+		a: 'street-piano',
+		c: 'Street Piano',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
-		{id: 'succulent-plant', name: 'Succulent Plant', source: _List_Nil},
-		{id: 'swinging-bench', name: 'Swinging Bench', source: _List_Nil},
-		{id: 'tabletop-festive-tree', name: 'Tabletop Festive Tree', source: _List_Nil},
+		{a: 'succulent-plant', c: 'Succulent Plant', b: _List_Nil},
+		{a: 'swinging-bench', c: 'Swinging Bench', b: _List_Nil},
+		{a: 'tabletop-festive-tree', c: 'Tabletop Festive Tree', b: _List_Nil},
 		{
-		id: 'tall-garden-rock',
-		name: 'Tall Garden Rock',
-		source: _List_fromArray(
+		a: 'tall-garden-rock',
+		c: 'Tall Garden Rock',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'tall-lantern',
-		name: 'Tall Lantern',
-		source: _List_fromArray(
+		a: 'tall-lantern',
+		c: 'Tall Lantern',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'taurus-bathtub', name: 'Taurus Bathtub', source: _List_Nil},
+		{a: 'taurus-bathtub', c: 'Taurus Bathtub', b: _List_Nil},
 		{
-		id: 'tea-table',
-		name: 'Tea Table',
-		source: _List_fromArray(
+		a: 'tea-table',
+		c: 'Tea Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'terrarium',
-		name: 'Terrarium',
-		source: _List_fromArray(
+		a: 'terrarium',
+		c: 'Terrarium',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
-		{id: 'three-tiered-snowperson', name: 'Three-tiered Snowperson', source: _List_Nil},
+		{a: 'three-tiered-snowperson', c: 'Three-tiered Snowperson', b: _List_Nil},
 		{
-		id: 'tiki-torch',
-		name: 'Tiki Torch',
-		source: _List_fromArray(
+		a: 'tiki-torch',
+		c: 'Tiki Torch',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'timber-doorplate',
-		name: 'Timber Doorplate',
-		source: _List_fromArray(
+		a: 'timber-doorplate',
+		c: 'Timber Doorplate',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
 		{
-		id: 'tiny-library',
-		name: 'Tiny Library',
-		source: _List_fromArray(
+		a: 'tiny-library',
+		c: 'Tiny Library',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
-		{id: 'tire-stack', name: 'Tire Stack', source: _List_Nil},
-		{id: 'tire-toy', name: 'Tire Toy', source: _List_Nil},
-		{id: 'traditional-balancing-toy', name: 'Traditional Balancing Toy', source: _List_Nil},
+		{a: 'tire-stack', c: 'Tire Stack', b: _List_Nil},
+		{a: 'tire-toy', c: 'Tire Toy', b: _List_Nil},
+		{a: 'traditional-balancing-toy', c: 'Traditional Balancing Toy', b: _List_Nil},
 		{
-		id: 'traditional-straw-coat',
-		name: 'Traditional Straw Coat',
-		source: _List_fromArray(
+		a: 'traditional-straw-coat',
+		c: 'Traditional Straw Coat',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
-		{id: 'trash-bags', name: 'Trash Bags', source: _List_Nil},
-		{id: 'tree-branch-wand', name: 'Tree-branch Wand', source: _List_Nil},
+		{a: 'trash-bags', c: 'Trash Bags', b: _List_Nil},
 		{
-		id: 'tree-branch-wreath',
-		name: 'Tree Branch Wreath',
-		source: _List_fromArray(
+		a: 'tree-branch-wreath',
+		c: 'Tree Branch Wreath',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'tree-standee',
-		name: 'Tree Standee',
-		source: _List_fromArray(
+		a: 'tree-standee',
+		c: 'Tree Standee',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'trees-bounty-arch', name: 'Tree\'s Bounty Arch', source: _List_Nil},
-		{id: 'trees-bounty-big-tree', name: 'Tree\'s Bounty Big Tree', source: _List_Nil},
-		{id: 'trees-bounty-lamp', name: 'Tree\'s Bounty Lamp', source: _List_Nil},
-		{id: 'trees-bounty-little-tree', name: 'Tree\'s Bounty Little Tree', source: _List_Nil},
-		{id: 'trees-bounty-mobile', name: 'Tree\'s Bounty Mobile', source: _List_Nil},
+		{a: 'tree-branch-wand', c: 'Tree-branch Wand', b: _List_Nil},
+		{a: 'trees-bounty-arch', c: 'Tree\'s Bounty Arch', b: _List_Nil},
+		{a: 'trees-bounty-big-tree', c: 'Tree\'s Bounty Big Tree', b: _List_Nil},
+		{a: 'trees-bounty-lamp', c: 'Tree\'s Bounty Lamp', b: _List_Nil},
+		{a: 'trees-bounty-little-tree', c: 'Tree\'s Bounty Little Tree', b: _List_Nil},
+		{a: 'trees-bounty-mobile', c: 'Tree\'s Bounty Mobile', b: _List_Nil},
 		{
-		id: 'trophy-case',
-		name: 'Trophy Case',
-		source: _List_fromArray(
+		a: 'trophy-case',
+		c: 'Trophy Case',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'tropical-vista', name: 'Tropical Vista', source: _List_Nil},
-		{id: 'tulip-crown', name: 'Tulip Crown', source: _List_Nil},
+		{a: 'tropical-vista', c: 'Tropical Vista', b: _List_Nil},
+		{a: 'tulip-crown', c: 'Tulip Crown', b: _List_Nil},
 		{
-		id: 'tulip-surprise-box',
-		name: 'Tulip Surprise Box',
-		source: _List_fromArray(
+		a: 'tulip-surprise-box',
+		c: 'Tulip Surprise Box',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
-		{id: 'tulip-wand', name: 'Tulip Wand', source: _List_Nil},
-		{id: 'tulip-wreath', name: 'Tulip Wreath', source: _List_Nil},
+		{a: 'tulip-wand', c: 'Tulip Wand', b: _List_Nil},
+		{a: 'tulip-wreath', c: 'Tulip Wreath', b: _List_Nil},
 		{
-		id: 'ukulele',
-		name: 'Ukulele',
-		source: _List_fromArray(
+		a: 'ukulele',
+		c: 'Ukulele',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'underwater-flooring', name: 'Underwater Flooring', source: _List_Nil},
-		{id: 'underwater-wall', name: 'Underwater Wall', source: _List_Nil},
+		{a: 'underwater-flooring', c: 'Underwater Flooring', b: _List_Nil},
+		{a: 'underwater-wall', c: 'Underwater Wall', b: _List_Nil},
 		{
-		id: 'unglazed-dish-set',
-		name: 'Unglazed Dish Set',
-		source: _List_fromArray(
+		a: 'unglazed-dish-set',
+		c: 'Unglazed Dish Set',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'vaulting-pole', name: 'Vaulting Pole', source: _List_Nil},
-		{id: 'vertical-board-fence', name: 'Vertical-board Fence', source: _List_Nil},
-		{id: 'virgo-harp', name: 'Virgo Harp', source: _List_Nil},
-		{id: 'wand', name: 'Wand', source: _List_Nil},
-		{id: 'water-egg-outfit', name: 'Water-egg Outfit', source: _List_Nil},
-		{id: 'water-egg-shell', name: 'Water-egg Shell', source: _List_Nil},
-		{id: 'water-egg-shoes', name: 'Water-egg Shoes', source: _List_Nil},
-		{id: 'water-flooring', name: 'Water Flooring', source: _List_Nil},
+		{a: 'vaulting-pole', c: 'Vaulting Pole', b: _List_Nil},
+		{a: 'vertical-board-fence', c: 'Vertical-board Fence', b: _List_Nil},
+		{a: 'virgo-harp', c: 'Virgo Harp', b: _List_Nil},
+		{a: 'wand', c: 'Wand', b: _List_Nil},
+		{a: 'water-flooring', c: 'Water Flooring', b: _List_Nil},
 		{
-		id: 'water-pump',
-		name: 'Water Pump',
-		source: _List_fromArray(
+		a: 'water-pump',
+		c: 'Water Pump',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
-		{id: 'watering-can', name: 'Watering Can', source: _List_Nil},
-		{id: 'wave-breaker', name: 'Wave Breaker', source: _List_Nil},
+		{a: 'water-egg-outfit', c: 'Water-egg Outfit', b: _List_Nil},
+		{a: 'water-egg-shell', c: 'Water-egg Shell', b: _List_Nil},
+		{a: 'water-egg-shoes', c: 'Water-egg Shoes', b: _List_Nil},
+		{a: 'watering-can', c: 'Watering Can', b: _List_Nil},
+		{a: 'wave-breaker', c: 'Wave Breaker', b: _List_Nil},
 		{
-		id: 'western-style-stone',
-		name: 'Western-style Stone',
-		source: _List_fromArray(
+		a: 'western-style-stone',
+		c: 'Western-style Stone',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'wild-log-bench',
-		name: 'Wild Log Bench',
-		source: _List_fromArray(
+		a: 'wild-log-bench',
+		c: 'Wild Log Bench',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Jock)
+				$author$project$Main$Villager(1)
 			])
 	},
 		{
-		id: 'wild-wood-wall',
-		name: 'Wild-wood Wall',
-		source: _List_fromArray(
+		a: 'wild-wood-wall',
+		c: 'Wild-wood Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(0)
 			])
 	},
-		{id: 'windflower-crown', name: 'Windflower Crown', source: _List_Nil},
+		{a: 'windflower-crown', c: 'Windflower Crown', b: _List_Nil},
 		{
-		id: 'windflower-fan',
-		name: 'Windflower Fan',
-		source: _List_fromArray(
+		a: 'windflower-fan',
+		c: 'Windflower Fan',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
-		{id: 'windflower-wand', name: 'Windflower Wand', source: _List_Nil},
-		{id: 'windflower-wreath', name: 'Windflower Wreath', source: _List_Nil},
-		{id: 'wobbling-zipper-toy', name: 'Wobbling Zipper Toy', source: _List_Nil},
-		{id: 'wood-egg-outfit', name: 'Wood-egg Outfit', source: _List_Nil},
-		{id: 'wood-egg-shell', name: 'Wood-egg Shell', source: _List_Nil},
-		{id: 'wood-egg-shoes', name: 'Wood-egg Shoes', source: _List_Nil},
+		{a: 'windflower-wand', c: 'Windflower Wand', b: _List_Nil},
+		{a: 'windflower-wreath', c: 'Windflower Wreath', b: _List_Nil},
+		{a: 'wobbling-zipper-toy', c: 'Wobbling Zipper Toy', b: _List_Nil},
+		{a: 'wood-egg-outfit', c: 'Wood-egg Outfit', b: _List_Nil},
+		{a: 'wood-egg-shell', c: 'Wood-egg Shell', b: _List_Nil},
+		{a: 'wood-egg-shoes', c: 'Wood-egg Shoes', b: _List_Nil},
 		{
-		id: 'wooden-block-bed',
-		name: 'Wooden-block Bed',
-		source: _List_fromArray(
+		a: 'wooden-bookshelf',
+		c: 'Wooden Bookshelf',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'wooden-block-bench',
-		name: 'Wooden-block Bench',
-		source: _List_fromArray(
+		a: 'wooden-bucket',
+		c: 'Wooden Bucket',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'wooden-block-bookshelf', name: 'Wooden-block Bookshelf', source: _List_Nil},
-		{id: 'wooden-block-chair', name: 'Wooden-block Chair', source: _List_Nil},
 		{
-		id: 'wooden-block-chest',
-		name: 'Wooden-block Chest',
-		source: _List_fromArray(
+		a: 'wooden-chair',
+		c: 'Wooden Chair',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(7)
 			])
 	},
-		{id: 'wooden-block-stereo', name: 'Wooden-block Stereo', source: _List_Nil},
 		{
-		id: 'wooden-block-stool',
-		name: 'Wooden-block Stool',
-		source: _List_fromArray(
+		a: 'wooden-chest',
+		c: 'Wooden Chest',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'wooden-block-table',
-		name: 'Wooden-block Table',
-		source: _List_fromArray(
+		a: 'wooden-double-bed',
+		c: 'Wooden Double Bed',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(6)
 			])
 	},
-		{id: 'wooden-block-toy', name: 'Wooden-block Toy', source: _List_Nil},
 		{
-		id: 'wooden-block-wall-clock',
-		name: 'Wooden-block Wall Clock',
-		source: _List_fromArray(
+		a: 'wooden-end-table',
+		c: 'Wooden End Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(7)
 			])
 	},
+		{a: 'wooden-fish', c: 'Wooden Fish', b: _List_Nil},
 		{
-		id: 'wooden-bookshelf',
-		name: 'Wooden Bookshelf',
-		source: _List_fromArray(
+		a: 'wooden-full-length-mirror',
+		c: 'Wooden Full-length Mirror',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'wooden-bucket',
-		name: 'Wooden Bucket',
-		source: _List_fromArray(
+		a: 'wooden-low-table',
+		c: 'Wooden Low Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'wooden-chair',
-		name: 'Wooden Chair',
-		source: _List_fromArray(
+		a: 'wooden-mini-table',
+		c: 'Wooden Mini Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'wooden-chest',
-		name: 'Wooden Chest',
-		source: _List_fromArray(
+		a: 'wooden-simple-bed',
+		c: 'Wooden Simple Bed',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	},
 		{
-		id: 'wooden-double-bed',
-		name: 'Wooden Double Bed',
-		source: _List_fromArray(
+		a: 'wooden-stool',
+		c: 'Wooden Stool',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'wooden-end-table',
-		name: 'Wooden End Table',
-		source: _List_fromArray(
+		a: 'wooden-table',
+		c: 'Wooden Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Snooty)
+				$author$project$Main$Villager(5)
 			])
 	},
-		{id: 'wooden-fish', name: 'Wooden Fish', source: _List_Nil},
 		{
-		id: 'wooden-full-length-mirror',
-		name: 'Wooden Full-length Mirror',
-		source: _List_fromArray(
+		a: 'wooden-table-mirror',
+		c: 'Wooden Table Mirror',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'wooden-knot-wall',
-		name: 'Wooden-knot Wall',
-		source: _List_fromArray(
+		a: 'wooden-toolbox',
+		c: 'Wooden Toolbox',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(3)
 			])
 	},
+		{a: 'wooden-wardrobe', c: 'Wooden Wardrobe', b: _List_Nil},
 		{
-		id: 'wooden-low-table',
-		name: 'Wooden Low Table',
-		source: _List_fromArray(
+		a: 'wooden-waste-bin',
+		c: 'Wooden Waste Bin',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Smug)
+				$author$project$Main$Villager(5)
 			])
 	},
 		{
-		id: 'wooden-mini-table',
-		name: 'Wooden Mini Table',
-		source: _List_fromArray(
+		a: 'wooden-block-bed',
+		c: 'Wooden-block Bed',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(3)
 			])
 	},
 		{
-		id: 'wooden-mosaic-wall',
-		name: 'Wooden-mosaic Wall',
-		source: _List_fromArray(
+		a: 'wooden-block-bench',
+		c: 'Wooden-block Bench',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(5)
 			])
 	},
+		{a: 'wooden-block-bookshelf', c: 'Wooden-block Bookshelf', b: _List_Nil},
+		{a: 'wooden-block-chair', c: 'Wooden-block Chair', b: _List_Nil},
 		{
-		id: 'wooden-plank-sign',
-		name: 'Wooden-plank Sign',
-		source: _List_fromArray(
+		a: 'wooden-block-chest',
+		c: 'Wooden-block Chest',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Cranky)
+				$author$project$Main$Villager(3)
 			])
 	},
+		{a: 'wooden-block-stereo', c: 'Wooden-block Stereo', b: _List_Nil},
 		{
-		id: 'wooden-simple-bed',
-		name: 'Wooden Simple Bed',
-		source: _List_fromArray(
+		a: 'wooden-block-stool',
+		c: 'Wooden-block Stool',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'wooden-stool',
-		name: 'Wooden Stool',
-		source: _List_fromArray(
+		a: 'wooden-block-table',
+		c: 'Wooden-block Table',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Peppy)
+				$author$project$Main$Villager(5)
 			])
 	},
+		{a: 'wooden-block-toy', c: 'Wooden-block Toy', b: _List_Nil},
 		{
-		id: 'wooden-table-mirror',
-		name: 'Wooden Table Mirror',
-		source: _List_fromArray(
+		a: 'wooden-block-wall-clock',
+		c: 'Wooden-block Wall Clock',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(4)
 			])
 	},
 		{
-		id: 'wooden-table',
-		name: 'Wooden Table',
-		source: _List_fromArray(
+		a: 'wooden-knot-wall',
+		c: 'Wooden-knot Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(6)
 			])
 	},
 		{
-		id: 'wooden-toolbox',
-		name: 'Wooden Toolbox',
-		source: _List_fromArray(
+		a: 'wooden-mosaic-wall',
+		c: 'Wooden-mosaic Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
-		{id: 'wooden-wardrobe', name: 'Wooden Wardrobe', source: _List_Nil},
 		{
-		id: 'wooden-waste-bin',
-		name: 'Wooden Waste Bin',
-		source: _List_fromArray(
+		a: 'wooden-plank-sign',
+		c: 'Wooden-plank Sign',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Sisterly)
+				$author$project$Main$Villager(0)
 			])
 	},
 		{
-		id: 'woodland-wall',
-		name: 'Woodland Wall',
-		source: _List_fromArray(
+		a: 'woodland-wall',
+		c: 'Woodland Wall',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Normal)
+				$author$project$Main$Villager(3)
 			])
 	},
-		{id: 'yellow-leaf-pile', name: 'Yellow-leaf Pile', source: _List_Nil},
-		{id: 'zen-fence', name: 'Zen Fence', source: _List_Nil},
+		{a: 'yellow-leaf-pile', c: 'Yellow-leaf Pile', b: _List_Nil},
+		{a: 'zen-fence', c: 'Zen Fence', b: _List_Nil},
 		{
-		id: 'zen-style-stone',
-		name: 'Zen-style Stone',
-		source: _List_fromArray(
+		a: 'zen-style-stone',
+		c: 'Zen-style Stone',
+		b: _List_fromArray(
 			[
-				$author$project$Main$Villager($author$project$Main$Lazy)
+				$author$project$Main$Villager(2)
 			])
 	}
 	]);
@@ -7657,27 +7655,25 @@ var $elm$json$Json$Decode$decodeValue = _Json_run;
 var $elm$json$Json$Decode$list = _Json_decodeList;
 var $elm$json$Json$Decode$string = _Json_decodeString;
 var $author$project$Main$decoder = $elm$json$Json$Decode$list($elm$json$Json$Decode$string);
-var $elm$core$Set$Set_elm_builtin = function (a) {
-	return {$: 'Set_elm_builtin', a: a};
-};
-var $elm$core$Dict$RBEmpty_elm_builtin = {$: 'RBEmpty_elm_builtin'};
+var $elm$core$Set$Set_elm_builtin = $elm$core$Basics$identity;
+var $elm$core$Dict$RBEmpty_elm_builtin = {$: -2};
 var $elm$core$Dict$empty = $elm$core$Dict$RBEmpty_elm_builtin;
-var $elm$core$Set$empty = $elm$core$Set$Set_elm_builtin($elm$core$Dict$empty);
-var $elm$core$Dict$Black = {$: 'Black'};
+var $elm$core$Set$empty = $elm$core$Dict$empty;
+var $elm$core$Dict$Black = 1;
 var $elm$core$Dict$RBNode_elm_builtin = F5(
 	function (a, b, c, d, e) {
-		return {$: 'RBNode_elm_builtin', a: a, b: b, c: c, d: d, e: e};
+		return {$: -1, a: a, b: b, c: c, d: d, e: e};
 	});
-var $elm$core$Dict$Red = {$: 'Red'};
+var $elm$core$Dict$Red = 0;
 var $elm$core$Dict$balance = F5(
 	function (color, key, value, left, right) {
-		if ((right.$ === 'RBNode_elm_builtin') && (right.a.$ === 'Red')) {
+		if ((right.$ === -1) && (!right.a)) {
 			var _v1 = right.a;
 			var rK = right.b;
 			var rV = right.c;
 			var rLeft = right.d;
 			var rRight = right.e;
-			if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) {
+			if ((left.$ === -1) && (!left.a)) {
 				var _v3 = left.a;
 				var lK = left.b;
 				var lV = left.c;
@@ -7685,22 +7681,22 @@ var $elm$core$Dict$balance = F5(
 				var lRight = left.e;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Red,
+					0,
 					key,
 					value,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, rK, rV, rLeft, rRight));
 			} else {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
 					color,
 					rK,
 					rV,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, left, rLeft),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, left, rLeft),
 					rRight);
 			}
 		} else {
-			if ((((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) && (left.d.$ === 'RBNode_elm_builtin')) && (left.d.a.$ === 'Red')) {
+			if ((((left.$ === -1) && (!left.a)) && (left.d.$ === -1)) && (!left.d.a)) {
 				var _v5 = left.a;
 				var lK = left.b;
 				var lV = left.c;
@@ -7713,11 +7709,11 @@ var $elm$core$Dict$balance = F5(
 				var lRight = left.e;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Red,
+					0,
 					lK,
 					lV,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, llK, llV, llLeft, llRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, key, value, lRight, right));
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, llK, llV, llLeft, llRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 1, key, value, lRight, right));
 			} else {
 				return A5($elm$core$Dict$RBNode_elm_builtin, color, key, value, left, right);
 			}
@@ -7726,8 +7722,8 @@ var $elm$core$Dict$balance = F5(
 var $elm$core$Basics$compare = _Utils_compare;
 var $elm$core$Dict$insertHelp = F3(
 	function (key, value, dict) {
-		if (dict.$ === 'RBEmpty_elm_builtin') {
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
+		if (dict.$ === -2) {
+			return A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, $elm$core$Dict$RBEmpty_elm_builtin, $elm$core$Dict$RBEmpty_elm_builtin);
 		} else {
 			var nColor = dict.a;
 			var nKey = dict.b;
@@ -7735,8 +7731,8 @@ var $elm$core$Dict$insertHelp = F3(
 			var nLeft = dict.d;
 			var nRight = dict.e;
 			var _v1 = A2($elm$core$Basics$compare, key, nKey);
-			switch (_v1.$) {
-				case 'LT':
+			switch (_v1) {
+				case 0:
 					return A5(
 						$elm$core$Dict$balance,
 						nColor,
@@ -7744,7 +7740,7 @@ var $elm$core$Dict$insertHelp = F3(
 						nValue,
 						A3($elm$core$Dict$insertHelp, key, value, nLeft),
 						nRight);
-				case 'EQ':
+				case 1:
 					return A5($elm$core$Dict$RBNode_elm_builtin, nColor, nKey, value, nLeft, nRight);
 				default:
 					return A5(
@@ -7760,13 +7756,13 @@ var $elm$core$Dict$insertHelp = F3(
 var $elm$core$Dict$insert = F3(
 	function (key, value, dict) {
 		var _v0 = A3($elm$core$Dict$insertHelp, key, value, dict);
-		if ((_v0.$ === 'RBNode_elm_builtin') && (_v0.a.$ === 'Red')) {
+		if ((_v0.$ === -1) && (!_v0.a)) {
 			var _v1 = _v0.a;
 			var k = _v0.b;
 			var v = _v0.c;
 			var l = _v0.d;
 			var r = _v0.e;
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, k, v, l, r);
+			return A5($elm$core$Dict$RBNode_elm_builtin, 1, k, v, l, r);
 		} else {
 			var x = _v0;
 			return x;
@@ -7774,9 +7770,8 @@ var $elm$core$Dict$insert = F3(
 	});
 var $elm$core$Set$insert = F2(
 	function (key, _v0) {
-		var dict = _v0.a;
-		return $elm$core$Set$Set_elm_builtin(
-			A3($elm$core$Dict$insert, key, _Utils_Tuple0, dict));
+		var dict = _v0;
+		return A3($elm$core$Dict$insert, key, 0, dict);
 	});
 var $elm$core$Set$fromList = function (list) {
 	return A3($elm$core$List$foldl, $elm$core$Set$insert, $elm$core$Set$empty, list);
@@ -7786,7 +7781,7 @@ var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = function (flags) {
 	var obtainedStorage = function () {
 		var _v0 = A2($elm$json$Json$Decode$decodeValue, $author$project$Main$decoder, flags);
-		if (_v0.$ === 'Ok') {
+		if (!_v0.$) {
 			var s = _v0.a;
 			return $elm$core$Set$fromList(s);
 		} else {
@@ -7794,7 +7789,7 @@ var $author$project$Main$init = function (flags) {
 		}
 	}();
 	return _Utils_Tuple2(
-		{availableRecipes: $author$project$Main$availableRecipes, obtained: obtainedStorage},
+		{I: $author$project$Main$availableRecipes, s: obtainedStorage},
 		$elm$core$Platform$Cmd$none);
 };
 var $elm$core$Platform$Sub$batch = _Platform_batch;
@@ -7803,7 +7798,7 @@ var $elm$core$Dict$foldl = F3(
 	function (func, acc, dict) {
 		foldl:
 		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
+			if (dict.$ === -2) {
 				return acc;
 			} else {
 				var key = dict.b;
@@ -7826,7 +7821,7 @@ var $elm$core$Dict$foldl = F3(
 	});
 var $elm$core$Set$foldl = F3(
 	function (func, initialState, _v0) {
-		var dict = _v0.a;
+		var dict = _v0;
 		return A3(
 			$elm$core$Dict$foldl,
 			F3(
@@ -7842,7 +7837,7 @@ var $elm$json$Json$Encode$set = F2(
 			A3(
 				$elm$core$Set$foldl,
 				_Json_addEntry(func),
-				_Json_emptyArray(_Utils_Tuple0),
+				_Json_emptyArray(0),
 				entries));
 	});
 var $elm$json$Json$Encode$string = _Json_wrap;
@@ -7852,13 +7847,13 @@ var $author$project$Main$encode = function (model) {
 		function (o) {
 			return $elm$json$Json$Encode$string(o);
 		},
-		model.obtained);
+		model.s);
 };
 var $author$project$Main$setStorage = _Platform_outgoingPort('setStorage', $elm$core$Basics$identity);
 var $elm$core$Dict$getMin = function (dict) {
 	getMin:
 	while (true) {
-		if ((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) {
+		if ((dict.$ === -1) && (dict.d.$ === -1)) {
 			var left = dict.d;
 			var $temp$dict = left;
 			dict = $temp$dict;
@@ -7869,8 +7864,8 @@ var $elm$core$Dict$getMin = function (dict) {
 	}
 };
 var $elm$core$Dict$moveRedLeft = function (dict) {
-	if (((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) && (dict.e.$ === 'RBNode_elm_builtin')) {
-		if ((dict.e.d.$ === 'RBNode_elm_builtin') && (dict.e.d.a.$ === 'Red')) {
+	if (((dict.$ === -1) && (dict.d.$ === -1)) && (dict.e.$ === -1)) {
+		if ((dict.e.d.$ === -1) && (!dict.e.d.a)) {
 			var clr = dict.a;
 			var k = dict.b;
 			var v = dict.c;
@@ -7893,17 +7888,17 @@ var $elm$core$Dict$moveRedLeft = function (dict) {
 			var rRight = _v2.e;
 			return A5(
 				$elm$core$Dict$RBNode_elm_builtin,
-				$elm$core$Dict$Red,
+				0,
 				rlK,
 				rlV,
 				A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
+					1,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
 					rlL),
-				A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, rK, rV, rlR, rRight));
+				A5($elm$core$Dict$RBNode_elm_builtin, 1, rK, rV, rlR, rRight));
 		} else {
 			var clr = dict.a;
 			var k = dict.b;
@@ -7920,22 +7915,22 @@ var $elm$core$Dict$moveRedLeft = function (dict) {
 			var rV = _v5.c;
 			var rLeft = _v5.d;
 			var rRight = _v5.e;
-			if (clr.$ === 'Black') {
+			if (clr === 1) {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
+					1,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
 			} else {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
+					1,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
 			}
 		}
 	} else {
@@ -7943,8 +7938,8 @@ var $elm$core$Dict$moveRedLeft = function (dict) {
 	}
 };
 var $elm$core$Dict$moveRedRight = function (dict) {
-	if (((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) && (dict.e.$ === 'RBNode_elm_builtin')) {
-		if ((dict.d.d.$ === 'RBNode_elm_builtin') && (dict.d.d.a.$ === 'Red')) {
+	if (((dict.$ === -1) && (dict.d.$ === -1)) && (dict.e.$ === -1)) {
+		if ((dict.d.d.$ === -1) && (!dict.d.d.a)) {
 			var clr = dict.a;
 			var k = dict.b;
 			var v = dict.c;
@@ -7967,17 +7962,17 @@ var $elm$core$Dict$moveRedRight = function (dict) {
 			var rRight = _v4.e;
 			return A5(
 				$elm$core$Dict$RBNode_elm_builtin,
-				$elm$core$Dict$Red,
+				0,
 				lK,
 				lV,
-				A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, llK, llV, llLeft, llRight),
+				A5($elm$core$Dict$RBNode_elm_builtin, 1, llK, llV, llLeft, llRight),
 				A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
+					1,
 					k,
 					v,
 					lRight,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight)));
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight)));
 		} else {
 			var clr = dict.a;
 			var k = dict.b;
@@ -7994,22 +7989,22 @@ var $elm$core$Dict$moveRedRight = function (dict) {
 			var rV = _v6.c;
 			var rLeft = _v6.d;
 			var rRight = _v6.e;
-			if (clr.$ === 'Black') {
+			if (clr === 1) {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
+					1,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
 			} else {
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
-					$elm$core$Dict$Black,
+					1,
 					k,
 					v,
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, lK, lV, lLeft, lRight),
-					A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, rK, rV, rLeft, rRight));
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, lK, lV, lLeft, lRight),
+					A5($elm$core$Dict$RBNode_elm_builtin, 0, rK, rV, rLeft, rRight));
 			}
 		}
 	} else {
@@ -8018,7 +8013,7 @@ var $elm$core$Dict$moveRedRight = function (dict) {
 };
 var $elm$core$Dict$removeHelpPrepEQGT = F7(
 	function (targetKey, dict, color, key, value, left, right) {
-		if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Red')) {
+		if ((left.$ === -1) && (!left.a)) {
 			var _v1 = left.a;
 			var lK = left.b;
 			var lV = left.c;
@@ -8030,13 +8025,13 @@ var $elm$core$Dict$removeHelpPrepEQGT = F7(
 				lK,
 				lV,
 				lLeft,
-				A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Red, key, value, lRight, right));
+				A5($elm$core$Dict$RBNode_elm_builtin, 0, key, value, lRight, right));
 		} else {
 			_v2$2:
 			while (true) {
-				if ((right.$ === 'RBNode_elm_builtin') && (right.a.$ === 'Black')) {
-					if (right.d.$ === 'RBNode_elm_builtin') {
-						if (right.d.a.$ === 'Black') {
+				if ((right.$ === -1) && (right.a === 1)) {
+					if (right.d.$ === -1) {
+						if (right.d.a === 1) {
 							var _v3 = right.a;
 							var _v4 = right.d;
 							var _v5 = _v4.a;
@@ -8057,7 +8052,7 @@ var $elm$core$Dict$removeHelpPrepEQGT = F7(
 		}
 	});
 var $elm$core$Dict$removeMin = function (dict) {
-	if ((dict.$ === 'RBNode_elm_builtin') && (dict.d.$ === 'RBNode_elm_builtin')) {
+	if ((dict.$ === -1) && (dict.d.$ === -1)) {
 		var color = dict.a;
 		var key = dict.b;
 		var value = dict.c;
@@ -8065,8 +8060,8 @@ var $elm$core$Dict$removeMin = function (dict) {
 		var lColor = left.a;
 		var lLeft = left.d;
 		var right = dict.e;
-		if (lColor.$ === 'Black') {
-			if ((lLeft.$ === 'RBNode_elm_builtin') && (lLeft.a.$ === 'Red')) {
+		if (lColor === 1) {
+			if ((lLeft.$ === -1) && (!lLeft.a)) {
 				var _v3 = lLeft.a;
 				return A5(
 					$elm$core$Dict$RBNode_elm_builtin,
@@ -8077,7 +8072,7 @@ var $elm$core$Dict$removeMin = function (dict) {
 					right);
 			} else {
 				var _v4 = $elm$core$Dict$moveRedLeft(dict);
-				if (_v4.$ === 'RBNode_elm_builtin') {
+				if (_v4.$ === -1) {
 					var nColor = _v4.a;
 					var nKey = _v4.b;
 					var nValue = _v4.c;
@@ -8109,7 +8104,7 @@ var $elm$core$Dict$removeMin = function (dict) {
 };
 var $elm$core$Dict$removeHelp = F2(
 	function (targetKey, dict) {
-		if (dict.$ === 'RBEmpty_elm_builtin') {
+		if (dict.$ === -2) {
 			return $elm$core$Dict$RBEmpty_elm_builtin;
 		} else {
 			var color = dict.a;
@@ -8118,10 +8113,10 @@ var $elm$core$Dict$removeHelp = F2(
 			var left = dict.d;
 			var right = dict.e;
 			if (_Utils_cmp(targetKey, key) < 0) {
-				if ((left.$ === 'RBNode_elm_builtin') && (left.a.$ === 'Black')) {
+				if ((left.$ === -1) && (left.a === 1)) {
 					var _v4 = left.a;
 					var lLeft = left.d;
-					if ((lLeft.$ === 'RBNode_elm_builtin') && (lLeft.a.$ === 'Red')) {
+					if ((lLeft.$ === -1) && (!lLeft.a)) {
 						var _v6 = lLeft.a;
 						return A5(
 							$elm$core$Dict$RBNode_elm_builtin,
@@ -8132,7 +8127,7 @@ var $elm$core$Dict$removeHelp = F2(
 							right);
 					} else {
 						var _v7 = $elm$core$Dict$moveRedLeft(dict);
-						if (_v7.$ === 'RBNode_elm_builtin') {
+						if (_v7.$ === -1) {
 							var nColor = _v7.a;
 							var nKey = _v7.b;
 							var nValue = _v7.c;
@@ -8168,7 +8163,7 @@ var $elm$core$Dict$removeHelp = F2(
 	});
 var $elm$core$Dict$removeHelpEQGT = F2(
 	function (targetKey, dict) {
-		if (dict.$ === 'RBNode_elm_builtin') {
+		if (dict.$ === -1) {
 			var color = dict.a;
 			var key = dict.b;
 			var value = dict.c;
@@ -8176,7 +8171,7 @@ var $elm$core$Dict$removeHelpEQGT = F2(
 			var right = dict.e;
 			if (_Utils_eq(targetKey, key)) {
 				var _v1 = $elm$core$Dict$getMin(right);
-				if (_v1.$ === 'RBNode_elm_builtin') {
+				if (_v1.$ === -1) {
 					var minKey = _v1.b;
 					var minValue = _v1.c;
 					return A5(
@@ -8205,13 +8200,13 @@ var $elm$core$Dict$removeHelpEQGT = F2(
 var $elm$core$Dict$remove = F2(
 	function (key, dict) {
 		var _v0 = A2($elm$core$Dict$removeHelp, key, dict);
-		if ((_v0.$ === 'RBNode_elm_builtin') && (_v0.a.$ === 'Red')) {
+		if ((_v0.$ === -1) && (!_v0.a)) {
 			var _v1 = _v0.a;
 			var k = _v0.b;
 			var v = _v0.c;
 			var l = _v0.d;
 			var r = _v0.e;
-			return A5($elm$core$Dict$RBNode_elm_builtin, $elm$core$Dict$Black, k, v, l, r);
+			return A5($elm$core$Dict$RBNode_elm_builtin, 1, k, v, l, r);
 		} else {
 			var x = _v0;
 			return x;
@@ -8219,19 +8214,18 @@ var $elm$core$Dict$remove = F2(
 	});
 var $elm$core$Set$remove = F2(
 	function (key, _v0) {
-		var dict = _v0.a;
-		return $elm$core$Set$Set_elm_builtin(
-			A2($elm$core$Dict$remove, key, dict));
+		var dict = _v0;
+		return A2($elm$core$Dict$remove, key, dict);
 	});
 var $author$project$Main$update = F2(
 	function (msg, model) {
-		if (msg.$ === 'Obtain') {
+		if (!msg.$) {
 			var recipe = msg.a;
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
 					{
-						obtained: A2($elm$core$Set$insert, recipe.id, model.obtained)
+						s: A2($elm$core$Set$insert, recipe.a, model.s)
 					}),
 				$elm$core$Platform$Cmd$none);
 		} else {
@@ -8240,7 +8234,7 @@ var $author$project$Main$update = F2(
 				_Utils_update(
 					model,
 					{
-						obtained: A2($elm$core$Set$remove, recipe.id, model.obtained)
+						s: A2($elm$core$Set$remove, recipe.a, model.s)
 					}),
 				$elm$core$Platform$Cmd$none);
 		}
@@ -8261,29 +8255,13 @@ var $author$project$Main$updateWithStorage = F2(
 					])));
 	});
 var $elm$json$Json$Decode$value = _Json_decodeValue;
-var $author$project$Main$Obtain = function (a) {
-	return {$: 'Obtain', a: a};
-};
-var $author$project$Main$Unobtain = function (a) {
-	return {$: 'Unobtain', a: a};
-};
-var $elm$json$Json$Encode$bool = _Json_wrap;
-var $elm$html$Html$Attributes$boolProperty = F2(
-	function (key, bool) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			$elm$json$Json$Encode$bool(bool));
-	});
-var $elm$html$Html$Attributes$checked = $elm$html$Html$Attributes$boolProperty('checked');
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
-var $elm$html$Html$input = _VirtualDom_node('input');
 var $elm$core$Dict$get = F2(
 	function (targetKey, dict) {
 		get:
 		while (true) {
-			if (dict.$ === 'RBEmpty_elm_builtin') {
+			if (dict.$ === -2) {
 				return $elm$core$Maybe$Nothing;
 			} else {
 				var key = dict.b;
@@ -8291,14 +8269,14 @@ var $elm$core$Dict$get = F2(
 				var left = dict.d;
 				var right = dict.e;
 				var _v1 = A2($elm$core$Basics$compare, targetKey, key);
-				switch (_v1.$) {
-					case 'LT':
+				switch (_v1) {
+					case 0:
 						var $temp$targetKey = targetKey,
 							$temp$dict = left;
 						targetKey = $temp$targetKey;
 						dict = $temp$dict;
 						continue get;
-					case 'EQ':
+					case 1:
 						return $elm$core$Maybe$Just(value);
 					default:
 						var $temp$targetKey = targetKey,
@@ -8313,7 +8291,7 @@ var $elm$core$Dict$get = F2(
 var $elm$core$Dict$member = F2(
 	function (key, dict) {
 		var _v0 = A2($elm$core$Dict$get, key, dict);
-		if (_v0.$ === 'Just') {
+		if (!_v0.$) {
 			return true;
 		} else {
 			return false;
@@ -8321,11 +8299,51 @@ var $elm$core$Dict$member = F2(
 	});
 var $elm$core$Set$member = F2(
 	function (key, _v0) {
-		var dict = _v0.a;
+		var dict = _v0;
 		return A2($elm$core$Dict$member, key, dict);
 	});
+var $elm$core$List$partition = F2(
+	function (pred, list) {
+		var step = F2(
+			function (x, _v0) {
+				var trues = _v0.a;
+				var falses = _v0.b;
+				return pred(x) ? _Utils_Tuple2(
+					A2($elm$core$List$cons, x, trues),
+					falses) : _Utils_Tuple2(
+					trues,
+					A2($elm$core$List$cons, x, falses));
+			});
+		return A3(
+			$elm$core$List$foldr,
+			step,
+			_Utils_Tuple2(_List_Nil, _List_Nil),
+			list);
+	});
+var $elm$virtual_dom$VirtualDom$keyedNode = function (tag) {
+	return _VirtualDom_keyedNode(
+		_VirtualDom_noScript(tag));
+};
+var $elm$html$Html$Keyed$node = $elm$virtual_dom$VirtualDom$keyedNode;
+var $author$project$Main$Obtain = function (a) {
+	return {$: 0, a: a};
+};
+var $author$project$Main$Unobtain = function (a) {
+	return {$: 1, a: a};
+};
+var $elm$json$Json$Encode$bool = _Json_wrap;
+var $elm$html$Html$Attributes$boolProperty = F2(
+	function (key, bool) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$bool(bool));
+	});
+var $elm$html$Html$Attributes$checked = $elm$html$Html$Attributes$boolProperty('checked');
+var $elm$html$Html$input = _VirtualDom_node('input');
+var $elm$html$Html$label = _VirtualDom_node('label');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 'Normal', a: a};
+	return {$: 0, a: a};
 };
 var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
 var $elm$html$Html$Events$on = F2(
@@ -8352,39 +8370,22 @@ var $elm$html$Html$Events$onCheck = function (tagger) {
 		'change',
 		A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetChecked));
 };
-var $elm$core$List$partition = F2(
-	function (pred, list) {
-		var step = F2(
-			function (x, _v0) {
-				var trues = _v0.a;
-				var falses = _v0.b;
-				return pred(x) ? _Utils_Tuple2(
-					A2($elm$core$List$cons, x, trues),
-					falses) : _Utils_Tuple2(
-					trues,
-					A2($elm$core$List$cons, x, falses));
-			});
-		return A3(
-			$elm$core$List$foldr,
-			step,
-			_Utils_Tuple2(_List_Nil, _List_Nil),
-			list);
-	});
+var $elm$html$Html$p = _VirtualDom_node('p');
 var $author$project$Main$showPersonality = function (p) {
-	switch (p.$) {
-		case 'Cranky':
+	switch (p) {
+		case 0:
 			return 'Cranky';
-		case 'Jock':
+		case 1:
 			return 'Jock';
-		case 'Lazy':
+		case 2:
 			return 'Lazy';
-		case 'Normal':
+		case 3:
 			return 'Normal';
-		case 'Peppy':
+		case 4:
 			return 'Peppy';
-		case 'Sisterly':
+		case 5:
 			return 'Sisterly';
-		case 'Smug':
+		case 6:
 			return 'Smug';
 		default:
 			return 'Snooty';
@@ -8392,24 +8393,30 @@ var $author$project$Main$showPersonality = function (p) {
 };
 var $author$project$Main$showSource = function (s) {
 	switch (s.$) {
-		case 'Villager':
+		case 0:
 			var p = s.a;
 			return 'From ' + ($author$project$Main$showPersonality(p) + ' villager');
-		case 'NookMilesAlways':
+		case 1:
+			return 'From any villager';
+		case 2:
 			return 'Nook miles (always available from Nook Stop)';
-		case 'NookMilesRotating':
+		case 3:
 			return 'Nook miles (available from Nook Stop on rotation)';
-		case 'Seasonal':
+		case 4:
 			var season = s.a;
 			return 'Seasonal: ' + season;
-		case 'RecipeBundle':
+		case 5:
 			var name = s.a;
 			return 'From recipe bundle in Nook\'s Cranny: ' + name;
+		case 6:
+			var basedOn = s.a;
+			return 'Recipe idea: ' + basedOn;
 		default:
 			return 'From Celeste';
 	}
 };
-var $elm$html$Html$span = _VirtualDom_node('span');
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $elm$html$Html$Attributes$stringProperty = F2(
@@ -8420,67 +8427,108 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			$elm$json$Json$Encode$string(string));
 	});
 var $elm$html$Html$Attributes$type_ = $elm$html$Html$Attributes$stringProperty('type');
-var $author$project$Main$view = function (model) {
-	var toRow = F2(
-		function (isChecked, recipe) {
-			return A2(
+var $author$project$Main$recipeDiv = F2(
+	function (obtained, recipe) {
+		return _Utils_Tuple2(
+			recipe.a,
+			A2(
 				$elm$html$Html$div,
-				_List_Nil,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'border', '1px solid black'),
+						A2($elm$html$Html$Attributes$style, 'display', 'inline-block'),
+						A2($elm$html$Html$Attributes$style, 'width', '200px'),
+						A2($elm$html$Html$Attributes$style, 'margin', '2px'),
+						A2($elm$html$Html$Attributes$style, 'padding', '5px')
+					]),
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$input,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$type_('checkbox'),
-								$elm$html$Html$Events$onCheck(
-								function (val) {
-									return val ? $author$project$Main$Obtain(recipe) : $author$project$Main$Unobtain(recipe);
-								}),
-								$elm$html$Html$Attributes$checked(isChecked)
-							]),
-						_List_Nil),
-						A2(
-						$elm$html$Html$span,
+						$elm$html$Html$p,
 						_List_Nil,
 						_List_fromArray(
 							[
-								$elm$html$Html$text(recipe.name)
+								$elm$html$Html$text(recipe.c)
 							])),
 						A2(
-						$elm$html$Html$span,
+						$elm$html$Html$p,
 						_List_Nil,
+						function () {
+							var _v0 = recipe.b;
+							if (!_v0.b) {
+								return _List_fromArray(
+									[
+										$elm$html$Html$text('Other')
+									]);
+							} else {
+								return A2(
+									$elm$core$List$map,
+									function (s) {
+										return $elm$html$Html$text(
+											$author$project$Main$showSource(s));
+									},
+									recipe.b);
+							}
+						}()),
 						A2(
-							$elm$core$List$map,
-							function (s) {
-								return $elm$html$Html$text(
-									$author$project$Main$showSource(s));
-							},
-							recipe.source))
-					]));
-		});
+						$elm$html$Html$p,
+						_List_Nil,
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$label,
+								_List_Nil,
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$input,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$type_('checkbox'),
+												$elm$html$Html$Events$onCheck(
+												function (val) {
+													return val ? $author$project$Main$Obtain(recipe) : $author$project$Main$Unobtain(recipe);
+												}),
+												$elm$html$Html$Attributes$checked(obtained)
+											]),
+										_List_Nil),
+										$elm$html$Html$text('Obtained')
+									]))
+							]))
+					])));
+	});
+var $author$project$Main$recipesView = F2(
+	function (obtained, recipes) {
+		return A3(
+			$elm$html$Html$Keyed$node,
+			'div',
+			_List_Nil,
+			A2(
+				$elm$core$List$map,
+				$author$project$Main$recipeDiv(obtained),
+				recipes));
+	});
+var $author$project$Main$view = function (model) {
 	var section = F3(
 		function (title, recipes, checked) {
-			return A2(
-				$elm$core$List$cons,
-				A2(
+			return _List_fromArray(
+				[
+					A2(
 					$elm$html$Html$h1,
 					_List_Nil,
 					_List_fromArray(
 						[
 							$elm$html$Html$text(title)
 						])),
-				A2(
-					$elm$core$List$map,
-					toRow(checked),
-					recipes));
+					A2($author$project$Main$recipesView, checked, recipes)
+				]);
 		});
 	var _v0 = A2(
 		$elm$core$List$partition,
 		function (r) {
-			return A2($elm$core$Set$member, r.id, model.obtained);
+			return A2($elm$core$Set$member, r.a, model.s);
 		},
-		model.availableRecipes);
+		model.I);
 	var have = _v0.a;
 	var need = _v0.b;
 	return A2(
@@ -8492,11 +8540,9 @@ var $author$project$Main$view = function (model) {
 };
 var $author$project$Main$main = $elm$browser$Browser$element(
 	{
-		init: $author$project$Main$init,
-		subscriptions: function (_v0) {
-			return $elm$core$Platform$Sub$none;
-		},
-		update: $author$project$Main$updateWithStorage,
-		view: $author$project$Main$view
+		ay: $author$project$Main$init,
+		aD: $elm$core$Basics$always($elm$core$Platform$Sub$none),
+		aF: $author$project$Main$updateWithStorage,
+		aG: $author$project$Main$view
 	});
 _Platform_export({'Main':{'init':$author$project$Main$main($elm$json$Json$Decode$value)(0)}});}(this));

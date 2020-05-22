@@ -4,6 +4,7 @@ import Browser
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onCheck)
+import Html.Keyed
 import List
 import Set as S exposing (Set)
 import Json.Encode as E
@@ -15,7 +16,7 @@ main =
         { init = init
         , view = view
         , update = updateWithStorage
-        , subscriptions = \_ -> Sub.none
+        , subscriptions = always Sub.none
         }
 
 type alias Model = { 
@@ -30,19 +31,23 @@ type alias Recipe = {
   }
 
 type Source = Villager Personality
+  | AnyVillager
   | NookMilesAlways
   | NookMilesRotating
   | Seasonal String
   | RecipeBundle String
+  | RecipeIdea String
   | Celeste
 
 showSource : Source -> String
 showSource s = case s of
   Villager p -> "From " ++ showPersonality p ++ " villager"
+  AnyVillager -> "From any villager"
   NookMilesAlways -> "Nook miles (always available from Nook Stop)"
   NookMilesRotating -> "Nook miles (available from Nook Stop on rotation)"
   Seasonal season -> "Seasonal: " ++ season
   RecipeBundle name -> "From recipe bundle in Nook's Cranny: " ++ name
+  RecipeIdea basedOn -> "Recipe idea: " ++ basedOn
   Celeste -> "From Celeste"
 
 type Personality = Cranky | Jock | Lazy | Normal | Peppy | Sisterly | Smug | Snooty
@@ -69,14 +74,30 @@ init flags =
 view : Model -> Html Msg
 view model =
   let (have, need) = List.partition ((\r -> S.member r.id model.obtained)) model.availableRecipes
-      toRow isChecked recipe = 
-          div [] [
-            input [type_ "checkbox", onCheck (\val -> if val then Obtain recipe else Unobtain recipe), checked isChecked ] [],
-            span [] [text recipe.name],
-            span [] (List.map (\s -> text (showSource s)) recipe.source)
-          ]
-      section title recipes checked = h1 [] [text title] :: List.map (toRow checked) recipes
-  in div [] (section "To obtain" need False ++ section "Obtained" have True )
+      section title recipes checked = [h1 [] [text title], recipesView checked recipes]
+  in div [] (section "To obtain" need False ++ section "Obtained" have True)
+
+recipesView : Bool -> List Recipe -> Html Msg
+recipesView obtained recipes = Html.Keyed.node "div" [] (List.map (recipeDiv obtained) recipes)
+
+recipeDiv : Bool -> Recipe -> (String, Html Msg)
+recipeDiv obtained recipe =
+  (
+    recipe.id,
+    div [style "border" "1px solid black", style "display" "inline-block", style "width" "200px", style "margin" "2px", style "padding" "5px"] [
+      p [] [text recipe.name],
+      p [] (case recipe.source of 
+        [] -> [text "Other"]
+        _  -> List.map (\s -> text (showSource s)) recipe.source
+      ),
+      p [] [
+        label [] [
+          input [type_ "checkbox", onCheck (\val -> if val then Obtain recipe else Unobtain recipe), checked obtained ] [],
+          text "Obtained"
+        ]
+      ]
+    ]
+  )
 
 update: Msg -> Model -> (Model, Cmd Msg)
 update msg model = case msg of
@@ -104,15 +125,15 @@ availableRecipes = [
     { id = "acorn-pochette", source = [], name = "Acorn Pochette" },
     { id = "acoustic-guitar", source = [Villager Smug], name = "Acoustic Guitar" },
     { id = "angled-signpost", source = [Villager Lazy], name = "Angled Signpost" },
-    { id = "apple-chair", source = [Villager Sisterly], name = "Apple Chair" },
-    { id = "apple-dress", source = [Villager Sisterly], name = "Apple Dress" },
+    { id = "apple-chair", source = [Villager Sisterly], name = "Apple Chair" },      
+    { id = "apple-dress", source = [Villager Sisterly], name = "Apple Dress" },      
     { id = "apple-hat", source = [Villager Sisterly], name = "Apple Hat" },
     { id = "apple-rug", source = [Villager Sisterly], name = "Apple Rug" },
     { id = "apple-umbrella", source = [Villager Sisterly], name = "Apple Umbrella" },
-    { id = "apple-wall", source = [Villager Sisterly], name = "Apple Wall" },
+    { id = "apple-wall", source = [Villager Sisterly], name = "Apple Wall" },        
     { id = "aquarius-urn", source = [], name = "Aquarius Urn" },
-    { id = "aries-rocking-chair", source = [], name = "Aries Rocking Chair" },
-    { id = "armor-shoes", source = [Villager Cranky], name = "Armor Shoes" },
+    { id = "aries-rocking-chair", source = [], name = "Aries Rocking Chair" },       
+    { id = "armor-shoes", source = [Villager Cranky], name = "Armor Shoes" },        
     { id = "aroma-pot", source = [Villager Snooty], name = "Aroma Pot" },
     { id = "asteroid", source = [], name = "Asteroid" },
     { id = "astronaut-suit", source = [], name = "Astronaut Suit" },
@@ -126,21 +147,21 @@ availableRecipes = [
     { id = "bamboo-drum", source = [Villager Jock], name = "Bamboo Drum" },
     { id = "bamboo-floor-lamp", source = [Villager Normal], name = "Bamboo Floor Lamp" },
     { id = "bamboo-flooring", source = [Villager Cranky], name = "Bamboo Flooring" },
-    { id = "bamboo-grove-wall", source = [], name = "Bamboo-grove Wall" },
     { id = "bamboo-hat", source = [Villager Cranky], name = "Bamboo Hat" },
     { id = "bamboo-lattice-fence", source = [], name = "Bamboo Lattice Fence" },
     { id = "bamboo-lunch-box", source = [Villager Snooty], name = "Bamboo Lunch Box" },
     { id = "bamboo-noodle-slide", source = [], name = "Bamboo Noodle Slide" },
     { id = "bamboo-partition", source = [Villager Cranky], name = "Bamboo Partition" },
     { id = "bamboo-shelf", source = [Villager Snooty], name = "Bamboo Shelf" },
-    { id = "bamboo-shoot-lamp", source = [], name = "Bamboo-shoot Lamp" },
     { id = "bamboo-speaker", source = [Villager Snooty], name = "Bamboo Speaker" },
     { id = "bamboo-sphere", source = [Villager Normal], name = "Bamboo Sphere" },
     { id = "bamboo-stool", source = [Villager Snooty], name = "Bamboo Stool" },
     { id = "bamboo-stopblock", source = [Villager Jock], name = "Bamboo Stopblock" },
-    { id = "bamboo-wall-decoration", source = [Villager Jock], name = "Bamboo Wall Decoration" },
     { id = "bamboo-wall", source = [Villager Cranky], name = "Bamboo Wall" },
+    { id = "bamboo-wall-decoration", source = [Villager Jock], name = "Bamboo Wall Decoration" },
     { id = "bamboo-wand", source = [], name = "Bamboo Wand" },
+    { id = "bamboo-grove-wall", source = [], name = "Bamboo-grove Wall" },
+    { id = "bamboo-shoot-lamp", source = [], name = "Bamboo-shoot Lamp" },
     { id = "barbed-wire-fence", source = [], name = "Barbed-wire Fence" },
     { id = "barbell", source = [Villager Jock], name = "Barbell" },
     { id = "barrel", source = [Villager Cranky], name = "Barrel" },
@@ -176,8 +197,8 @@ availableRecipes = [
     { id = "bunny-day-stool", source = [], name = "Bunny Day Stool" },
     { id = "bunny-day-table", source = [], name = "Bunny Day Table" },
     { id = "bunny-day-vanity", source = [], name = "Bunny Day Vanity" },
-    { id = "bunny-day-wall-clock", source = [], name = "Bunny Day Wall Clock" },
     { id = "bunny-day-wall", source = [], name = "Bunny Day Wall" },
+    { id = "bunny-day-wall-clock", source = [], name = "Bunny Day Wall Clock" },
     { id = "bunny-day-wand", source = [], name = "Bunny Day Wand" },
     { id = "bunny-day-wardrobe", source = [], name = "Bunny Day Wardrobe" },
     { id = "bunny-day-wreath", source = [], name = "Bunny Day Wreath" },
@@ -190,16 +211,6 @@ availableRecipes = [
     { id = "cardboard-chair", source = [Villager Lazy], name = "Cardboard Chair" },
     { id = "cardboard-sofa", source = [Villager Peppy], name = "Cardboard Sofa" },
     { id = "cardboard-table", source = [Villager Peppy], name = "Cardboard Table" },
-    { id = "cherry-blossom-bonsai", source = [], name = "Cherry-blossom Bonsai" },
-    { id = "cherry-blossom-branches", source = [], name = "Cherry-blossom Branches" },
-    { id = "cherry-blossom-clock", source = [], name = "Cherry-blossom Clock" },
-    { id = "cherry-blossom-flooring", source = [], name = "Cherry-blossom Flooring" },
-    { id = "cherry-blossom-petal-pile", source = [], name = "Cherry-blossom-petal Pile" },
-    { id = "cherry-blossom-pochette", source = [], name = "Cherry-blossom Pochette" },
-    { id = "cherry-blossom-pond-stone", source = [], name = "Cherry-blossom Pond Stone" },
-    { id = "cherry-blossom-trees-wall", source = [], name = "Cherry-blossom-trees Wall" },
-    { id = "cherry-blossom-umbrella", source = [], name = "Cherry-blossom Umbrella" },
-    { id = "cherry-blossom-wand", source = [], name = "Cherry-blossom Wand" },
     { id = "cherry-dress", source = [Villager Peppy], name = "Cherry Dress" },
     { id = "cherry-hat", source = [Villager Peppy], name = "Cherry Hat" },
     { id = "cherry-lamp", source = [Villager Peppy], name = "Cherry Lamp" },
@@ -207,6 +218,16 @@ availableRecipes = [
     { id = "cherry-speakers", source = [Villager Peppy], name = "Cherry Speakers" },
     { id = "cherry-umbrella", source = [Villager Peppy], name = "Cherry Umbrella" },
     { id = "cherry-wall", source = [Villager Peppy], name = "Cherry Wall" },
+    { id = "cherry-blossom-bonsai", source = [], name = "Cherry-blossom Bonsai" },
+    { id = "cherry-blossom-branches", source = [], name = "Cherry-blossom Branches" },
+    { id = "cherry-blossom-clock", source = [], name = "Cherry-blossom Clock" },
+    { id = "cherry-blossom-flooring", source = [], name = "Cherry-blossom Flooring" },
+    { id = "cherry-blossom-pochette", source = [], name = "Cherry-blossom Pochette" },
+    { id = "cherry-blossom-pond-stone", source = [], name = "Cherry-blossom Pond Stone" },
+    { id = "cherry-blossom-umbrella", source = [], name = "Cherry-blossom Umbrella" },
+    { id = "cherry-blossom-wand", source = [], name = "Cherry-blossom Wand" },
+    { id = "cherry-blossom-petal-pile", source = [], name = "Cherry-blossom-petal Pile" },
+    { id = "cherry-blossom-trees-wall", source = [], name = "Cherry-blossom-trees Wall" },
     { id = "chic-cosmos-wreath", source = [], name = "Chic Cosmos Wreath" },
     { id = "chic-mum-crown", source = [], name = "Chic Mum Crown" },
     { id = "chic-rose-crown", source = [], name = "Chic Rose Crown" },
@@ -214,8 +235,8 @@ availableRecipes = [
     { id = "chic-windflower-wreath", source = [], name = "Chic Windflower Wreath" },
     { id = "chocolate-herringbone-wall", source = [Villager Smug], name = "Chocolate Herringbone Wall" },
     { id = "clackercart", source = [Villager Lazy], name = "Clackercart" },
-    { id = "classic-library-wall", source = [Villager Normal], name = "Classic-library Wall" },
     { id = "classic-pitcher", source = [Villager Snooty], name = "Classic Pitcher" },
+    { id = "classic-library-wall", source = [Villager Normal], name = "Classic-library Wall" },
     { id = "clothesline", source = [Villager Cranky], name = "Clothesline" },
     { id = "coconut-juice", source = [Villager Snooty], name = "Coconut Juice" },
     { id = "coconut-wall-planter", source = [Villager Snooty], name = "Coconut Wall Planter" },
@@ -288,8 +309,8 @@ availableRecipes = [
     { id = "frozen-pillar", source = [], name = "Frozen Pillar" },
     { id = "frozen-sculpture", source = [], name = "Frozen Sculpture" },
     { id = "frozen-table", source = [], name = "Frozen Table" },
-    { id = "frozen-treat-set", source = [], name = "Frozen-treat Set" },
     { id = "frozen-tree", source = [], name = "Frozen Tree" },
+    { id = "frozen-treat-set", source = [], name = "Frozen-treat Set" },
     { id = "fruit-basket", source = [Villager Cranky], name = "Fruit Basket" },
     { id = "fruit-wreath", source = [Villager Cranky], name = "Fruit Wreath" },
     { id = "frying-pan", source = [], name = "Frying Pan" },
@@ -301,13 +322,13 @@ availableRecipes = [
     { id = "garden-wagon", source = [Villager Peppy], name = "Garden Wagon" },
     { id = "gemini-closet", source = [], name = "Gemini Closet" },
     { id = "giant-teddy-bear", source = [Villager Peppy], name = "Giant Teddy Bear" },
-    { id = "gold-armor-shoes", source = [Villager Smug], name = "Gold-armor Shoes" },
     { id = "gold-armor", source = [Villager Smug], name = "Gold Armor" },
     { id = "gold-bars", source = [Villager Snooty], name = "Gold Bars" },
     { id = "gold-helmet", source = [Villager Smug], name = "Gold Helmet" },
     { id = "gold-rose-crown", source = [], name = "Gold Rose Crown" },
     { id = "gold-rose-wreath", source = [], name = "Gold Rose Wreath" },
     { id = "gold-screen-wall", source = [], name = "Gold Screen Wall" },
+    { id = "gold-armor-shoes", source = [Villager Smug], name = "Gold-armor Shoes" },
     { id = "golden-arowana-model", source = [Villager Lazy], name = "Golden Arowana Model" },
     { id = "golden-axe", source = [], name = "Golden Axe" },
     { id = "golden-candlestick", source = [Villager Smug], name = "Golden Candlestick" },
@@ -333,8 +354,8 @@ availableRecipes = [
     { id = "hanging-terrarium", source = [Villager Peppy], name = "Hanging Terrarium" },
     { id = "hay-bed", source = [], name = "Hay Bed" },
     { id = "hearth", source = [], name = "Hearth" },
-    { id = "hedge-standee", source = [Villager Normal], name = "Hedge Standee" },
     { id = "hedge", source = [], name = "Hedge" },
+    { id = "hedge-standee", source = [Villager Normal], name = "Hedge Standee" },
     { id = "holiday-candle", source = [], name = "Holiday Candle" },
     { id = "honeycomb-flooring", source = [Villager Jock], name = "Honeycomb Flooring" },
     { id = "honeycomb-wall", source = [Villager Jock], name = "Honeycomb Wall" },
@@ -353,7 +374,6 @@ availableRecipes = [
     { id = "illuminated-tree", source = [], name = "Illuminated Tree" },
     { id = "imperial-fence", source = [], name = "Imperial Fence" },
     { id = "infused-water-dispenser", source = [Villager Cranky], name = "Infused-water Dispenser" },
-    { id = "iron-and-stone-fence", source = [], name = "Iron-and-stone Fence" },
     { id = "iron-armor", source = [Villager Cranky], name = "Iron Armor" },
     { id = "iron-closet", source = [Villager Sisterly], name = "Iron Closet" },
     { id = "iron-doorplate", source = [Villager Sisterly], name = "Iron Doorplate" },
@@ -368,6 +388,7 @@ availableRecipes = [
     { id = "iron-wall-rack", source = [Villager Smug], name = "Iron Wall Rack" },
     { id = "iron-wand", source = [], name = "Iron Wand" },
     { id = "iron-worktable", source = [Villager Sisterly], name = "Iron Worktable" },
+    { id = "iron-and-stone-fence", source = [], name = "Iron-and-stone Fence" },
     { id = "ironwood-bed", source = [Villager Smug], name = "Ironwood Bed" },
     { id = "ironwood-cart", source = [Villager Smug], name = "Ironwood Cart" },
     { id = "ironwood-chair", source = [Villager Smug], name = "Ironwood Chair" },
@@ -391,14 +412,14 @@ availableRecipes = [
     { id = "ladder", source = [], name = "Ladder" },
     { id = "large-cardboard-boxes", source = [Villager Lazy], name = "Large Cardboard Boxes" },
     { id = "lattice-fence", source = [], name = "Lattice Fence" },
+    { id = "leaf", source = [Villager Jock], name = "Leaf" },
     { id = "leaf-campfire", source = [], name = "Leaf Campfire" },
-    { id = "leaf-egg-outfit", source = [], name = "Leaf-egg Outfit" },
-    { id = "leaf-egg-shell", source = [], name = "Leaf-egg Shell" },
-    { id = "leaf-egg-shoes", source = [], name = "Leaf-egg Shoes" },
     { id = "leaf-mask", source = [Villager Peppy], name = "Leaf Mask" },
     { id = "leaf-stool", source = [], name = "Leaf Stool" },
     { id = "leaf-umbrella", source = [Villager Sisterly], name = "Leaf Umbrella" },
-    { id = "leaf", source = [Villager Jock], name = "Leaf" },
+    { id = "leaf-egg-outfit", source = [], name = "Leaf-egg Outfit" },
+    { id = "leaf-egg-shell", source = [], name = "Leaf-egg Shell" },
+    { id = "leaf-egg-shoes", source = [], name = "Leaf-egg Shoes" },
     { id = "leo-sculpture", source = [], name = "Leo Sculpture" },
     { id = "libra-scale", source = [], name = "Libra Scale" },
     { id = "light-bamboo-rug", source = [], name = "Light Bamboo Rug" },
@@ -408,13 +429,13 @@ availableRecipes = [
     { id = "lily-wreath", source = [], name = "Lily Wreath" },
     { id = "log-bed", source = [Villager Peppy], name = "Log Bed" },
     { id = "log-bench", source = [Villager Normal], name = "Log Bench" },
+    { id = "log-sofa", source = [Villager Normal], name = "Log Chair" },
     { id = "log-decorative-shelves", source = [Villager Normal], name = "Log Decorative Shelves" },
     { id = "log-dining-table", source = [Villager Cranky], name = "Log Dining Table" },
     { id = "log-extra-long-sofa", source = [Villager Normal], name = "Log Extra-long Sofa" },
     { id = "log-garden-lounge", source = [Villager Peppy], name = "Log Garden Lounge" },
     { id = "log-pack", source = [Villager Jock], name = "Log Pack" },
     { id = "log-round-table", source = [Villager Peppy], name = "Log Round Table" },
-    { id = "log-sofa", source = [Villager Normal], name = "Log Chair" },
     { id = "log-stakes", source = [Villager Smug], name = "Log Stakes" },
     { id = "log-stool", source = [Villager Peppy], name = "Log Stool" },
     { id = "log-wall-mounted-clock", source = [Villager Lazy], name = "Log Wall-mounted Clock" },
@@ -468,8 +489,8 @@ availableRecipes = [
     { id = "orange-hat", source = [Villager Lazy], name = "Orange Hat" },
     { id = "orange-rug", source = [Villager Lazy], name = "Orange Rug" },
     { id = "orange-umbrella", source = [Villager Lazy], name = "Orange Umbrella" },
-    { id = "orange-wall-mounted-clock", source = [Villager Lazy], name = "Orange Wall-mounted Clock" },
     { id = "orange-wall", source = [Villager Lazy], name = "Orange Wall" },
+    { id = "orange-wall-mounted-clock", source = [Villager Lazy], name = "Orange Wall-mounted Clock" },
     { id = "ornament-mobile", source = [], name = "Ornament Mobile" },
     { id = "ornament-wreath", source = [], name = "Ornament Wreath" },
     { id = "outdoor-bath", source = [], name = "Outdoor Bath" },
@@ -581,23 +602,23 @@ availableRecipes = [
     { id = "star-pochette", source = [], name = "Star Pochette" },
     { id = "star-wand", source = [], name = "Star Wand" },
     { id = "starry-garland", source = [], name = "Starry Garland" },
+    { id = "starry-wall", source = [], name = "Starry Wall" },
     { id = "starry-sands-flooring", source = [], name = "Starry-sands Flooring" },
     { id = "starry-sky-wall", source = [], name = "Starry-sky Wall" },
-    { id = "starry-wall", source = [], name = "Starry Wall" },
     { id = "steamer-basket-set", source = [], name = "Steamer-basket Set" },
     { id = "steel-flooring", source = [Villager Smug], name = "Steel Flooring" },
     { id = "steel-frame-wall", source = [Villager Smug], name = "Steel-frame Wall" },
     { id = "stone-arch", source = [], name = "Stone Arch" },
     { id = "stone-axe", source = [], name = "Stone Axe" },
-    { id = "stone-egg-outfit", source = [], name = "Stone-egg Outfit" },
-    { id = "stone-egg-shell", source = [], name = "Stone-egg Shell" },
-    { id = "stone-egg-shoes", source = [], name = "Stone-egg Shoes" },
     { id = "stone-fence", source = [], name = "Stone Fence" },
     { id = "stone-lion-dog", source = [Villager Smug], name = "Stone Lion-dog" },
     { id = "stone-stool", source = [], name = "Stone Stool" },
     { id = "stone-table", source = [Villager Lazy], name = "Stone Table" },
     { id = "stone-tablet", source = [], name = "Stone Tablet" },
     { id = "stone-wall", source = [Villager Smug], name = "Stone Wall" },
+    { id = "stone-egg-outfit", source = [], name = "Stone-egg Outfit" },
+    { id = "stone-egg-shell", source = [], name = "Stone-egg Shell" },
+    { id = "stone-egg-shoes", source = [], name = "Stone-egg Shoes" },
     { id = "straw-fence", source = [], name = "Straw Fence" },
     { id = "straw-umbrella-hat", source = [Villager Smug], name = "Straw Umbrella Hat" },
     { id = "street-piano", source = [Villager Sisterly], name = "Street Piano" },
@@ -618,9 +639,9 @@ availableRecipes = [
     { id = "traditional-balancing-toy", source = [], name = "Traditional Balancing Toy" },
     { id = "traditional-straw-coat", source = [Villager Normal], name = "Traditional Straw Coat" },
     { id = "trash-bags", source = [], name = "Trash Bags" },
-    { id = "tree-branch-wand", source = [], name = "Tree-branch Wand" },
     { id = "tree-branch-wreath", source = [Villager Sisterly], name = "Tree Branch Wreath" },
     { id = "tree-standee", source = [Villager Jock], name = "Tree Standee" },
+    { id = "tree-branch-wand", source = [], name = "Tree-branch Wand" },
     { id = "trees-bounty-arch", source = [], name = "Tree's Bounty Arch" },
     { id = "trees-bounty-big-tree", source = [], name = "Tree's Bounty Big Tree" },
     { id = "trees-bounty-lamp", source = [], name = "Tree's Bounty Lamp" },
@@ -640,11 +661,11 @@ availableRecipes = [
     { id = "vertical-board-fence", source = [], name = "Vertical-board Fence" },
     { id = "virgo-harp", source = [], name = "Virgo Harp" },
     { id = "wand", source = [], name = "Wand" },
+    { id = "water-flooring", source = [], name = "Water Flooring" },
+    { id = "water-pump", source = [Villager Lazy], name = "Water Pump" },
     { id = "water-egg-outfit", source = [], name = "Water-egg Outfit" },
     { id = "water-egg-shell", source = [], name = "Water-egg Shell" },
     { id = "water-egg-shoes", source = [], name = "Water-egg Shoes" },
-    { id = "water-flooring", source = [], name = "Water Flooring" },
-    { id = "water-pump", source = [Villager Lazy], name = "Water Pump" },
     { id = "watering-can", source = [], name = "Watering Can" },
     { id = "wave-breaker", source = [], name = "Wave Breaker" },
     { id = "western-style-stone", source = [Villager Normal], name = "Western-style Stone" },
@@ -658,6 +679,23 @@ availableRecipes = [
     { id = "wood-egg-outfit", source = [], name = "Wood-egg Outfit" },
     { id = "wood-egg-shell", source = [], name = "Wood-egg Shell" },
     { id = "wood-egg-shoes", source = [], name = "Wood-egg Shoes" },
+    { id = "wooden-bookshelf", source = [Villager Lazy], name = "Wooden Bookshelf" },
+    { id = "wooden-bucket", source = [Villager Smug], name = "Wooden Bucket" },
+    { id = "wooden-chair", source = [Villager Snooty], name = "Wooden Chair" },
+    { id = "wooden-chest", source = [Villager Lazy], name = "Wooden Chest" },
+    { id = "wooden-double-bed", source = [Villager Smug], name = "Wooden Double Bed" },
+    { id = "wooden-end-table", source = [Villager Snooty], name = "Wooden End Table" },
+    { id = "wooden-fish", source = [], name = "Wooden Fish" },
+    { id = "wooden-full-length-mirror", source = [Villager Peppy], name = "Wooden Full-length Mirror" },
+    { id = "wooden-low-table", source = [Villager Smug], name = "Wooden Low Table" },
+    { id = "wooden-mini-table", source = [Villager Sisterly], name = "Wooden Mini Table" },
+    { id = "wooden-simple-bed", source = [Villager Lazy], name = "Wooden Simple Bed" },
+    { id = "wooden-stool", source = [Villager Peppy], name = "Wooden Stool" },
+    { id = "wooden-table", source = [Villager Sisterly], name = "Wooden Table" },
+    { id = "wooden-table-mirror", source = [Villager Sisterly], name = "Wooden Table Mirror" },
+    { id = "wooden-toolbox", source = [Villager Normal], name = "Wooden Toolbox" },
+    { id = "wooden-wardrobe", source = [], name = "Wooden Wardrobe" },
+    { id = "wooden-waste-bin", source = [Villager Sisterly], name = "Wooden Waste Bin" },
     { id = "wooden-block-bed", source = [Villager Normal], name = "Wooden-block Bed" },
     { id = "wooden-block-bench", source = [Villager Sisterly], name = "Wooden-block Bench" },
     { id = "wooden-block-bookshelf", source = [], name = "Wooden-block Bookshelf" },
@@ -668,26 +706,9 @@ availableRecipes = [
     { id = "wooden-block-table", source = [Villager Sisterly], name = "Wooden-block Table" },
     { id = "wooden-block-toy", source = [], name = "Wooden-block Toy" },
     { id = "wooden-block-wall-clock", source = [Villager Peppy], name = "Wooden-block Wall Clock" },
-    { id = "wooden-bookshelf", source = [Villager Lazy], name = "Wooden Bookshelf" },
-    { id = "wooden-bucket", source = [Villager Smug], name = "Wooden Bucket" },
-    { id = "wooden-chair", source = [Villager Snooty], name = "Wooden Chair" },
-    { id = "wooden-chest", source = [Villager Lazy], name = "Wooden Chest" },
-    { id = "wooden-double-bed", source = [Villager Smug], name = "Wooden Double Bed" },
-    { id = "wooden-end-table", source = [Villager Snooty], name = "Wooden End Table" },
-    { id = "wooden-fish", source = [], name = "Wooden Fish" },
-    { id = "wooden-full-length-mirror", source = [Villager Peppy], name = "Wooden Full-length Mirror" },
     { id = "wooden-knot-wall", source = [Villager Smug], name = "Wooden-knot Wall" },
-    { id = "wooden-low-table", source = [Villager Smug], name = "Wooden Low Table" },
-    { id = "wooden-mini-table", source = [Villager Sisterly], name = "Wooden Mini Table" },
     { id = "wooden-mosaic-wall", source = [Villager Normal], name = "Wooden-mosaic Wall" },
     { id = "wooden-plank-sign", source = [Villager Cranky], name = "Wooden-plank Sign" },
-    { id = "wooden-simple-bed", source = [Villager Lazy], name = "Wooden Simple Bed" },
-    { id = "wooden-stool", source = [Villager Peppy], name = "Wooden Stool" },
-    { id = "wooden-table-mirror", source = [Villager Sisterly], name = "Wooden Table Mirror" },
-    { id = "wooden-table", source = [Villager Sisterly], name = "Wooden Table" },
-    { id = "wooden-toolbox", source = [Villager Normal], name = "Wooden Toolbox" },
-    { id = "wooden-wardrobe", source = [], name = "Wooden Wardrobe" },
-    { id = "wooden-waste-bin", source = [Villager Sisterly], name = "Wooden Waste Bin" },
     { id = "woodland-wall", source = [Villager Normal], name = "Woodland Wall" },
     { id = "yellow-leaf-pile", source = [], name = "Yellow-leaf Pile" },
     { id = "zen-fence", source = [], name = "Zen Fence" },
