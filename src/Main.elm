@@ -71,18 +71,27 @@ view : Model -> Html Msg
 view model =
   let (have, need) = List.partition ((\r -> S.member r.id model.obtained)) model.availableRecipes
       keywords = String.split " " (String.toLower model.filter)
-      section title recipes checked = [h1 [] [text title], recipesView checked recipes keywords]
-  in div [] (
-    label [] [
-      text "Search:",
-      input [onInput (\val -> Filter val)] [text model.filter]
+      section title recipes checked = [h3 [] [text title], recipesView checked recipes keywords]
+  in div [class "container"] (
+    nav [class "navbar navbar-light bg-light"]
+    [
+      span [class "navbar-brand"] [text "ACNH DIY Recipe Tracker"],
+      Html.form [class "form-inline"]
+      [
+        label [class "my-1 mr-2", for "searchRecipes"]
+          [text "Search:"],
+        input [
+          onInput Filter, class "form-control", type_ "search", id "searchRecipes"
+        ]
+        [text model.filter]
+      ]
     ] ::
     (section "To obtain" need False ++ section "Obtained" have True)
   )
 
 recipesView : Bool -> List Recipe -> List String -> Html Msg
 recipesView obtained recipes filter =
-  Html.Keyed.node "div" [] (List.map (recipeDiv obtained) (List.filter (matches filter) recipes))
+  Html.Keyed.node "div" [class "row row-cols-2 row-cols-md-4"] (List.map (recipeDiv obtained) (List.filter (matches filter) recipes))
 
 matches : List String -> Recipe -> Bool
 matches keywords recipe =
@@ -95,17 +104,33 @@ recipeDiv : Bool -> Recipe -> (String, Html Msg)
 recipeDiv obtained recipe =
   (
     recipe.id,
-    div [style "border" "1px solid black", style "display" "inline-block", style "width" "200px", style "margin" "2px", style "padding" "5px"] [
-      p [] [text recipe.name],
-      p [] (case recipe.source of 
-        [] -> [text "Other"]
-        _  -> List.map text recipe.sourceStrings
-      ),
-      p [] [
-        label [] [
-          input [type_ "checkbox", onCheck (\val -> if val then Obtain recipe else Unobtain recipe), checked obtained ] [],
-          text "Obtained"
-        ]
+    div [
+      class "col mb-4"
+    ]
+    [
+      div [class "card h-100"]
+      [
+        div [class "card-body"] [
+          h5 [class "card-title"] [text recipe.name],
+          p [] (case recipe.source of 
+            [] -> [text "Other"]
+            _  -> List.map text recipe.sourceStrings
+          )
+        ],
+        div [class "card-footer bg-transparent"]
+          [
+            div [class "form-check"] [
+              label [class "form-check-label"] [
+                input [
+                  type_ "checkbox",
+                  class "form-check-input",
+                  onCheck (\val -> if val then Obtain recipe else Unobtain recipe),
+                  checked obtained
+                ] [],
+                text "Obtained"
+              ]
+            ]
+          ]
       ]
     ]
   )
@@ -128,16 +153,16 @@ updateWithStorage msg oldModel =
   )
 
 encode : Model -> E.Value
-encode model = E.set (\o -> E.string o) model.obtained
+encode model = E.set E.string model.obtained
 
 decoder : D.Decoder (List String)
 decoder = D.list D.string
 
 addSourceString baseRecipe = { 
-  id = baseRecipe.id,
-  name = baseRecipe.name,
-  source = baseRecipe.source,
-  sourceStrings = List.map showSource baseRecipe.source
+    id = baseRecipe.id,
+    name = baseRecipe.name,
+    source = baseRecipe.source,
+    sourceStrings = List.map showSource baseRecipe.source
   }
 
 availableRecipes = [

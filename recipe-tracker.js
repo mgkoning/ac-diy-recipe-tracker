@@ -7885,12 +7885,7 @@ var $elm$json$Json$Encode$set = F2(
 	});
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $author$project$Main$encode = function (model) {
-	return A2(
-		$elm$json$Json$Encode$set,
-		function (o) {
-			return $elm$json$Json$Encode$string(o);
-		},
-		model.s);
+	return A2($elm$json$Json$Encode$set, $elm$json$Json$Encode$string, model.s);
 };
 var $author$project$Main$setStorage = _Platform_outgoingPort('setStorage', $elm$core$Basics$identity);
 var $elm$core$Dict$getMin = function (dict) {
@@ -8309,8 +8304,19 @@ var $elm$json$Json$Decode$value = _Json_decodeValue;
 var $author$project$Main$Filter = function (a) {
 	return {$: 2, a: a};
 };
+var $elm$html$Html$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$string(string));
+	});
+var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$html$Html$Attributes$for = $elm$html$Html$Attributes$stringProperty('htmlFor');
+var $elm$html$Html$form = _VirtualDom_node('form');
+var $elm$html$Html$h3 = _VirtualDom_node('h3');
+var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
 var $elm$html$Html$input = _VirtualDom_node('input');
 var $elm$html$Html$label = _VirtualDom_node('label');
 var $elm$core$Dict$get = F2(
@@ -8358,6 +8364,7 @@ var $elm$core$Set$member = F2(
 		var dict = _v0;
 		return A2($elm$core$Dict$member, key, dict);
 	});
+var $elm$html$Html$nav = _VirtualDom_node('nav');
 var $elm$html$Html$Events$alwaysStop = function (x) {
 	return _Utils_Tuple2(x, true);
 };
@@ -8482,6 +8489,7 @@ var $elm$html$Html$Attributes$boolProperty = F2(
 			$elm$json$Json$Encode$bool(bool));
 	});
 var $elm$html$Html$Attributes$checked = $elm$html$Html$Attributes$boolProperty('checked');
+var $elm$html$Html$h5 = _VirtualDom_node('h5');
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 0, a: a};
 };
@@ -8505,17 +8513,8 @@ var $elm$html$Html$Events$onCheck = function (tagger) {
 		A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetChecked));
 };
 var $elm$html$Html$p = _VirtualDom_node('p');
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $elm$html$Html$Attributes$stringProperty = F2(
-	function (key, string) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			$elm$json$Json$Encode$string(string));
-	});
 var $elm$html$Html$Attributes$type_ = $elm$html$Html$Attributes$stringProperty('type');
 var $author$project$Main$recipeDiv = F2(
 	function (obtained, recipe) {
@@ -8525,58 +8524,91 @@ var $author$project$Main$recipeDiv = F2(
 				$elm$html$Html$div,
 				_List_fromArray(
 					[
-						A2($elm$html$Html$Attributes$style, 'border', '1px solid black'),
-						A2($elm$html$Html$Attributes$style, 'display', 'inline-block'),
-						A2($elm$html$Html$Attributes$style, 'width', '200px'),
-						A2($elm$html$Html$Attributes$style, 'margin', '2px'),
-						A2($elm$html$Html$Attributes$style, 'padding', '5px')
+						$elm$html$Html$Attributes$class('col mb-4')
 					]),
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$p,
-						_List_Nil,
+						$elm$html$Html$div,
 						_List_fromArray(
 							[
-								$elm$html$Html$text(recipe.b)
-							])),
-						A2(
-						$elm$html$Html$p,
-						_List_Nil,
-						function () {
-							var _v0 = recipe.c;
-							if (!_v0.b) {
-								return _List_fromArray(
-									[
-										$elm$html$Html$text('Other')
-									]);
-							} else {
-								return A2($elm$core$List$map, $elm$html$Html$text, recipe.J);
-							}
-						}()),
-						A2(
-						$elm$html$Html$p,
-						_List_Nil,
+								$elm$html$Html$Attributes$class('card h-100')
+							]),
 						_List_fromArray(
 							[
 								A2(
-								$elm$html$Html$label,
-								_List_Nil,
+								$elm$html$Html$div,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('card-body')
+									]),
 								_List_fromArray(
 									[
 										A2(
-										$elm$html$Html$input,
+										$elm$html$Html$h5,
 										_List_fromArray(
 											[
-												$elm$html$Html$Attributes$type_('checkbox'),
-												$elm$html$Html$Events$onCheck(
-												function (val) {
-													return val ? $author$project$Main$Obtain(recipe) : $author$project$Main$Unobtain(recipe);
-												}),
-												$elm$html$Html$Attributes$checked(obtained)
+												$elm$html$Html$Attributes$class('card-title')
 											]),
-										_List_Nil),
-										$elm$html$Html$text('Obtained')
+										_List_fromArray(
+											[
+												$elm$html$Html$text(recipe.b)
+											])),
+										A2(
+										$elm$html$Html$p,
+										_List_Nil,
+										function () {
+											var _v0 = recipe.c;
+											if (!_v0.b) {
+												return _List_fromArray(
+													[
+														$elm$html$Html$text('Other')
+													]);
+											} else {
+												return A2($elm$core$List$map, $elm$html$Html$text, recipe.J);
+											}
+										}())
+									])),
+								A2(
+								$elm$html$Html$div,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('card-footer bg-transparent')
+									]),
+								_List_fromArray(
+									[
+										A2(
+										$elm$html$Html$div,
+										_List_fromArray(
+											[
+												$elm$html$Html$Attributes$class('form-check')
+											]),
+										_List_fromArray(
+											[
+												A2(
+												$elm$html$Html$label,
+												_List_fromArray(
+													[
+														$elm$html$Html$Attributes$class('form-check-label')
+													]),
+												_List_fromArray(
+													[
+														A2(
+														$elm$html$Html$input,
+														_List_fromArray(
+															[
+																$elm$html$Html$Attributes$type_('checkbox'),
+																$elm$html$Html$Attributes$class('form-check-input'),
+																$elm$html$Html$Events$onCheck(
+																function (val) {
+																	return val ? $author$project$Main$Obtain(recipe) : $author$project$Main$Unobtain(recipe);
+																}),
+																$elm$html$Html$Attributes$checked(obtained)
+															]),
+														_List_Nil),
+														$elm$html$Html$text('Obtained')
+													]))
+											]))
 									]))
 							]))
 					])));
@@ -8586,7 +8618,10 @@ var $author$project$Main$recipesView = F3(
 		return A3(
 			$elm$html$Html$Keyed$node,
 			'div',
-			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('row row-cols-2 row-cols-md-4')
+				]),
 			A2(
 				$elm$core$List$map,
 				$author$project$Main$recipeDiv(obtained),
@@ -8595,6 +8630,7 @@ var $author$project$Main$recipesView = F3(
 					$author$project$Main$matches(filter),
 					recipes)));
 	});
+var $elm$html$Html$span = _VirtualDom_node('span');
 var $author$project$Main$view = function (model) {
 	var keywords = A2(
 		$elm$core$String$split,
@@ -8605,7 +8641,7 @@ var $author$project$Main$view = function (model) {
 			return _List_fromArray(
 				[
 					A2(
-					$elm$html$Html$h1,
+					$elm$html$Html$h3,
 					_List_Nil,
 					_List_fromArray(
 						[
@@ -8624,27 +8660,62 @@ var $author$project$Main$view = function (model) {
 	var need = _v0.b;
 	return A2(
 		$elm$html$Html$div,
-		_List_Nil,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('container')
+			]),
 		A2(
 			$elm$core$List$cons,
 			A2(
-				$elm$html$Html$label,
-				_List_Nil,
+				$elm$html$Html$nav,
 				_List_fromArray(
 					[
-						$elm$html$Html$text('Search:'),
+						$elm$html$Html$Attributes$class('navbar navbar-light bg-light')
+					]),
+				_List_fromArray(
+					[
 						A2(
-						$elm$html$Html$input,
+						$elm$html$Html$span,
 						_List_fromArray(
 							[
-								$elm$html$Html$Events$onInput(
-								function (val) {
-									return $author$project$Main$Filter(val);
-								})
+								$elm$html$Html$Attributes$class('navbar-brand')
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text(model.D)
+								$elm$html$Html$text('ACNH DIY Recipe Tracker')
+							])),
+						A2(
+						$elm$html$Html$form,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('form-inline')
+							]),
+						_List_fromArray(
+							[
+								A2(
+								$elm$html$Html$label,
+								_List_fromArray(
+									[
+										$elm$html$Html$Attributes$class('my-1 mr-2'),
+										$elm$html$Html$Attributes$for('searchRecipes')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Search:')
+									])),
+								A2(
+								$elm$html$Html$input,
+								_List_fromArray(
+									[
+										$elm$html$Html$Events$onInput($author$project$Main$Filter),
+										$elm$html$Html$Attributes$class('form-control'),
+										$elm$html$Html$Attributes$type_('search'),
+										$elm$html$Html$Attributes$id('searchRecipes')
+									]),
+								_List_fromArray(
+									[
+										$elm$html$Html$text(model.D)
+									]))
 							]))
 					])),
 			_Utils_ap(
