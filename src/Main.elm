@@ -5,6 +5,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onCheck, onInput)
 import Html.Keyed
+import Html.Lazy exposing (lazy, lazy2)
 import List
 import Set as S exposing (Set)
 import Json.Encode as E
@@ -69,29 +70,36 @@ init flags =
 
 view : Model -> Html Msg
 view model =
+  div [] [
+    lazy navBar model.filter,
+    lazy body model
+  ]
+
+body : Model -> Html Msg
+body model =
   let (have, need) = List.partition ((\r -> S.member r.id model.obtained)) model.availableRecipes
-      keywords = String.split " " (String.toLower model.filter)
+      keywords = List.filter ((/=) "") (String.split " " (String.toLower model.filter))
       section title recipes checked = [h3 [] [text title], recipesView checked recipes keywords]
-  in div [class "container"] (
-    nav [class "navbar navbar-light bg-light"]
+  in div [class "container"] (section "To obtain" need False ++ section "Obtained" have True)
+
+navBar : String -> Html Msg
+navBar filterText =
+  nav [class "navbar navbar-light bg-light"]
     [
       span [class "navbar-brand"] [text "ACNH DIY Recipe Tracker"],
-      Html.form [class "form-inline"]
-      [
+      Html.form [class "form-inline"] [
         label [class "my-1 mr-2", for "searchRecipes"]
           [text "Search:"],
-        input [
-          onInput Filter, class "form-control", type_ "search", id "searchRecipes"
-        ]
-        [text model.filter]
+        input [onInput Filter, class "form-control", type_ "search", id "searchRecipes"]
+          [text filterText]
       ]
-    ] ::
-    (section "To obtain" need False ++ section "Obtained" have True)
-  )
+    ]
 
 recipesView : Bool -> List Recipe -> List String -> Html Msg
 recipesView obtained recipes filter =
-  Html.Keyed.node "div" [class "row row-cols-2 row-cols-md-4"] (List.map (recipeDiv obtained) (List.filter (matches filter) recipes))
+  Html.Keyed.node "div"
+    [class "row row-cols-2 row-cols-md-4"]
+    (List.map (keyedRecipeView obtained) (List.filter (matches filter) recipes))
 
 matches : List String -> Recipe -> Bool
 matches keywords recipe =
@@ -100,40 +108,35 @@ matches keywords recipe =
        [] -> True
        _  -> List.any (\k -> List.any (String.contains k) fields) keywords
 
-recipeDiv : Bool -> Recipe -> (String, Html Msg)
-recipeDiv obtained recipe =
-  (
-    recipe.id,
-    div [
-      class "col mb-4"
-    ]
-    [
-      div [class "card h-100"]
-      [
-        div [class "card-body"] [
-          h5 [class "card-title"] [text recipe.name],
-          p [] (case recipe.source of 
-            [] -> [text "Other"]
-            _  -> List.map text recipe.sourceStrings
-          )
-        ],
-        div [class "card-footer bg-transparent"]
-          [
-            div [class "form-check"] [
-              label [class "form-check-label"] [
-                input [
-                  type_ "checkbox",
-                  class "form-check-input",
-                  onCheck (\val -> if val then Obtain recipe else Unobtain recipe),
-                  checked obtained
-                ] [],
-                text "Obtained"
-              ]
-            ]
+keyedRecipeView : Bool -> Recipe -> (String, Html Msg)
+keyedRecipeView obtained recipe = (recipe.id, lazy2 recipeView obtained recipe)
+
+recipeView : Bool -> Recipe -> Html Msg
+recipeView obtained recipe =
+  div [class "col mb-4"] [
+    div [class "card h-100"] [
+      div [class "card-body"] [
+        h5 [class "card-title"] [text recipe.name],
+        p [] (case recipe.source of 
+          [] -> [text "Other"]
+          _  -> List.map text recipe.sourceStrings
+        )
+      ],
+      div [class "card-footer bg-transparent"] [
+        div [class "form-check"] [
+          label [class "form-check-label"] [
+            input [
+              type_ "checkbox",
+              class "form-check-input",
+              onCheck (\val -> if val then Obtain recipe else Unobtain recipe),
+              checked obtained
+            ] [],
+            text "Obtained"
           ]
+        ]
       ]
     ]
-  )
+  ]
 
 update: Msg -> Model -> (Model, Cmd Msg)
 update msg model = case msg of

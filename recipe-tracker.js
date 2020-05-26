@@ -8301,9 +8301,6 @@ var $author$project$Main$updateWithStorage = F2(
 					])));
 	});
 var $elm$json$Json$Decode$value = _Json_decodeValue;
-var $author$project$Main$Filter = function (a) {
-	return {$: 2, a: a};
-};
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
 		return A2(
@@ -8313,12 +8310,18 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
-var $elm$html$Html$Attributes$for = $elm$html$Html$Attributes$stringProperty('htmlFor');
-var $elm$html$Html$form = _VirtualDom_node('form');
+var $elm$core$List$filter = F2(
+	function (isGood, list) {
+		return A3(
+			$elm$core$List$foldr,
+			F2(
+				function (x, xs) {
+					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
+				}),
+			_List_Nil,
+			list);
+	});
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
-var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
-var $elm$html$Html$input = _VirtualDom_node('input');
-var $elm$html$Html$label = _VirtualDom_node('label');
 var $elm$core$Dict$get = F2(
 	function (targetKey, dict) {
 		get:
@@ -8364,40 +8367,7 @@ var $elm$core$Set$member = F2(
 		var dict = _v0;
 		return A2($elm$core$Dict$member, key, dict);
 	});
-var $elm$html$Html$nav = _VirtualDom_node('nav');
-var $elm$html$Html$Events$alwaysStop = function (x) {
-	return _Utils_Tuple2(x, true);
-};
-var $elm$virtual_dom$VirtualDom$MayStopPropagation = function (a) {
-	return {$: 1, a: a};
-};
-var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
-var $elm$html$Html$Events$stopPropagationOn = F2(
-	function (event, decoder) {
-		return A2(
-			$elm$virtual_dom$VirtualDom$on,
-			event,
-			$elm$virtual_dom$VirtualDom$MayStopPropagation(decoder));
-	});
-var $elm$json$Json$Decode$field = _Json_decodeField;
-var $elm$json$Json$Decode$at = F2(
-	function (fields, decoder) {
-		return A3($elm$core$List$foldr, $elm$json$Json$Decode$field, decoder, fields);
-	});
-var $elm$html$Html$Events$targetValue = A2(
-	$elm$json$Json$Decode$at,
-	_List_fromArray(
-		['target', 'value']),
-	$elm$json$Json$Decode$string);
-var $elm$html$Html$Events$onInput = function (tagger) {
-	return A2(
-		$elm$html$Html$Events$stopPropagationOn,
-		'input',
-		A2(
-			$elm$json$Json$Decode$map,
-			$elm$html$Html$Events$alwaysStop,
-			A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetValue)));
-};
+var $elm$core$Basics$neq = _Utils_notEqual;
 var $elm$core$List$partition = F2(
 	function (pred, list) {
 		var step = F2(
@@ -8416,16 +8386,158 @@ var $elm$core$List$partition = F2(
 			_Utils_Tuple2(_List_Nil, _List_Nil),
 			list);
 	});
-var $elm$core$List$filter = F2(
-	function (isGood, list) {
-		return A3(
-			$elm$core$List$foldr,
-			F2(
-				function (x, xs) {
-					return isGood(x) ? A2($elm$core$List$cons, x, xs) : xs;
-				}),
-			_List_Nil,
-			list);
+var $elm$virtual_dom$VirtualDom$lazy2 = _VirtualDom_lazy2;
+var $elm$html$Html$Lazy$lazy2 = $elm$virtual_dom$VirtualDom$lazy2;
+var $author$project$Main$Obtain = function (a) {
+	return {$: 0, a: a};
+};
+var $author$project$Main$Unobtain = function (a) {
+	return {$: 1, a: a};
+};
+var $elm$json$Json$Encode$bool = _Json_wrap;
+var $elm$html$Html$Attributes$boolProperty = F2(
+	function (key, bool) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$bool(bool));
+	});
+var $elm$html$Html$Attributes$checked = $elm$html$Html$Attributes$boolProperty('checked');
+var $elm$html$Html$h5 = _VirtualDom_node('h5');
+var $elm$html$Html$input = _VirtualDom_node('input');
+var $elm$html$Html$label = _VirtualDom_node('label');
+var $elm$virtual_dom$VirtualDom$Normal = function (a) {
+	return {$: 0, a: a};
+};
+var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
+var $elm$html$Html$Events$on = F2(
+	function (event, decoder) {
+		return A2(
+			$elm$virtual_dom$VirtualDom$on,
+			event,
+			$elm$virtual_dom$VirtualDom$Normal(decoder));
+	});
+var $elm$json$Json$Decode$field = _Json_decodeField;
+var $elm$json$Json$Decode$at = F2(
+	function (fields, decoder) {
+		return A3($elm$core$List$foldr, $elm$json$Json$Decode$field, decoder, fields);
+	});
+var $elm$json$Json$Decode$bool = _Json_decodeBool;
+var $elm$html$Html$Events$targetChecked = A2(
+	$elm$json$Json$Decode$at,
+	_List_fromArray(
+		['target', 'checked']),
+	$elm$json$Json$Decode$bool);
+var $elm$html$Html$Events$onCheck = function (tagger) {
+	return A2(
+		$elm$html$Html$Events$on,
+		'change',
+		A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetChecked));
+};
+var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $elm$html$Html$Attributes$type_ = $elm$html$Html$Attributes$stringProperty('type');
+var $author$project$Main$recipeView = F2(
+	function (obtained, recipe) {
+		return A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('col mb-4')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('card h-100')
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$div,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('card-body')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$h5,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('card-title')
+										]),
+									_List_fromArray(
+										[
+											$elm$html$Html$text(recipe.b)
+										])),
+									A2(
+									$elm$html$Html$p,
+									_List_Nil,
+									function () {
+										var _v0 = recipe.c;
+										if (!_v0.b) {
+											return _List_fromArray(
+												[
+													$elm$html$Html$text('Other')
+												]);
+										} else {
+											return A2($elm$core$List$map, $elm$html$Html$text, recipe.J);
+										}
+									}())
+								])),
+							A2(
+							$elm$html$Html$div,
+							_List_fromArray(
+								[
+									$elm$html$Html$Attributes$class('card-footer bg-transparent')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$div,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('form-check')
+										]),
+									_List_fromArray(
+										[
+											A2(
+											$elm$html$Html$label,
+											_List_fromArray(
+												[
+													$elm$html$Html$Attributes$class('form-check-label')
+												]),
+											_List_fromArray(
+												[
+													A2(
+													$elm$html$Html$input,
+													_List_fromArray(
+														[
+															$elm$html$Html$Attributes$type_('checkbox'),
+															$elm$html$Html$Attributes$class('form-check-input'),
+															$elm$html$Html$Events$onCheck(
+															function (val) {
+																return val ? $author$project$Main$Obtain(recipe) : $author$project$Main$Unobtain(recipe);
+															}),
+															$elm$html$Html$Attributes$checked(obtained)
+														]),
+													_List_Nil),
+													$elm$html$Html$text('Obtained')
+												]))
+										]))
+								]))
+						]))
+				]));
+	});
+var $author$project$Main$keyedRecipeView = F2(
+	function (obtained, recipe) {
+		return _Utils_Tuple2(
+			recipe.a,
+			A3($elm$html$Html$Lazy$lazy2, $author$project$Main$recipeView, obtained, recipe));
 	});
 var $elm$core$List$any = F2(
 	function (isOkay, list) {
@@ -8474,145 +8586,6 @@ var $elm$virtual_dom$VirtualDom$keyedNode = function (tag) {
 		_VirtualDom_noScript(tag));
 };
 var $elm$html$Html$Keyed$node = $elm$virtual_dom$VirtualDom$keyedNode;
-var $author$project$Main$Obtain = function (a) {
-	return {$: 0, a: a};
-};
-var $author$project$Main$Unobtain = function (a) {
-	return {$: 1, a: a};
-};
-var $elm$json$Json$Encode$bool = _Json_wrap;
-var $elm$html$Html$Attributes$boolProperty = F2(
-	function (key, bool) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			$elm$json$Json$Encode$bool(bool));
-	});
-var $elm$html$Html$Attributes$checked = $elm$html$Html$Attributes$boolProperty('checked');
-var $elm$html$Html$h5 = _VirtualDom_node('h5');
-var $elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 0, a: a};
-};
-var $elm$html$Html$Events$on = F2(
-	function (event, decoder) {
-		return A2(
-			$elm$virtual_dom$VirtualDom$on,
-			event,
-			$elm$virtual_dom$VirtualDom$Normal(decoder));
-	});
-var $elm$json$Json$Decode$bool = _Json_decodeBool;
-var $elm$html$Html$Events$targetChecked = A2(
-	$elm$json$Json$Decode$at,
-	_List_fromArray(
-		['target', 'checked']),
-	$elm$json$Json$Decode$bool);
-var $elm$html$Html$Events$onCheck = function (tagger) {
-	return A2(
-		$elm$html$Html$Events$on,
-		'change',
-		A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetChecked));
-};
-var $elm$html$Html$p = _VirtualDom_node('p');
-var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
-var $elm$html$Html$Attributes$type_ = $elm$html$Html$Attributes$stringProperty('type');
-var $author$project$Main$recipeDiv = F2(
-	function (obtained, recipe) {
-		return _Utils_Tuple2(
-			recipe.a,
-			A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('col mb-4')
-					]),
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('card h-100')
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('card-body')
-									]),
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$h5,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$class('card-title')
-											]),
-										_List_fromArray(
-											[
-												$elm$html$Html$text(recipe.b)
-											])),
-										A2(
-										$elm$html$Html$p,
-										_List_Nil,
-										function () {
-											var _v0 = recipe.c;
-											if (!_v0.b) {
-												return _List_fromArray(
-													[
-														$elm$html$Html$text('Other')
-													]);
-											} else {
-												return A2($elm$core$List$map, $elm$html$Html$text, recipe.J);
-											}
-										}())
-									])),
-								A2(
-								$elm$html$Html$div,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('card-footer bg-transparent')
-									]),
-								_List_fromArray(
-									[
-										A2(
-										$elm$html$Html$div,
-										_List_fromArray(
-											[
-												$elm$html$Html$Attributes$class('form-check')
-											]),
-										_List_fromArray(
-											[
-												A2(
-												$elm$html$Html$label,
-												_List_fromArray(
-													[
-														$elm$html$Html$Attributes$class('form-check-label')
-													]),
-												_List_fromArray(
-													[
-														A2(
-														$elm$html$Html$input,
-														_List_fromArray(
-															[
-																$elm$html$Html$Attributes$type_('checkbox'),
-																$elm$html$Html$Attributes$class('form-check-input'),
-																$elm$html$Html$Events$onCheck(
-																function (val) {
-																	return val ? $author$project$Main$Obtain(recipe) : $author$project$Main$Unobtain(recipe);
-																}),
-																$elm$html$Html$Attributes$checked(obtained)
-															]),
-														_List_Nil),
-														$elm$html$Html$text('Obtained')
-													]))
-											]))
-									]))
-							]))
-					])));
-	});
 var $author$project$Main$recipesView = F3(
 	function (obtained, recipes, filter) {
 		return A3(
@@ -8624,18 +8597,20 @@ var $author$project$Main$recipesView = F3(
 				]),
 			A2(
 				$elm$core$List$map,
-				$author$project$Main$recipeDiv(obtained),
+				$author$project$Main$keyedRecipeView(obtained),
 				A2(
 					$elm$core$List$filter,
 					$author$project$Main$matches(filter),
 					recipes)));
 	});
-var $elm$html$Html$span = _VirtualDom_node('span');
-var $author$project$Main$view = function (model) {
+var $author$project$Main$body = function (model) {
 	var keywords = A2(
-		$elm$core$String$split,
-		' ',
-		$elm$core$String$toLower(model.D));
+		$elm$core$List$filter,
+		$elm$core$Basics$neq(''),
+		A2(
+			$elm$core$String$split,
+			' ',
+			$elm$core$String$toLower(model.D)));
 	var section = F3(
 		function (title, recipes, checked) {
 			return _List_fromArray(
@@ -8664,63 +8639,110 @@ var $author$project$Main$view = function (model) {
 			[
 				$elm$html$Html$Attributes$class('container')
 			]),
+		_Utils_ap(
+			A3(section, 'To obtain', need, false),
+			A3(section, 'Obtained', have, true)));
+};
+var $elm$virtual_dom$VirtualDom$lazy = _VirtualDom_lazy;
+var $elm$html$Html$Lazy$lazy = $elm$virtual_dom$VirtualDom$lazy;
+var $author$project$Main$Filter = function (a) {
+	return {$: 2, a: a};
+};
+var $elm$html$Html$Attributes$for = $elm$html$Html$Attributes$stringProperty('htmlFor');
+var $elm$html$Html$form = _VirtualDom_node('form');
+var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
+var $elm$html$Html$nav = _VirtualDom_node('nav');
+var $elm$html$Html$Events$alwaysStop = function (x) {
+	return _Utils_Tuple2(x, true);
+};
+var $elm$virtual_dom$VirtualDom$MayStopPropagation = function (a) {
+	return {$: 1, a: a};
+};
+var $elm$html$Html$Events$stopPropagationOn = F2(
+	function (event, decoder) {
+		return A2(
+			$elm$virtual_dom$VirtualDom$on,
+			event,
+			$elm$virtual_dom$VirtualDom$MayStopPropagation(decoder));
+	});
+var $elm$html$Html$Events$targetValue = A2(
+	$elm$json$Json$Decode$at,
+	_List_fromArray(
+		['target', 'value']),
+	$elm$json$Json$Decode$string);
+var $elm$html$Html$Events$onInput = function (tagger) {
+	return A2(
+		$elm$html$Html$Events$stopPropagationOn,
+		'input',
 		A2(
-			$elm$core$List$cons,
-			A2(
-				$elm$html$Html$nav,
+			$elm$json$Json$Decode$map,
+			$elm$html$Html$Events$alwaysStop,
+			A2($elm$json$Json$Decode$map, tagger, $elm$html$Html$Events$targetValue)));
+};
+var $elm$html$Html$span = _VirtualDom_node('span');
+var $author$project$Main$navBar = function (filterText) {
+	return A2(
+		$elm$html$Html$nav,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('navbar navbar-light bg-light')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$span,
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('navbar navbar-light bg-light')
+						$elm$html$Html$Attributes$class('navbar-brand')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('ACNH DIY Recipe Tracker')
+					])),
+				A2(
+				$elm$html$Html$form,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('form-inline')
 					]),
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$span,
+						$elm$html$Html$label,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$class('navbar-brand')
+								$elm$html$Html$Attributes$class('my-1 mr-2'),
+								$elm$html$Html$Attributes$for('searchRecipes')
 							]),
 						_List_fromArray(
 							[
-								$elm$html$Html$text('ACNH DIY Recipe Tracker')
+								$elm$html$Html$text('Search:')
 							])),
 						A2(
-						$elm$html$Html$form,
+						$elm$html$Html$input,
 						_List_fromArray(
 							[
-								$elm$html$Html$Attributes$class('form-inline')
+								$elm$html$Html$Events$onInput($author$project$Main$Filter),
+								$elm$html$Html$Attributes$class('form-control'),
+								$elm$html$Html$Attributes$type_('search'),
+								$elm$html$Html$Attributes$id('searchRecipes')
 							]),
 						_List_fromArray(
 							[
-								A2(
-								$elm$html$Html$label,
-								_List_fromArray(
-									[
-										$elm$html$Html$Attributes$class('my-1 mr-2'),
-										$elm$html$Html$Attributes$for('searchRecipes')
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text('Search:')
-									])),
-								A2(
-								$elm$html$Html$input,
-								_List_fromArray(
-									[
-										$elm$html$Html$Events$onInput($author$project$Main$Filter),
-										$elm$html$Html$Attributes$class('form-control'),
-										$elm$html$Html$Attributes$type_('search'),
-										$elm$html$Html$Attributes$id('searchRecipes')
-									]),
-								_List_fromArray(
-									[
-										$elm$html$Html$text(model.D)
-									]))
+								$elm$html$Html$text(filterText)
 							]))
-					])),
-			_Utils_ap(
-				A3(section, 'To obtain', need, false),
-				A3(section, 'Obtained', have, true))));
+					]))
+			]));
+};
+var $author$project$Main$view = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2($elm$html$Html$Lazy$lazy, $author$project$Main$navBar, model.D),
+				A2($elm$html$Html$Lazy$lazy, $author$project$Main$body, model)
+			]));
 };
 var $author$project$Main$main = $elm$browser$Browser$element(
 	{
