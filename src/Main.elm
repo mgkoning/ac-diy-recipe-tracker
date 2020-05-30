@@ -106,7 +106,7 @@ matches keywords recipe =
   let fields = List.map String.toLower (recipe.name :: recipe.sourceStrings)
   in case keywords of
        [] -> True
-       _  -> List.any (\k -> List.any (String.contains k) fields) keywords
+       _  -> List.all (\k -> List.any (String.contains k) fields) keywords
 
 keyedRecipeView : Bool -> Recipe -> (String, Html Msg)
 keyedRecipeView obtained recipe = (recipe.id, lazy2 recipeView obtained recipe)

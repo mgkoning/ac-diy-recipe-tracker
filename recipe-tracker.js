@@ -8560,6 +8560,19 @@ var $elm$core$List$any = F2(
 			}
 		}
 	});
+var $elm$core$Basics$composeL = F3(
+	function (g, f, x) {
+		return g(
+			f(x));
+	});
+var $elm$core$Basics$not = _Basics_not;
+var $elm$core$List$all = F2(
+	function (isOkay, list) {
+		return !A2(
+			$elm$core$List$any,
+			A2($elm$core$Basics$composeL, $elm$core$Basics$not, isOkay),
+			list);
+	});
 var $elm$core$String$toLower = _String_toLower;
 var $author$project$Main$matches = F2(
 	function (keywords, recipe) {
@@ -8571,7 +8584,7 @@ var $author$project$Main$matches = F2(
 			return true;
 		} else {
 			return A2(
-				$elm$core$List$any,
+				$elm$core$List$all,
 				function (k) {
 					return A2(
 						$elm$core$List$any,
