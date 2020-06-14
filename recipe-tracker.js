@@ -5181,6 +5181,7 @@ var $author$project$Main$addSourceString = function (baseRecipe) {
 		J: A2($elm$core$List$map, $author$project$Main$showSource, baseRecipe.c)
 	};
 };
+var $author$project$Main$Any = 8;
 var $author$project$Main$Cranky = 0;
 var $author$project$Main$Jock = 1;
 var $author$project$Main$Lazy = 2;
@@ -5197,7 +5198,14 @@ var $author$project$Main$Villager = function (a) {
 };
 var $author$project$Main$availableRecipes = _List_fromArray(
 	[
-		{a: 'acorn-pochette', b: 'Acorn Pochette', c: _List_Nil},
+		{
+		a: 'acorn-pochette',
+		b: 'Acorn Pochette',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
 		{
 		a: 'acoustic-guitar',
 		b: 'Acoustic Guitar',
@@ -5310,7 +5318,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'autumn-wall', b: 'Autumn Wall', c: _List_Nil},
+		{
+		a: 'autumn-wall',
+		b: 'Autumn Wall',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
 		{a: 'axe', b: 'Axe', c: _List_Nil},
 		{
 		a: 'backyard-lawn',
@@ -5384,7 +5399,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(0)
 			])
 	},
-		{a: 'bamboo-lattice-fence', b: 'Bamboo Lattice Fence', c: _List_Nil},
+		{
+		a: 'bamboo-lattice-fence',
+		b: 'Bamboo Lattice Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'bamboo-lunch-box',
 		b: 'Bamboo Lunch Box',
@@ -5489,7 +5511,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Seasonal: spring, from balloons')
 			])
 	},
-		{a: 'barbed-wire-fence', b: 'Barbed-wire Fence', c: _List_Nil},
+		{
+		a: 'barbed-wire-fence',
+		b: 'Barbed-wire Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'barbell',
 		b: 'Barbell',
@@ -5530,7 +5559,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(1)
 			])
 	},
-		{a: 'big-festive-tree', b: 'Big Festive Tree', c: _List_Nil},
+		{
+		a: 'big-festive-tree',
+		b: 'Big Festive Tree',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: festive, from balloons')
+			])
+	},
 		{
 		a: 'birdbath',
 		b: 'Birdbath',
@@ -5563,8 +5599,22 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Seasonal: cherry blossoms, from balloons')
 			])
 	},
-		{a: 'blue-rose-crown', b: 'Blue Rose Crown', c: _List_Nil},
-		{a: 'blue-rose-wreath', b: 'Blue Rose Wreath', c: _List_Nil},
+		{
+		a: 'blue-rose-crown',
+		b: 'Blue Rose Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'blue-rose-wreath',
+		b: 'Blue Rose Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'bone-doorplate',
 		b: 'Bone Doorplate',
@@ -5597,9 +5647,30 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(2)
 			])
 	},
-		{a: 'brick-fence', b: 'Brick Fence', c: _List_Nil},
-		{a: 'brick-oven', b: 'Brick Oven', c: _List_Nil},
-		{a: 'brick-well', b: 'Brick Well', c: _List_Nil},
+		{
+		a: 'brick-fence',
+		b: 'Brick Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
+		{
+		a: 'brick-oven',
+		b: 'Brick Oven',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: Wildest Dreams DIY')
+			])
+	},
+		{
+		a: 'brick-well',
+		b: 'Brick Well',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'brown-herringbone-wall',
 		b: 'Brown Herringbone Wall',
@@ -5608,32 +5679,158 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(5)
 			])
 	},
-		{a: 'bunny-day-arch', b: 'Bunny Day Arch', c: _List_Nil},
-		{a: 'bunny-day-bag', b: 'Bunny Day Bag', c: _List_Nil},
-		{a: 'bunny-day-bed', b: 'Bunny Day Bed', c: _List_Nil},
-		{a: 'bunny-day-crown', b: 'Bunny Day Crown', c: _List_Nil},
-		{a: 'bunny-day-fence', b: 'Bunny Day Fence', c: _List_Nil},
-		{a: 'bunny-day-festive-balloons', b: 'Bunny Day Festive Balloons', c: _List_Nil},
-		{a: 'bunny-day-flooring', b: 'Bunny Day Flooring', c: _List_Nil},
-		{a: 'bunny-day-glowy-garland', b: 'Bunny Day Glowy Garland', c: _List_Nil},
-		{a: 'bunny-day-lamp', b: 'Bunny Day Lamp', c: _List_Nil},
-		{a: 'bunny-day-merry-balloons', b: 'Bunny Day Merry Balloons', c: _List_Nil},
-		{a: 'bunny-day-rug', b: 'Bunny Day Rug', c: _List_Nil},
-		{a: 'bunny-day-stool', b: 'Bunny Day Stool', c: _List_Nil},
-		{a: 'bunny-day-table', b: 'Bunny Day Table', c: _List_Nil},
-		{a: 'bunny-day-vanity', b: 'Bunny Day Vanity', c: _List_Nil},
-		{a: 'bunny-day-wall', b: 'Bunny Day Wall', c: _List_Nil},
-		{a: 'bunny-day-wall-clock', b: 'Bunny Day Wall Clock', c: _List_Nil},
+		{
+		a: 'bunny-day-arch',
+		b: 'Bunny Day Arch',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-bag',
+		b: 'Bunny Day Bag',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-bed',
+		b: 'Bunny Day Bed',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-crown',
+		b: 'Bunny Day Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-fence',
+		b: 'Bunny Day Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-festive-balloons',
+		b: 'Bunny Day Festive Balloons',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-flooring',
+		b: 'Bunny Day Flooring',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-glowy-garland',
+		b: 'Bunny Day Glowy Garland',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-lamp',
+		b: 'Bunny Day Lamp',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-merry-balloons',
+		b: 'Bunny Day Merry Balloons',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-rug',
+		b: 'Bunny Day Rug',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-stool',
+		b: 'Bunny Day Stool',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-table',
+		b: 'Bunny Day Table',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-vanity',
+		b: 'Bunny Day Vanity',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-wall',
+		b: 'Bunny Day Wall',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-wall-clock',
+		b: 'Bunny Day Wall Clock',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
 		{
 		a: 'bunny-day-wand',
 		b: 'Bunny Day Wand',
 		c: _List_fromArray(
 			[
-				$author$project$Main$Other('Celeste')
+				$author$project$Main$Other('Seasonal: bunny day')
 			])
 	},
-		{a: 'bunny-day-wardrobe', b: 'Bunny Day Wardrobe', c: _List_Nil},
-		{a: 'bunny-day-wreath', b: 'Bunny Day Wreath', c: _List_Nil},
+		{
+		a: 'bunny-day-wardrobe',
+		b: 'Bunny Day Wardrobe',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'bunny-day-wreath',
+		b: 'Bunny Day Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
 		{
 		a: 'butter-churn',
 		b: 'Butter Churn',
@@ -5835,11 +6032,46 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Seasonal: cherry blossoms, from balloons')
 			])
 	},
-		{a: 'chic-cosmos-wreath', b: 'Chic Cosmos Wreath', c: _List_Nil},
-		{a: 'chic-mum-crown', b: 'Chic Mum Crown', c: _List_Nil},
-		{a: 'chic-rose-crown', b: 'Chic Rose Crown', c: _List_Nil},
-		{a: 'chic-tulip-crown', b: 'Chic Tulip Crown', c: _List_Nil},
-		{a: 'chic-windflower-wreath', b: 'Chic Windflower Wreath', c: _List_Nil},
+		{
+		a: 'chic-cosmos-wreath',
+		b: 'Chic Cosmos Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'chic-mum-crown',
+		b: 'Chic Mum Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'chic-rose-crown',
+		b: 'Chic Rose Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'chic-tulip-crown',
+		b: 'Chic Tulip Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'chic-windflower-wreath',
+		b: 'Chic Windflower Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'chocolate-herringbone-wall',
 		b: 'Chocolate Herringbone Wall',
@@ -5896,15 +6128,78 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(7)
 			])
 	},
-		{a: 'colored-leaves-flooring', b: 'Colored-leaves Flooring', c: _List_Nil},
-		{a: 'cool-hyacinth-crown', b: 'Cool Hyacinth Crown', c: _List_Nil},
-		{a: 'cool-hyacinth-wreath', b: 'Cool Hyacinth Wreath', c: _List_Nil},
-		{a: 'cool-pansy-crown', b: 'Cool Pansy Crown', c: _List_Nil},
-		{a: 'cool-pansy-wreath', b: 'Cool Pansy Wreath', c: _List_Nil},
-		{a: 'cool-windflower-crown', b: 'Cool Windflower Crown', c: _List_Nil},
-		{a: 'cool-windflower-wreath', b: 'Cool Windflower Wreath', c: _List_Nil},
-		{a: 'corral-fence', b: 'Corral Fence', c: _List_Nil},
-		{a: 'cosmos-crown', b: 'Cosmos Crown', c: _List_Nil},
+		{
+		a: 'colored-leaves-flooring',
+		b: 'Colored-leaves Flooring',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
+		{
+		a: 'cool-hyacinth-crown',
+		b: 'Cool Hyacinth Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'cool-hyacinth-wreath',
+		b: 'Cool Hyacinth Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'cool-pansy-crown',
+		b: 'Cool Pansy Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'cool-pansy-wreath',
+		b: 'Cool Pansy Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'cool-windflower-crown',
+		b: 'Cool Windflower Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'cool-windflower-wreath',
+		b: 'Cool Windflower Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'corral-fence',
+		b: 'Corral Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
+		{
+		a: 'cosmos-crown',
+		b: 'Cosmos Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'cosmos-shower',
 		b: 'Cosmos Shower',
@@ -5921,8 +6216,22 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'cosmos-wreath', b: 'Cosmos Wreath', c: _List_Nil},
-		{a: 'country-fence', b: 'Country Fence', c: _List_Nil},
+		{
+		a: 'cosmos-wreath',
+		b: 'Cosmos Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'country-fence',
+		b: 'Country Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'crescent-moon-chair',
 		b: 'Crescent-moon Chair',
@@ -5947,8 +6256,22 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'cute-lily-crown', b: 'Cute Lily Crown', c: _List_Nil},
-		{a: 'cute-rose-crown', b: 'Cute Rose Crown', c: _List_Nil},
+		{
+		a: 'cute-lily-crown',
+		b: 'Cute Lily Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'cute-rose-crown',
+		b: 'Cute Rose Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'cutting-board',
 		b: 'Cutting Board',
@@ -5965,12 +6288,54 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(0)
 			])
 	},
-		{a: 'dark-cosmos-crown', b: 'Dark Cosmos Crown', c: _List_Nil},
-		{a: 'dark-lily-crown', b: 'Dark Lily Crown', c: _List_Nil},
-		{a: 'dark-lily-wreath', b: 'Dark Lily Wreath', c: _List_Nil},
-		{a: 'dark-rose-wreath', b: 'Dark Rose Wreath', c: _List_Nil},
-		{a: 'dark-tulip-crown', b: 'Dark Tulip Crown', c: _List_Nil},
-		{a: 'dark-tulip-wreath', b: 'Dark Tulip Wreath', c: _List_Nil},
+		{
+		a: 'dark-cosmos-crown',
+		b: 'Dark Cosmos Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'dark-lily-crown',
+		b: 'Dark Lily Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'dark-lily-wreath',
+		b: 'Dark Lily Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'dark-rose-wreath',
+		b: 'Dark Rose Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'dark-tulip-crown',
+		b: 'Dark Tulip Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'dark-tulip-wreath',
+		b: 'Dark Tulip Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'dark-wooden-mosaic-wall',
 		b: 'Dark Wooden-mosaic Wall',
@@ -6003,7 +6368,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(0)
 			])
 	},
-		{a: 'destinations-signpost', b: 'Destinations Signpost', c: _List_Nil},
+		{
+		a: 'destinations-signpost',
+		b: 'Destinations Signpost',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'diy-workbench',
 		b: 'Diy Workbench',
@@ -6028,17 +6400,94 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(1)
 			])
 	},
-		{a: 'drinking-fountain', b: 'Drinking Fountain', c: _List_Nil},
-		{a: 'earth-egg-outfit', b: 'Earth-egg Outfit', c: _List_Nil},
-		{a: 'earth-egg-shell', b: 'Earth-egg Shell', c: _List_Nil},
-		{a: 'earth-egg-shoes', b: 'Earth-egg Shoes', c: _List_Nil},
-		{a: 'egg-party-dress', b: 'Egg Party Dress', c: _List_Nil},
-		{a: 'egg-party-hat', b: 'Egg Party Hat', c: _List_Nil},
-		{a: 'fancy-lily-wreath', b: 'Fancy Lily Wreath', c: _List_Nil},
-		{a: 'fancy-mum-wreath', b: 'Fancy Mum Wreath', c: _List_Nil},
-		{a: 'fancy-rose-wreath', b: 'Fancy Rose Wreath', c: _List_Nil},
-		{a: 'festive-top-set', b: 'Festive Top Set', c: _List_Nil},
-		{a: 'festive-tree', b: 'Festive Tree', c: _List_Nil},
+		{
+		a: 'drinking-fountain',
+		b: 'Drinking Fountain',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
+		{
+		a: 'earth-egg-outfit',
+		b: 'Earth-egg Outfit',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'earth-egg-shell',
+		b: 'Earth-egg Shell',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'earth-egg-shoes',
+		b: 'Earth-egg Shoes',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'egg-party-dress',
+		b: 'Egg Party Dress',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'egg-party-hat',
+		b: 'Egg Party Hat',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'fancy-lily-wreath',
+		b: 'Fancy Lily Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'fancy-mum-wreath',
+		b: 'Fancy Mum Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'fancy-rose-wreath',
+		b: 'Fancy Rose Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'festive-top-set',
+		b: 'Festive Top Set',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: festive, from balloons')
+			])
+	},
+		{
+		a: 'festive-tree',
+		b: 'Festive Tree',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: festive, from balloons')
+			])
+	},
 		{
 		a: 'firewood',
 		b: 'Firewood',
@@ -6047,7 +6496,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(1)
 			])
 	},
-		{a: 'fish-bait', b: 'Fish Bait', c: _List_Nil},
+		{
+		a: 'fish-bait',
+		b: 'Fish Bait',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Inspiration: digging up clams')
+			])
+	},
 		{a: 'fishing-rod', b: 'Fishing Rod', c: _List_Nil},
 		{
 		a: 'flat-garden-rock',
@@ -6086,8 +6542,22 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'forest-flooring', b: 'Forest Flooring', c: _List_Nil},
-		{a: 'forest-wall', b: 'Forest Wall', c: _List_Nil},
+		{
+		a: 'forest-flooring',
+		b: 'Forest Flooring',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: mushrooms, from balloons')
+			])
+	},
+		{
+		a: 'forest-wall',
+		b: 'Forest Wall',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: mushrooms, from balloons')
+			])
+	},
 		{
 		a: 'fossil-doorplate',
 		b: 'Fossil Doorplate',
@@ -6096,17 +6566,94 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(1)
 			])
 	},
-		{a: 'fountain', b: 'Fountain', c: _List_Nil},
-		{a: 'frozen-arch', b: 'Frozen Arch', c: _List_Nil},
-		{a: 'frozen-bed', b: 'Frozen Bed', c: _List_Nil},
-		{a: 'frozen-chair', b: 'Frozen Chair', c: _List_Nil},
-		{a: 'frozen-counter', b: 'Frozen Counter', c: _List_Nil},
-		{a: 'frozen-partition', b: 'Frozen Partition', c: _List_Nil},
-		{a: 'frozen-pillar', b: 'Frozen Pillar', c: _List_Nil},
-		{a: 'frozen-sculpture', b: 'Frozen Sculpture', c: _List_Nil},
-		{a: 'frozen-table', b: 'Frozen Table', c: _List_Nil},
-		{a: 'frozen-tree', b: 'Frozen Tree', c: _List_Nil},
-		{a: 'frozen-treat-set', b: 'Frozen-treat Set', c: _List_Nil},
+		{
+		a: 'fountain',
+		b: 'Fountain',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
+		{
+		a: 'frozen-arch',
+		b: 'Frozen Arch',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'frozen-bed',
+		b: 'Frozen Bed',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'frozen-chair',
+		b: 'Frozen Chair',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'frozen-counter',
+		b: 'Frozen Counter',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'frozen-partition',
+		b: 'Frozen Partition',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'frozen-pillar',
+		b: 'Frozen Pillar',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'frozen-sculpture',
+		b: 'Frozen Sculpture',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'frozen-table',
+		b: 'Frozen Table',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'frozen-tree',
+		b: 'Frozen Tree',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'frozen-treat-set',
+		b: 'Frozen-treat Set',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
 		{
 		a: 'fruit-basket',
 		b: 'Fruit Basket',
@@ -6123,7 +6670,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(0)
 			])
 	},
-		{a: 'frying-pan', b: 'Frying Pan', c: _List_Nil},
+		{
+		a: 'frying-pan',
+		b: 'Frying Pan',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: DIY For Beginners')
+			])
+	},
 		{
 		a: 'galaxy-flooring',
 		b: 'Galaxy Flooring',
@@ -6132,8 +6686,22 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'garbage-heap-flooring', b: 'Garbage-heap Flooring', c: _List_Nil},
-		{a: 'garbage-heap-wall', b: 'Garbage-heap Wall', c: _List_Nil},
+		{
+		a: 'garbage-heap-flooring',
+		b: 'Garbage-heap Flooring',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Inspiration: fishing up trash')
+			])
+	},
+		{
+		a: 'garbage-heap-wall',
+		b: 'Garbage-heap Wall',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Inspiration: fishing up trash')
+			])
+	},
 		{
 		a: 'garden-bench',
 		b: 'Garden Bench',
@@ -6198,9 +6766,30 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(6)
 			])
 	},
-		{a: 'gold-rose-crown', b: 'Gold Rose Crown', c: _List_Nil},
-		{a: 'gold-rose-wreath', b: 'Gold Rose Wreath', c: _List_Nil},
-		{a: 'gold-screen-wall', b: 'Gold Screen Wall', c: _List_Nil},
+		{
+		a: 'gold-rose-crown',
+		b: 'Gold Rose Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'gold-rose-wreath',
+		b: 'Gold Rose Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'gold-screen-wall',
+		b: 'Gold Screen Wall',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(6)
+			])
+	},
 		{
 		a: 'gold-armor-shoes',
 		b: 'Gold-armor Shoes',
@@ -6351,9 +6940,30 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(4)
 			])
 	},
-		{a: 'hay-bed', b: 'Hay Bed', c: _List_Nil},
-		{a: 'hearth', b: 'Hearth', c: _List_Nil},
-		{a: 'hedge', b: 'Hedge', c: _List_Nil},
+		{
+		a: 'hay-bed',
+		b: 'Hay Bed',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: DIY For Beginners')
+			])
+	},
+		{
+		a: 'hearth',
+		b: 'Hearth',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: Wildest Dreams DIY')
+			])
+	},
+		{
+		a: 'hedge',
+		b: 'Hedge',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: nature day')
+			])
+	},
 		{
 		a: 'hedge-standee',
 		b: 'Hedge Standee',
@@ -6362,7 +6972,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(3)
 			])
 	},
-		{a: 'holiday-candle', b: 'Holiday Candle', c: _List_Nil},
+		{
+		a: 'holiday-candle',
+		b: 'Holiday Candle',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: festive, from balloons')
+			])
+	},
 		{
 		a: 'honeycomb-flooring',
 		b: 'Honeycomb Flooring',
@@ -6379,7 +6996,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(1)
 			])
 	},
-		{a: 'hyacinth-crown', b: 'Hyacinth Crown', c: _List_Nil},
+		{
+		a: 'hyacinth-crown',
+		b: 'Hyacinth Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'hyacinth-lamp',
 		b: 'Hyacinth Lamp',
@@ -6396,24 +7020,94 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'hyacinth-wreath', b: 'Hyacinth Wreath', c: _List_Nil},
-		{a: 'ice-flooring', b: 'Ice Flooring', c: _List_Nil},
-		{a: 'ice-wall', b: 'Ice Wall', c: _List_Nil},
+		{
+		a: 'hyacinth-wreath',
+		b: 'Hyacinth Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'ice-flooring',
+		b: 'Ice Flooring',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'ice-wall',
+		b: 'Ice Wall',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
 		{
 		a: 'ice-wand',
 		b: 'Ice Wand',
 		c: _List_fromArray(
 			[
-				$author$project$Main$Other('Celeste')
+				$author$project$Main$Other('Seasonal: winter, from balloons')
 			])
 	},
-		{a: 'iceberg-flooring', b: 'Iceberg Flooring', c: _List_Nil},
-		{a: 'iceberg-wall', b: 'Iceberg Wall', c: _List_Nil},
-		{a: 'illuminated-present', b: 'Illuminated Present', c: _List_Nil},
-		{a: 'illuminated-reindeer', b: 'Illuminated Reindeer', c: _List_Nil},
-		{a: 'illuminated-snowflakes', b: 'Illuminated Snowflakes', c: _List_Nil},
-		{a: 'illuminated-tree', b: 'Illuminated Tree', c: _List_Nil},
-		{a: 'imperial-fence', b: 'Imperial Fence', c: _List_Nil},
+		{
+		a: 'iceberg-flooring',
+		b: 'Iceberg Flooring',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'iceberg-wall',
+		b: 'Iceberg Wall',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'illuminated-present',
+		b: 'Illuminated Present',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: festive, from balloons')
+			])
+	},
+		{
+		a: 'illuminated-reindeer',
+		b: 'Illuminated Reindeer',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: festive, from balloons')
+			])
+	},
+		{
+		a: 'illuminated-snowflakes',
+		b: 'Illuminated Snowflakes',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: festive, from balloons')
+			])
+	},
+		{
+		a: 'illuminated-tree',
+		b: 'Illuminated Tree',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: festive, from balloons')
+			])
+	},
+		{
+		a: 'imperial-fence',
+		b: 'Imperial Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'infused-water-dispenser',
 		b: 'Infused-water Dispenser',
@@ -6446,7 +7140,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(5)
 			])
 	},
-		{a: 'iron-fence', b: 'Iron Fence', c: _List_Nil},
+		{
+		a: 'iron-fence',
+		b: 'Iron Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'iron-frame',
 		b: 'Iron Frame',
@@ -6495,7 +7196,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(5)
 			])
 	},
-		{a: 'iron-wall-lamp', b: 'Iron Wall Lamp', c: _List_Nil},
+		{
+		a: 'iron-wall-lamp',
+		b: 'Iron Wall Lamp',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: Wildest Dreams DIY')
+			])
+	},
 		{
 		a: 'iron-wall-rack',
 		b: 'Iron Wall Rack',
@@ -6520,7 +7228,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(5)
 			])
 	},
-		{a: 'iron-and-stone-fence', b: 'Iron-and-stone Fence', c: _List_Nil},
+		{
+		a: 'iron-and-stone-fence',
+		b: 'Iron-and-stone Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'ironwood-bed',
 		b: 'Ironwood Bed',
@@ -6577,7 +7292,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(7)
 			])
 	},
-		{a: 'ironwood-kitchenette', b: 'Ironwood Kitchenette', c: _List_Nil},
+		{
+		a: 'ironwood-kitchenette',
+		b: 'Ironwood Kitchenette',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: Wildest Dreams DIY')
+			])
+	},
 		{
 		a: 'ironwood-low-table',
 		b: 'Ironwood Low Table',
@@ -6602,7 +7324,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(0)
 			])
 	},
-		{a: 'jingle-wall', b: 'Jingle Wall', c: _List_Nil},
+		{
+		a: 'jingle-wall',
+		b: 'Jingle Wall',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: festive, from balloons')
+			])
+	},
 		{
 		a: 'juicy-apple-tv',
 		b: 'Juicy-apple Tv',
@@ -6676,7 +7405,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(2)
 			])
 	},
-		{a: 'lattice-fence', b: 'Lattice Fence', c: _List_Nil},
+		{
+		a: 'lattice-fence',
+		b: 'Lattice Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'leaf',
 		b: 'Leaf',
@@ -6685,7 +7421,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(1)
 			])
 	},
-		{a: 'leaf-campfire', b: 'Leaf Campfire', c: _List_Nil},
+		{
+		a: 'leaf-campfire',
+		b: 'Leaf Campfire',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
 		{
 		a: 'leaf-mask',
 		b: 'Leaf Mask',
@@ -6694,7 +7437,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(4)
 			])
 	},
-		{a: 'leaf-stool', b: 'Leaf Stool', c: _List_Nil},
+		{
+		a: 'leaf-stool',
+		b: 'Leaf Stool',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
 		{
 		a: 'leaf-umbrella',
 		b: 'Leaf Umbrella',
@@ -6703,9 +7453,30 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(5)
 			])
 	},
-		{a: 'leaf-egg-outfit', b: 'Leaf-egg Outfit', c: _List_Nil},
-		{a: 'leaf-egg-shell', b: 'Leaf-egg Shell', c: _List_Nil},
-		{a: 'leaf-egg-shoes', b: 'Leaf-egg Shoes', c: _List_Nil},
+		{
+		a: 'leaf-egg-outfit',
+		b: 'Leaf-egg Outfit',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'leaf-egg-shell',
+		b: 'Leaf-egg Shell',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'leaf-egg-shoes',
+		b: 'Leaf-egg Shoes',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
 		{
 		a: 'leo-sculpture',
 		b: 'Leo Sculpture',
@@ -6730,7 +7501,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Seasonal: spring, from balloons')
 			])
 	},
-		{a: 'lily-crown', b: 'Lily Crown', c: _List_Nil},
+		{
+		a: 'lily-crown',
+		b: 'Lily Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'lily-record-player',
 		b: 'Lily Record Player',
@@ -6747,7 +7525,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'lily-wreath', b: 'Lily Wreath', c: _List_Nil},
+		{
+		a: 'lily-wreath',
+		b: 'Lily Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'log-bed',
 		b: 'Log Bed',
@@ -6844,7 +7629,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(2)
 			])
 	},
-		{a: 'lovely-cosmos-crown', b: 'Lovely Cosmos Crown', c: _List_Nil},
+		{
+		a: 'lovely-cosmos-crown',
+		b: 'Lovely Cosmos Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'lucky-gold-cat',
 		b: 'Lucky Gold Cat',
@@ -6866,7 +7658,7 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 		b: 'Lunar Rover',
 		c: _List_fromArray(
 			[
-				$author$project$Main$Other('Celeste')
+				$author$project$Main$Other('Inspiration: fishing up trash')
 			])
 	},
 		{
@@ -6893,10 +7685,38 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(4)
 			])
 	},
-		{a: 'manhole-cover', b: 'Manhole Cover', c: _List_Nil},
-		{a: 'maple-leaf-pochette', b: 'Maple-leaf Pochette', c: _List_Nil},
-		{a: 'maple-leaf-pond-stone', b: 'Maple-leaf Pond Stone', c: _List_Nil},
-		{a: 'maple-leaf-umbrella', b: 'Maple-leaf Umbrella', c: _List_Nil},
+		{
+		a: 'manhole-cover',
+		b: 'Manhole Cover',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
+		{
+		a: 'maple-leaf-pochette',
+		b: 'Maple-leaf Pochette',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
+		{
+		a: 'maple-leaf-pond-stone',
+		b: 'Maple-leaf Pond Stone',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
+		{
+		a: 'maple-leaf-umbrella',
+		b: 'Maple-leaf Umbrella',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
 		{
 		a: 'matryoshka',
 		b: 'Matryoshka',
@@ -6914,7 +7734,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(2)
 			])
 	},
-		{a: 'mini-diy-workbench', b: 'Mini DIY Workbench', c: _List_Nil},
+		{
+		a: 'mini-diy-workbench',
+		b: 'Mini DIY Workbench',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: Test Your DIY Skills')
+			])
+	},
 		{
 		a: 'modeling-clay',
 		b: 'Modeling Clay',
@@ -6963,7 +7790,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(1)
 			])
 	},
-		{a: 'mum-crown', b: 'Mum Crown', c: _List_Nil},
+		{
+		a: 'mum-crown',
+		b: 'Mum Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'mum-cushion',
 		b: 'Mum Cushion',
@@ -6972,7 +7806,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(4)
 			])
 	},
-		{a: 'mum-wreath', b: 'Mum Wreath', c: _List_Nil},
+		{
+		a: 'mum-wreath',
+		b: 'Mum Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'mums-wand',
 		b: 'Mums Wand',
@@ -6981,23 +7822,86 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'mush-lamp', b: 'Mush Lamp', c: _List_Nil},
-		{a: 'mush-log', b: 'Mush Log', c: _List_Nil},
-		{a: 'mush-low-stool', b: 'Mush Low Stool', c: _List_Nil},
-		{a: 'mush-parasol', b: 'Mush Parasol', c: _List_Nil},
-		{a: 'mush-partition', b: 'Mush Partition', c: _List_Nil},
-		{a: 'mush-table', b: 'Mush Table', c: _List_Nil},
-		{a: 'mush-umbrella', b: 'Mush Umbrella', c: _List_Nil},
-		{a: 'mush-wall', b: 'Mush Wall', c: _List_Nil},
+		{
+		a: 'mush-lamp',
+		b: 'Mush Lamp',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: mushrooms, from balloons')
+			])
+	},
+		{
+		a: 'mush-log',
+		b: 'Mush Log',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: mushrooms, from balloons')
+			])
+	},
+		{
+		a: 'mush-low-stool',
+		b: 'Mush Low Stool',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: mushrooms, from balloons')
+			])
+	},
+		{
+		a: 'mush-parasol',
+		b: 'Mush Parasol',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: mushrooms, from balloons')
+			])
+	},
+		{
+		a: 'mush-partition',
+		b: 'Mush Partition',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: mushrooms, from balloons')
+			])
+	},
+		{
+		a: 'mush-table',
+		b: 'Mush Table',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: mushrooms, from balloons')
+			])
+	},
+		{
+		a: 'mush-umbrella',
+		b: 'Mush Umbrella',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: mushrooms, from balloons')
+			])
+	},
+		{
+		a: 'mush-wall',
+		b: 'Mush Wall',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: mushrooms, from balloons')
+			])
+	},
 		{
 		a: 'mushroom-wand',
 		b: 'Mushroom Wand',
 		c: _List_fromArray(
 			[
-				$author$project$Main$Other('Celeste')
+				$author$project$Main$Other('Seasonal: mushrooms, from balloons')
 			])
 	},
-		{a: 'mushroom-wreath', b: 'Mushroom Wreath', c: _List_Nil},
+		{
+		a: 'mushroom-wreath',
+		b: 'Mushroom Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: mushrooms, from balloons')
+			])
+	},
 		{
 		a: 'music-stand',
 		b: 'Music Stand',
@@ -7022,7 +7926,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(3)
 			])
 	},
-		{a: 'natural-mum-wreath', b: 'Natural Mum Wreath', c: _List_Nil},
+		{
+		a: 'natural-mum-wreath',
+		b: 'Natural Mum Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'natural-square-table',
 		b: 'Natural Square Table',
@@ -7040,9 +7951,30 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'ocarina', b: 'Ocarina', c: _List_Nil},
-		{a: 'oil-barrel-bathtub', b: 'Oil Barrel Bathtub', c: _List_Nil},
-		{a: 'old-fashioned-washtub', b: 'Old-fashioned Washtub', c: _List_Nil},
+		{
+		a: 'ocarina',
+		b: 'Ocarina',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: DIY For Beginners')
+			])
+	},
+		{
+		a: 'oil-barrel-bathtub',
+		b: 'Oil Barrel Bathtub',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(1)
+			])
+	},
+		{
+		a: 'old-fashioned-washtub',
+		b: 'Old-fashioned Washtub',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: DIY For Beginners')
+			])
+	},
 		{
 		a: 'orange-dress',
 		b: 'Orange Dress',
@@ -7099,9 +8031,30 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(2)
 			])
 	},
-		{a: 'ornament-mobile', b: 'Ornament Mobile', c: _List_Nil},
-		{a: 'ornament-wreath', b: 'Ornament Wreath', c: _List_Nil},
-		{a: 'outdoor-bath', b: 'Outdoor Bath', c: _List_Nil},
+		{
+		a: 'ornament-mobile',
+		b: 'Ornament Mobile',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: festive, from balloons')
+			])
+	},
+		{
+		a: 'ornament-wreath',
+		b: 'Ornament Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: festive, from balloons')
+			])
+	},
+		{
+		a: 'outdoor-bath',
+		b: 'Outdoor Bath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'outdoor-picnic-set',
 		b: 'Outdoor Picnic Set',
@@ -7126,7 +8079,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Seasonal: spring, from balloons')
 			])
 	},
-		{a: 'pansy-crown', b: 'Pansy Crown', c: _List_Nil},
+		{
+		a: 'pansy-crown',
+		b: 'Pansy Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'pansy-table',
 		b: 'Pansy Table',
@@ -7143,7 +8103,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'pansy-wreath', b: 'Pansy Wreath', c: _List_Nil},
+		{
+		a: 'pansy-wreath',
+		b: 'Pansy Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'paw-print-doorplate',
 		b: 'Paw-print Doorplate',
@@ -7264,7 +8231,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(1)
 			])
 	},
-		{a: 'pile-of-leaves', b: 'Pile Of Leaves', c: _List_Nil},
+		{
+		a: 'pile-of-leaves',
+		b: 'Pile Of Leaves',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
 		{
 		a: 'pile-of-zen-cushions',
 		b: 'Pile Of Zen Cushions',
@@ -7273,7 +8247,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(0)
 			])
 	},
-		{a: 'pine-bonsai-tree', b: 'Pine Bonsai Tree', c: _List_Nil},
+		{
+		a: 'pine-bonsai-tree',
+		b: 'Pine Bonsai Tree',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
 		{
 		a: 'pisces-lamp',
 		b: 'Pisces Lamp',
@@ -7290,7 +8271,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(1)
 			])
 	},
-		{a: 'plain-sink', b: 'Plain Sink', c: _List_Nil},
+		{
+		a: 'plain-sink',
+		b: 'Plain Sink',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: Wildest Dreams DIY')
+			])
+	},
 		{
 		a: 'plain-wooden-shop-sign',
 		b: 'Plain Wooden Shop Sign',
@@ -7315,13 +8303,62 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(0)
 			])
 	},
-		{a: 'potted-ivy', b: 'Potted Ivy', c: _List_Nil},
-		{a: 'pretty-cosmos-wreath', b: 'Pretty Cosmos Wreath', c: _List_Nil},
-		{a: 'pretty-tulip-wreath', b: 'Pretty Tulip Wreath', c: _List_Nil},
-		{a: 'purple-hyacinth-crown', b: 'Purple Hyacinth Crown', c: _List_Nil},
-		{a: 'purple-hyacinth-wreath', b: 'Purple Hyacinth Wreath', c: _List_Nil},
-		{a: 'purple-pansy-crown', b: 'Purple Pansy Crown', c: _List_Nil},
-		{a: 'purple-windflower-crown', b: 'Purple Windflower Crown', c: _List_Nil},
+		{
+		a: 'potted-ivy',
+		b: 'Potted Ivy',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: Test Your DIY Skills')
+			])
+	},
+		{
+		a: 'pretty-cosmos-wreath',
+		b: 'Pretty Cosmos Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'pretty-tulip-wreath',
+		b: 'Pretty Tulip Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'purple-hyacinth-crown',
+		b: 'Purple Hyacinth Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'purple-hyacinth-wreath',
+		b: 'Purple Hyacinth Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'purple-pansy-crown',
+		b: 'Purple Pansy Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'purple-windflower-crown',
+		b: 'Purple Windflower Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'raccoon-figurine',
 		b: 'Raccoon Figurine',
@@ -7330,11 +8367,46 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(0)
 			])
 	},
-		{a: 'recycled-boots', b: 'Recycled Boots', c: _List_Nil},
-		{a: 'recycled-can-thumb-piano', b: 'Recycled-can Thumb Piano', c: _List_Nil},
-		{a: 'red-leaf-pile', b: 'Red-leaf Pile', c: _List_Nil},
-		{a: 'ringtoss', b: 'Ringtoss', c: _List_Nil},
-		{a: 'robot-hero', b: 'Robot Hero', c: _List_Nil},
+		{
+		a: 'recycled-boots',
+		b: 'Recycled Boots',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Inspiration: fishing up trash')
+			])
+	},
+		{
+		a: 'recycled-can-thumb-piano',
+		b: 'Recycled-can Thumb Piano',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Inspiration: fishing up trash')
+			])
+	},
+		{
+		a: 'red-leaf-pile',
+		b: 'Red-leaf Pile',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
+		{
+		a: 'ringtoss',
+		b: 'Ringtoss',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: Test Your DIY Skills')
+			])
+	},
+		{
+		a: 'robot-hero',
+		b: 'Robot Hero',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'rocket',
 		b: 'Rocket',
@@ -7343,7 +8415,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'rocking-chair', b: 'Rocking Chair', c: _List_Nil},
+		{
+		a: 'rocking-chair',
+		b: 'Rocking Chair',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: Test Your DIY Skills')
+			])
+	},
 		{
 		a: 'rocking-horse',
 		b: 'Rocking Horse',
@@ -7352,7 +8431,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(3)
 			])
 	},
-		{a: 'rope-fence', b: 'Rope Fence', c: _List_Nil},
+		{
+		a: 'rope-fence',
+		b: 'Rope Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'rose-bed',
 		b: 'Rose Bed',
@@ -7361,7 +8447,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(6)
 			])
 	},
-		{a: 'rose-crown', b: 'Rose Crown', c: _List_Nil},
+		{
+		a: 'rose-crown',
+		b: 'Rose Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'rose-wand',
 		b: 'Rose Wand',
@@ -7370,7 +8463,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'rose-wreath', b: 'Rose Wreath', c: _List_Nil},
+		{
+		a: 'rose-wreath',
+		b: 'Rose Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'rustic-stone-wall',
 		b: 'Rustic-stone Wall',
@@ -7572,7 +8672,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(2)
 			])
 	},
-		{a: 'silo', b: 'Silo', c: _List_Nil},
+		{
+		a: 'silo',
+		b: 'Silo',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'simple-diy-workbench',
 		b: 'Simple DIY Workbench',
@@ -7581,14 +8688,70 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(1)
 			])
 	},
-		{a: 'simple-mum-crown', b: 'Simple Mum Crown', c: _List_Nil},
-		{a: 'simple-well', b: 'Simple Well', c: _List_Nil},
-		{a: 'simple-wooden-fence', b: 'Simple Wooden Fence', c: _List_Nil},
-		{a: 'ski-slope-flooring', b: 'Ski-slope Flooring', c: _List_Nil},
-		{a: 'ski-slope-wall', b: 'Ski-slope Wall', c: _List_Nil},
-		{a: 'sky-egg-outfit', b: 'Sky-egg Outfit', c: _List_Nil},
-		{a: 'sky-egg-shell', b: 'Sky-egg Shell', c: _List_Nil},
-		{a: 'sky-egg-shoes', b: 'Sky-egg Shoes', c: _List_Nil},
+		{
+		a: 'simple-mum-crown',
+		b: 'Simple Mum Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'simple-well',
+		b: 'Simple Well',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
+		{
+		a: 'simple-wooden-fence',
+		b: 'Simple Wooden Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
+		{
+		a: 'ski-slope-flooring',
+		b: 'Ski-slope Flooring',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'ski-slope-wall',
+		b: 'Ski-slope Wall',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'sky-egg-outfit',
+		b: 'Sky-egg Outfit',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'sky-egg-shell',
+		b: 'Sky-egg Shell',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'sky-egg-shoes',
+		b: 'Sky-egg Shoes',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
 		{
 		a: 'sleigh',
 		b: 'Sleigh',
@@ -7606,11 +8769,46 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(4)
 			])
 	},
-		{a: 'snazzy-pansy-wreath', b: 'Snazzy Pansy Wreath', c: _List_Nil},
-		{a: 'snowflake-pochette', b: 'Snowflake Pochette', c: _List_Nil},
-		{a: 'snowflake-wall', b: 'Snowflake Wall', c: _List_Nil},
-		{a: 'snowflake-wreath', b: 'Snowflake Wreath', c: _List_Nil},
-		{a: 'snowperson-head', b: 'Snowperson Head', c: _List_Nil},
+		{
+		a: 'snazzy-pansy-wreath',
+		b: 'Snazzy Pansy Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'snowflake-pochette',
+		b: 'Snowflake Pochette',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'snowflake-wall',
+		b: 'Snowflake Wall',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'snowflake-wreath',
+		b: 'Snowflake Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
+		{
+		a: 'snowperson-head',
+		b: 'Snowperson Head',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
 		{
 		a: 'space-shuttle',
 		b: 'Space Shuttle',
@@ -7619,7 +8817,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'spiky-fence', b: 'Spiky Fence', c: _List_Nil},
+		{
+		a: 'spiky-fence',
+		b: 'Spiky Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'stack-of-books',
 		b: 'Stack Of Books',
@@ -7644,7 +8849,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(1)
 			])
 	},
-		{a: 'stall', b: 'Stall', c: _List_Nil},
+		{
+		a: 'stall',
+		b: 'Stall',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'standard-umbrella-stand',
 		b: 'Standard Umbrella Stand',
@@ -7741,9 +8953,23 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(6)
 			])
 	},
-		{a: 'stone-arch', b: 'Stone Arch', c: _List_Nil},
+		{
+		a: 'stone-arch',
+		b: 'Stone Arch',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{a: 'stone-axe', b: 'Stone Axe', c: _List_Nil},
-		{a: 'stone-fence', b: 'Stone Fence', c: _List_Nil},
+		{
+		a: 'stone-fence',
+		b: 'Stone Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'stone-lion-dog',
 		b: 'Stone Lion-dog',
@@ -7752,7 +8978,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(6)
 			])
 	},
-		{a: 'stone-stool', b: 'Stone Stool', c: _List_Nil},
+		{
+		a: 'stone-stool',
+		b: 'Stone Stool',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: DIY For Beginners')
+			])
+	},
 		{
 		a: 'stone-table',
 		b: 'Stone Table',
@@ -7761,7 +8994,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(2)
 			])
 	},
-		{a: 'stone-tablet', b: 'Stone Tablet', c: _List_Nil},
+		{
+		a: 'stone-tablet',
+		b: 'Stone Tablet',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'stone-wall',
 		b: 'Stone Wall',
@@ -7770,10 +9010,38 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(6)
 			])
 	},
-		{a: 'stone-egg-outfit', b: 'Stone-egg Outfit', c: _List_Nil},
-		{a: 'stone-egg-shell', b: 'Stone-egg Shell', c: _List_Nil},
-		{a: 'stone-egg-shoes', b: 'Stone-egg Shoes', c: _List_Nil},
-		{a: 'straw-fence', b: 'Straw Fence', c: _List_Nil},
+		{
+		a: 'stone-egg-outfit',
+		b: 'Stone-egg Outfit',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'stone-egg-shell',
+		b: 'Stone-egg Shell',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'stone-egg-shoes',
+		b: 'Stone-egg Shoes',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'straw-fence',
+		b: 'Straw Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'straw-umbrella-hat',
 		b: 'Straw Umbrella Hat',
@@ -7790,9 +9058,30 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(5)
 			])
 	},
-		{a: 'succulent-plant', b: 'Succulent Plant', c: _List_Nil},
-		{a: 'swinging-bench', b: 'Swinging Bench', c: _List_Nil},
-		{a: 'tabletop-festive-tree', b: 'Tabletop Festive Tree', c: _List_Nil},
+		{
+		a: 'succulent-plant',
+		b: 'Succulent Plant',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Inspiration: fishing up trash')
+			])
+	},
+		{
+		a: 'swinging-bench',
+		b: 'Swinging Bench',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: Test Your DIY Skills')
+			])
+	},
+		{
+		a: 'tabletop-festive-tree',
+		b: 'Tabletop Festive Tree',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: festive, from balloons')
+			])
+	},
 		{
 		a: 'tall-garden-rock',
 		b: 'Tall Garden Rock',
@@ -7833,7 +9122,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(3)
 			])
 	},
-		{a: 'three-tiered-snowperson', b: 'Three-tiered Snowperson', c: _List_Nil},
+		{
+		a: 'three-tiered-snowperson',
+		b: 'Three-tiered Snowperson',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: winter, from balloons')
+			])
+	},
 		{
 		a: 'tiki-torch',
 		b: 'Tiki Torch',
@@ -7858,9 +9154,30 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(3)
 			])
 	},
-		{a: 'tire-stack', b: 'Tire Stack', c: _List_Nil},
-		{a: 'tire-toy', b: 'Tire Toy', c: _List_Nil},
-		{a: 'traditional-balancing-toy', b: 'Traditional Balancing Toy', c: _List_Nil},
+		{
+		a: 'tire-stack',
+		b: 'Tire Stack',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Inspiration: fishing up trash')
+			])
+	},
+		{
+		a: 'tire-toy',
+		b: 'Tire Toy',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Inspiration: fishing up trash')
+			])
+	},
+		{
+		a: 'traditional-balancing-toy',
+		b: 'Traditional Balancing Toy',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
 		{
 		a: 'traditional-straw-coat',
 		b: 'Traditional Straw Coat',
@@ -7869,7 +9186,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(3)
 			])
 	},
-		{a: 'trash-bags', b: 'Trash Bags', c: _List_Nil},
+		{
+		a: 'trash-bags',
+		b: 'Trash Bags',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Inspiration: fishing up trash')
+			])
+	},
 		{
 		a: 'tree-branch-wreath',
 		b: 'Tree Branch Wreath',
@@ -7894,11 +9218,46 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'trees-bounty-arch', b: 'Tree\'s Bounty Arch', c: _List_Nil},
-		{a: 'trees-bounty-big-tree', b: 'Tree\'s Bounty Big Tree', c: _List_Nil},
-		{a: 'trees-bounty-lamp', b: 'Tree\'s Bounty Lamp', c: _List_Nil},
-		{a: 'trees-bounty-little-tree', b: 'Tree\'s Bounty Little Tree', c: _List_Nil},
-		{a: 'trees-bounty-mobile', b: 'Tree\'s Bounty Mobile', c: _List_Nil},
+		{
+		a: 'trees-bounty-arch',
+		b: 'Tree\'s Bounty Arch',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
+		{
+		a: 'trees-bounty-big-tree',
+		b: 'Tree\'s Bounty Big Tree',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
+		{
+		a: 'trees-bounty-lamp',
+		b: 'Tree\'s Bounty Lamp',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
+		{
+		a: 'trees-bounty-little-tree',
+		b: 'Tree\'s Bounty Little Tree',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
+		{
+		a: 'trees-bounty-mobile',
+		b: 'Tree\'s Bounty Mobile',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
 		{
 		a: 'trophy-case',
 		b: 'Trophy Case',
@@ -7915,7 +9274,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Seasonal: summer, from balloons')
 			])
 	},
-		{a: 'tulip-crown', b: 'Tulip Crown', c: _List_Nil},
+		{
+		a: 'tulip-crown',
+		b: 'Tulip Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'tulip-surprise-box',
 		b: 'Tulip Surprise Box',
@@ -7932,7 +9298,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'tulip-wreath', b: 'Tulip Wreath', c: _List_Nil},
+		{
+		a: 'tulip-wreath',
+		b: 'Tulip Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'ukulele',
 		b: 'Ukulele',
@@ -7966,7 +9339,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 			])
 	},
 		{a: 'vaulting-pole', b: 'Vaulting Pole', c: _List_Nil},
-		{a: 'vertical-board-fence', b: 'Vertical-board Fence', c: _List_Nil},
+		{
+		a: 'vertical-board-fence',
+		b: 'Vertical-board Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'virgo-harp',
 		b: 'Virgo Harp',
@@ -7999,11 +9379,39 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(2)
 			])
 	},
-		{a: 'water-egg-outfit', b: 'Water-egg Outfit', c: _List_Nil},
-		{a: 'water-egg-shell', b: 'Water-egg Shell', c: _List_Nil},
-		{a: 'water-egg-shoes', b: 'Water-egg Shoes', c: _List_Nil},
+		{
+		a: 'water-egg-outfit',
+		b: 'Water-egg Outfit',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'water-egg-shell',
+		b: 'Water-egg Shell',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'water-egg-shoes',
+		b: 'Water-egg Shoes',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
 		{a: 'watering-can', b: 'Watering Can', c: _List_Nil},
-		{a: 'wave-breaker', b: 'Wave Breaker', c: _List_Nil},
+		{
+		a: 'wave-breaker',
+		b: 'Wave Breaker',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'western-style-stone',
 		b: 'Western-style Stone',
@@ -8028,7 +9436,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(0)
 			])
 	},
-		{a: 'windflower-crown', b: 'Windflower Crown', c: _List_Nil},
+		{
+		a: 'windflower-crown',
+		b: 'Windflower Crown',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
 		{
 		a: 'windflower-fan',
 		b: 'Windflower Fan',
@@ -8045,11 +9460,46 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Other('Celeste')
 			])
 	},
-		{a: 'windflower-wreath', b: 'Windflower Wreath', c: _List_Nil},
-		{a: 'wobbling-zipper-toy', b: 'Wobbling Zipper Toy', c: _List_Nil},
-		{a: 'wood-egg-outfit', b: 'Wood-egg Outfit', c: _List_Nil},
-		{a: 'wood-egg-shell', b: 'Wood-egg Shell', c: _List_Nil},
-		{a: 'wood-egg-shoes', b: 'Wood-egg Shoes', c: _List_Nil},
+		{
+		a: 'windflower-wreath',
+		b: 'Windflower Wreath',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Villager(8)
+			])
+	},
+		{
+		a: 'wobbling-zipper-toy',
+		b: 'Wobbling Zipper Toy',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'wood-egg-outfit',
+		b: 'Wood-egg Outfit',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'wood-egg-shell',
+		b: 'Wood-egg Shell',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
+		{
+		a: 'wood-egg-shoes',
+		b: 'Wood-egg Shoes',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: bunny day')
+			])
+	},
 		{
 		a: 'wooden-bookshelf',
 		b: 'Wooden Bookshelf',
@@ -8098,7 +9548,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(7)
 			])
 	},
-		{a: 'wooden-fish', b: 'Wooden Fish', c: _List_Nil},
+		{
+		a: 'wooden-fish',
+		b: 'Wooden Fish',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: Wildest Dreams DIY')
+			])
+	},
 		{
 		a: 'wooden-full-length-mirror',
 		b: 'Wooden Full-length Mirror',
@@ -8188,8 +9645,22 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(5)
 			])
 	},
-		{a: 'wooden-block-bookshelf', b: 'Wooden-block Bookshelf', c: _List_Nil},
-		{a: 'wooden-block-chair', b: 'Wooden-block Chair', c: _List_Nil},
+		{
+		a: 'wooden-block-bookshelf',
+		b: 'Wooden-block Bookshelf',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: Test Your DIY Skills')
+			])
+	},
+		{
+		a: 'wooden-block-chair',
+		b: 'Wooden-block Chair',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: Test Your DIY Skills')
+			])
+	},
 		{
 		a: 'wooden-block-chest',
 		b: 'Wooden-block Chest',
@@ -8215,7 +9686,14 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(5)
 			])
 	},
-		{a: 'wooden-block-toy', b: 'Wooden-block Toy', c: _List_Nil},
+		{
+		a: 'wooden-block-toy',
+		b: 'Wooden-block Toy',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook\'s Cranny: DIY For Beginners')
+			])
+	},
 		{
 		a: 'wooden-block-wall-clock',
 		b: 'Wooden-block Wall Clock',
@@ -8256,8 +9734,22 @@ var $author$project$Main$availableRecipes = _List_fromArray(
 				$author$project$Main$Villager(3)
 			])
 	},
-		{a: 'yellow-leaf-pile', b: 'Yellow-leaf Pile', c: _List_Nil},
-		{a: 'zen-fence', b: 'Zen Fence', c: _List_Nil},
+		{
+		a: 'yellow-leaf-pile',
+		b: 'Yellow-leaf Pile',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Seasonal: autumn, from balloons')
+			])
+	},
+		{
+		a: 'zen-fence',
+		b: 'Zen Fence',
+		c: _List_fromArray(
+			[
+				$author$project$Main$Other('Nook Stop')
+			])
+	},
 		{
 		a: 'zen-style-stone',
 		b: 'Zen-style Stone',
